@@ -1,0 +1,18 @@
+package fa.training.entities;
+
+public class GamingMonitor extends Monitor {
+
+    private String refreshRate;
+    private String responseTime;
+    
+    public GamingMonitor() {
+	super();
+    }
+
+    @Override
+    public void showInfo() {
+	// TODO Auto-generated method stub
+	
+    }
+
+}

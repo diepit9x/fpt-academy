@@ -1,0 +1,61 @@
+package controllers;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import daos.DichVuDAO;
+import models.ResponseData;
+
+@WebServlet("/dich-vu/*")
+public class DichVuController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private DichVuDAO dichVuDAO;
+
+    public DichVuController() {
+        super();
+        dichVuDAO = new DichVuDAO();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String  action = request.getPathInfo();
+		if (action != null) {
+			action = action.substring(1); 
+	    }
+		switch (action) {
+		case "tao-moi": {
+			create(request, response);
+			break;
+		}
+		case "danh-sach": {
+//			getAll(request, response);
+			break;
+		}
+		case "cap-nhat": {
+//			update(request, response);
+			break;
+		}
+		case "xoa-khach-hang": {
+//			delete(request, response);
+			break;
+		}
+		case "danh-sach-su-dung": {
+//			registerToUse(request, response);
+			break;
+		}
+		default:
+			System.out.println("no action");
+		}
+	}
+	private void create(HttpServletRequest request, HttpServletResponse response) {
+		String url = "/WEB-INF/pages/khach-hang/tao-moi.jsp";
+		ResponseData responseData = new ResponseData(400, null);
+		}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

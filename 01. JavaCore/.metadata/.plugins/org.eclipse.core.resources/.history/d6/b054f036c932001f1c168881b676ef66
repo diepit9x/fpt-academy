@@ -1,0 +1,12 @@
+package fa.training.service;
+
+import fa.training.dto.CandidateDAO;
+import fa.training.dto.CandidateDAPOImpl;
+
+public class CandidateService {
+
+public static void main(String[] args) {
+    CandidateDAO candidateDAO = new CandidateDAOImpl()
+}
+
+}

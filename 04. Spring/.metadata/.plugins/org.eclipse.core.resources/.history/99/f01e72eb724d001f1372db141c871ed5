@@ -1,0 +1,217 @@
+package entities;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Objects;
+
+import org.hibernate.annotations.Immutable;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+@Immutable
+public class SuDungDichVuMay {
+
+    @Id
+    @Column(name = "maKH")
+    private String maKH;
+
+    @Column(name = "tenKH")
+    private String tenKH;
+
+    @Column(name = "maMay")
+    private String maMay;
+
+    @Column(name = "viTri")
+    private String viTri;
+
+    @Column(name = "trangThai")
+    private String trangThai;
+
+    @Column(name = "ngaybatDauSuDung")
+    private LocalDate ngaybatDauSuDung;
+
+    @Column(name = "gioBatDauSuDung")
+    private LocalTime gioBatDauSuDung;
+
+    @Column(name = "thoiGianSuDung")
+    private Integer thoiGianSuDung;
+
+    @Column(name = "maDV")
+    private String maDV;
+
+    @Column(name = "ngaySuDung")
+    private LocalDate ngaySuDung;
+
+    @Column(name = "gioSuDung")
+    private LocalTime gioSuDung;
+
+    @Column(name = "soLuong")
+    private Integer soLuong;
+
+    @Column(name = "donGia")
+    private Double donGia;
+
+	public SuDungDichVuMay() {
+		super();
+	}
+
+	public SuDungDichVuMay(String maKH, String tenKH, String maMay, String viTri, String trangThai,
+			LocalDate ngaybatDauSuDung, LocalTime gioBatDauSuDung, Integer thoiGianSuDung, String maDV,
+			LocalDate ngaySuDung, LocalTime gioSuDung, Integer soLuong, Double donGia) {
+		super();
+		this.maKH = maKH;
+		this.tenKH = tenKH;
+		this.maMay = maMay;
+		this.viTri = viTri;
+		this.trangThai = trangThai;
+		this.ngaybatDauSuDung = ngaybatDauSuDung;
+		this.gioBatDauSuDung = gioBatDauSuDung;
+		this.thoiGianSuDung = thoiGianSuDung;
+		this.maDV = maDV;
+		this.ngaySuDung = ngaySuDung;
+		this.gioSuDung = gioSuDung;
+		this.soLuong = soLuong;
+		this.donGia = donGia;
+	}
+
+	public String getMaKH() {
+		return maKH;
+	}
+
+	public void setMaKH(String maKH) {
+		this.maKH = maKH;
+	}
+
+	public String getTenKH() {
+		return tenKH;
+	}
+
+	public void setTenKH(String tenKH) {
+		this.tenKH = tenKH;
+	}
+
+	public String getMaMay() {
+		return maMay;
+	}
+
+	public void setMaMay(String maMay) {
+		this.maMay = maMay;
+	}
+
+	public String getViTri() {
+		return viTri;
+	}
+
+	public void setViTri(String viTri) {
+		this.viTri = viTri;
+	}
+
+	public String getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(String trangThai) {
+		this.trangThai = trangThai;
+	}
+
+	public LocalDate getNgaybatDauSuDung() {
+		return ngaybatDauSuDung;
+	}
+
+	public void setNgaybatDauSuDung(LocalDate ngaybatDauSuDung) {
+		this.ngaybatDauSuDung = ngaybatDauSuDung;
+	}
+
+	public LocalTime getGioBatDauSuDung() {
+		return gioBatDauSuDung;
+	}
+
+	public void setGioBatDauSuDung(LocalTime gioBatDauSuDung) {
+		this.gioBatDauSuDung = gioBatDauSuDung;
+	}
+
+	public Integer getThoiGianSuDung() {
+		return thoiGianSuDung;
+	}
+
+	public void setThoiGianSuDung(Integer thoiGianSuDung) {
+		this.thoiGianSuDung = thoiGianSuDung;
+	}
+
+	public String getMaDV() {
+		return maDV;
+	}
+
+	public void setMaDV(String maDV) {
+		this.maDV = maDV;
+	}
+
+	public LocalDate getNgaySuDung() {
+		return ngaySuDung;
+	}
+
+	public void setNgaySuDung(LocalDate ngaySuDung) {
+		this.ngaySuDung = ngaySuDung;
+	}
+
+	public LocalTime getGioSuDung() {
+		return gioSuDung;
+	}
+
+	public void setGioSuDung(LocalTime gioSuDung) {
+		this.gioSuDung = gioSuDung;
+	}
+
+	public Integer getSoLuong() {
+		return soLuong;
+	}
+
+	public void setSoLuong(Integer soLuong) {
+		this.soLuong = soLuong;
+	}
+
+	public Double getDonGia() {
+		return donGia;
+	}
+
+	public void setDonGia(Double donGia) {
+		this.donGia = donGia;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(donGia, gioBatDauSuDung, gioSuDung, maDV, maKH, maMay, ngaySuDung, ngaybatDauSuDung,
+				soLuong, tenKH, thoiGianSuDung, trangThai, viTri);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SuDungDichVuMay other = (SuDungDichVuMay) obj;
+		return Objects.equals(donGia, other.donGia) && Objects.equals(gioBatDauSuDung, other.gioBatDauSuDung)
+				&& Objects.equals(gioSuDung, other.gioSuDung) && Objects.equals(maDV, other.maDV)
+				&& Objects.equals(maKH, other.maKH) && Objects.equals(maMay, other.maMay)
+				&& Objects.equals(ngaySuDung, other.ngaySuDung)
+				&& Objects.equals(ngaybatDauSuDung, other.ngaybatDauSuDung) && Objects.equals(soLuong, other.soLuong)
+				&& Objects.equals(tenKH, other.tenKH) && Objects.equals(thoiGianSuDung, other.thoiGianSuDung)
+				&& Objects.equals(trangThai, other.trangThai) && Objects.equals(viTri, other.viTri);
+	}
+
+	@Override
+	public String toString() {
+		return "SuDungDichVuMay [maKH=" + maKH + ", tenKH=" + tenKH + ", maMay=" + maMay + ", viTri=" + viTri
+				+ ", trangThai=" + trangThai + ", ngaybatDauSuDung=" + ngaybatDauSuDung + ", gioBatDauSuDung="
+				+ gioBatDauSuDung + ", thoiGianSuDung=" + thoiGianSuDung + ", maDV=" + maDV + ", ngaySuDung="
+				+ ngaySuDung + ", gioSuDung=" + gioSuDung + ", soLuong=" + soLuong + ", donGia=" + donGia + "]";
+	}
+    
+    
+}

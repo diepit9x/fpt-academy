@@ -1,0 +1,65 @@
+package baitap2.yeucau1;
+
+import java.util.Iterator;
+
+public class Test {
+    public static void main(String[] args) {
+	CreateArray createArray = new CreateArray();
+	int[] arr = createArray.getArr();
+	
+	System.out.println("====SINGLE THREAD====");
+	long sum = 0;
+	long beginTime = System.currentTimeMillis();
+	for (int i = 0; i < arr.length; i++) {
+	    sum += arr[i];
+	}
+	long endTime = System.currentTimeMillis();
+	System.out.println("S = " + sum);
+	System.out.println("Time = " + (endTime - beginTime));
+	System.out.println("======END=====");
+	
+	System.out.println("****TWO-THREADS====");
+	Runnable task1 = new Runnable() {
+	    private int[] array = arr;
+	    private long sum = 0;
+	    
+	    public long getSum() {
+		return sum;
+	    }
+	    
+	    @Override
+	    public void run() {
+		for (int i = 0; i < array.length/2; i++) {
+		    sum += array[i];
+		}
+	    }
+	};
+	
+	Runnable task2 = new Runnable() {
+	    private int[] array = arr;
+	    private long sum = 0;
+	    
+	    public long getSum() {
+		return sum;
+	    }
+	    @Override
+	    public void run() {
+		for (int i = array.length/2; i < arr.length; i++) {
+		    sum += array[i];
+		}
+	    }
+	};
+	Thread thread1 = new Thread(task1);
+	Thread thread2 = new Thread(task2);
+	thread1.start();
+	thread2.start();
+	
+	long result = ((Runnable) task2).getSum();
+	
+	
+	System.out.println("*****END*****");
+	
+	
+    }
+
+}

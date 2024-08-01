@@ -1,0 +1,11 @@
+.table-wrapper {
+  position: relative;
+  overflow: auto;
+  height: 400px; /* Adjust the height as needed */
+}
+
+.table-fixed th,
+.table-fixed td {
+  min-width: 120px;
+  white-space: nowrap;
+}

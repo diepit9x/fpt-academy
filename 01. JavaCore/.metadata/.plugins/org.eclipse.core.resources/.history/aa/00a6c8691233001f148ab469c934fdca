@@ -1,0 +1,29 @@
+package fa.training.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import fa.training.entities.Candidate;
+
+public class InternDAOImpl implements InternDAO {
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet resultSet = null;
+    
+    @Override
+    public boolean addIntern(Candidate candidate) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+    @Override
+    public boolean updateIntern(Candidate candidate) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+
+
+}

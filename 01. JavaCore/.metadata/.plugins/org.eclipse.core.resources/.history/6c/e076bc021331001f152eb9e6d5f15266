@@ -1,0 +1,52 @@
+package fa.training.entities;
+
+public class LineItem {
+    private int orderId;
+    private int productId;
+    private int quantity;
+    private double price;
+
+    public LineItem() {
+    }
+
+    public LineItem(int orderId, int productId, int quantity, double price) {
+	super();
+	this.orderId = orderId;
+	this.productId = productId;
+	this.quantity = quantity;
+	this.price = price;
+    }
+
+    public int getOrderId() {
+	return orderId;
+    }
+
+    public void setOrderId(int orderId) throws NumberFormatException {
+	this.orderId = orderId;
+    }
+
+    public int getProductId() {
+	return productId;
+    }
+
+    public void setProductId(int productId) throws NumberFormatException {
+	this.productId = productId;
+    }
+
+    public int getQuantity() {
+	return quantity;
+    }
+
+    public void setQuantity(String quantity) throws NumberFormatException {
+	this.quantity = Integer.parseInt(quantity);
+    }
+
+    public double getPrice() {
+	return price;
+    }
+
+    public void setPrice(String price) throws NumberFormatException {
+	this.price = Double.parseDouble(price);
+    }
+
+}

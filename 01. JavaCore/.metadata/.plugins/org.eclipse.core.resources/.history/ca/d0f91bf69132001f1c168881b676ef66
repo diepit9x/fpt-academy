@@ -1,0 +1,9 @@
+package fa.training.main;
+
+public class CandidateManagerment {
+
+    public CandidateManagerment() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

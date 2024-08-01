@@ -1,0 +1,18 @@
+.bg-header {
+  background-color: #1b4466;
+  padding: 15px;
+}
+
+.header-left {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.pagination {
+  margin-top: 10px;
+  height: auto;
+}
+.page-link {
+  border: none;
+  border-radius: 5px;
+}

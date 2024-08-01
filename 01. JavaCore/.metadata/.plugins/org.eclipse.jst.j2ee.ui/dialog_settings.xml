@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="J2EE_IMPORT_EJB">
+		<item value="C:\Users\DiepNT12\Downloads\sqljdbc_6.0\enu\jre8\sqljdbc42.jar"/>
+	</list>
+	<list key="MRU_RUNTIME_STORE">
+		<item value="NULL_RUNTIME"/>
+	</list>
+	<list key="J2EE_IMPORT_APP_CLIENT">
+		<item value="C:\Users\DiepNT12\Downloads\jars\mssql-jdbc-12.6.3.jre8.jar"/>
+	</list>
+</section>

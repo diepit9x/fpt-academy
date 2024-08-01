@@ -1,0 +1,74 @@
+package fa.training.entities;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.UUID;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema = "dbo", name = "SuDungMay")
+public class SuDungMay {
+	@EmbeddedId
+	private SuDungMayId suDungMayId;
+
+	private Integer thoiGianSuDung;
+
+	@Column(unique = true, nullable = false)
+	private String id;
+
+	public SuDungMay() {
+		super();
+	}
+
+
+	public SuDungMay(SuDungMayId suDungMayId, Integer thoiGianSuDung, String id) {
+		super();
+		this.suDungMayId = suDungMayId;
+		this.thoiGianSuDung = thoiGianSuDung;
+		this.id = id;
+	}
+
+
+	public SuDungMayId getSuDungMayId() {
+		return suDungMayId;
+	}
+
+
+	public void setSuDungMayId(SuDungMayId suDungMayId) {
+		this.suDungMayId = suDungMayId;
+	}
+
+
+	public Integer getThoiGianSuDung() {
+		return thoiGianSuDung;
+	}
+
+
+	public void setThoiGianSuDung(Integer thoiGianSuDung) {
+		this.thoiGianSuDung = thoiGianSuDung;
+	}
+
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	@PrePersist
+	public void prePersist() {
+		if (id == null) {
+			id = UUID.randomUUID().toString();
+		}
+	}
+
+}

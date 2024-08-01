@@ -1,0 +1,11 @@
+package fa.training.dao;
+
+import java.sql.SQLException;
+
+import fa.training.entities.Employee;
+
+public interface EmployeeDAO {
+    boolean addEmployee(Employee employee) throws SQLException;
+    boolean updateEmployee(int employeeId, Employee employee) throws SQLException;
+    boolean deleteEmplyee(int employeeId) throws SQLException;
+}

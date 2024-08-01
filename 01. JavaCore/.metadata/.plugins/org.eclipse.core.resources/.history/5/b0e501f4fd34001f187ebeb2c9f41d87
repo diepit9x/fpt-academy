@@ -1,0 +1,37 @@
+/*
+ * TestConnect.java
+ * 
+ * @author DiepNT12
+ * 
+ * @version 1.0 Jun 27, 2024
+ */
+package fa.training.main;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import fa.training.util.DBUtils;
+
+/**
+ * The Class TestConnect.
+ */
+public class TestConnect {
+
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
+    public static void main(String[] args) {
+	Connection connection = null;
+	try {
+	    connection = DBUtils.getInstance().getConnection();
+	    if (connection != null) {
+		    System.out.println("ket noi thanh cong");
+	    }
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+    }
+    
+}

@@ -1,0 +1,11 @@
+package fa.training.dao;
+
+import java.sql.SQLException;
+
+import fa.training.entities.Candidate;
+
+public interface ExperienceDAO {
+    boolean addExperience(Candidate candidate) throws SQLException;
+    boolean updateExperience(Candidate candidate) throws SQLException;
+
+}

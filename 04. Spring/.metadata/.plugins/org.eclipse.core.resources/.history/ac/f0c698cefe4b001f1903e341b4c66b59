@@ -1,0 +1,196 @@
+package controllers;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import daos.MayDAO;
+import entities.May;
+import models.ResponseData;
+
+/**
+ * Servlet implementation class MayController
+ */
+@WebServlet("/may/*")
+public class MayController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private MayDAO mayDAO;
+
+    public MayController() {
+        super();
+        mayDAO = new MayDAO();
+    }
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String  action = request.getPathInfo();
+		if (action != null) {
+			action = action.substring(1); 
+	    }
+		switch (action) {
+		case "tao-moi": {
+			create(request, response);
+			break;
+		}
+		case "danh-sach": {
+			getAll(request, response);
+			break;
+		}
+		case "cap-nhat": {
+			update(request, response);
+			break;
+		}
+		case "xoa-mayt": {
+			delete(request, response);
+			break;
+		}
+		default:
+			//to do
+			System.out.println("no action");
+		}
+	}
+	private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		//Status
+		ResponseData responseData = new ResponseData(400, null);
+		String maMay = request.getParameter("maMay");
+		try {
+			Integer maMayInt = Integer.parseInt(maMay);
+			boolean status = mayDAO.delete(maMayInt);
+			if (status) {
+				out.println("Xoa thanh cong");
+			} else {
+				out.println("Xoa that bai");
+			}
+		} catch (Exception e) {
+			out.println(e.getMessage());
+		}
+		
+	}
+	
+	private void update(HttpServletRequest request, HttpServletResponse response) {
+		//Status
+		ResponseData responseData = new ResponseData(400, null);
+		String maMay = request.getParameter("maMay");
+		String viTri = request.getParameter("viTri");
+	    String trangThai = request.getParameter("trangThai");
+		
+	    if(maMay != null) {
+	    	try {
+				Integer maMayInt = Integer.parseInt(maMay);
+				
+				if(viTri !=  null && trangThai != null) {
+			    	May updateMay = new May(maMayInt, viTri, trangThai);
+			    	try {
+			    		boolean status = mayDAO.update(updateMay);
+				    	if (status) {
+				    		responseData.setStatus(200);
+							responseData.setObject("Cập nhật thành công");
+						} else {
+							responseData.setObject("Cập nhật thất bại");
+						}
+					} catch (Exception e) {
+						responseData.setObject(e.getMessage());
+					}
+			    	
+			    } else {
+			    	May may = mayDAO.findById(maMayInt);
+			    	if (may != null) {
+						responseData.setStatus(201);
+						responseData.setObject(may);
+					} else {
+						responseData.setObject("Mã máy không tồn tại");
+					}
+			    }
+			} catch (Exception e) {
+				responseData.setObject(e.getMessage());
+			}
+	    	
+	    }
+	    
+		request.setAttribute("responseData", responseData);
+	    String url = "/pages/may/cap-nhat.jsp";
+	    
+	    try {
+		    RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+	        rd.forward(request, response);
+	    } catch (ServletException e) {
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
+	
+	private void getAll(HttpServletRequest request, HttpServletResponse response) {
+		//Status
+		ResponseData responseData = new ResponseData(200, null);
+		String keyword = request.getParameter("keyword");
+		
+		List<May> mays = mayDAO.findAllMay(keyword);
+		responseData.setObject(mays);
+		
+		request.setAttribute("responseData", responseData);
+	    String url = "/pages/may/danh-sach.jsp";
+	    
+	    try {
+		    RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+	        rd.forward(request, response);
+	    } catch (ServletException e) {
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
+	
+	private void create(HttpServletRequest request, HttpServletResponse response) {
+		//url
+	    String url = "/pages/may/tao-moi.jsp";
+		//Status
+		ResponseData responseData = new ResponseData(400, null);
+	    // Collect data
+	    String viTri = request.getParameter("viTri");
+	    String trangThai = request.getParameter("trangThai");
+	    if (viTri != null && trangThai != null) {
+	    	 May may = new May();
+	 	    may.setViTri(viTri);
+	 	    may.setTrangThai(trangThai);
+	 	    
+	 	    try {
+	 			boolean status = mayDAO.insert(may);
+	 			if (status) {
+	 				responseData.setStatus(200);
+	 			} else {
+	 				responseData.setObject("Không tạo được dữ liệu mới");
+	 			}
+	 		} catch (Exception e) {
+	 			responseData.setObject(e.getMessage());
+	 		}
+	 	    request.setAttribute("responseData", responseData);
+		}
+	   
+	    try {
+		    RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+	        rd.forward(request, response);
+	    } catch (ServletException e) {
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

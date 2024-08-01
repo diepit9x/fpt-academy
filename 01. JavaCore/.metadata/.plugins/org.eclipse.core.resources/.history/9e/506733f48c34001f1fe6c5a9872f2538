@@ -1,0 +1,76 @@
+package fa.training.util;
+
+import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ValidatorExample {
+    //constant
+    public static final String DATE_PATTERN = "^(0[1-9]|[12][0-9]|3[01])(\\/)(0[1-9]|1[0-2])(\\/)\\d{4}$";//dd/mm/yyyy
+    public static final String ID_PATTERN = "^(aa|ab)\\d{3}$"; //bat dau bang aa/ab. theo sau la 3 so
+    public static final String EMAIL_PATTERN = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+    private static final String VALID_PHONENUMBER_REGEX = "^0[3-9]\\d{8}$";
+    
+
+    private static Matcher matcher;
+    private static Pattern pattern;
+
+    /**
+     * This method check format of date value.
+     *
+     * @param date the date
+     * @return boolean
+     */
+    public static boolean isDate(String date) {
+	pattern = Pattern.compile(DATE_PATTERN);
+	matcher = pattern.matcher(date);
+	return matcher.matches();
+    }
+    
+    /**
+     * Check phone number format is valid
+     * @param phoneNumber
+     * @return
+     */
+    public static boolean isPhoneNumber(String phoneNumber) {
+	Pattern pattern = Pattern.compile(VALID_PHONENUMBER_REGEX);
+	Matcher matcher = pattern.matcher(phoneNumber);
+        return matcher.matches();
+    }
+    
+    /**
+     * Check date format value is valid. after 1900
+     * @param date
+     * @return
+     */
+    public static boolean isDate2(String date) {
+	try {
+            LocalDate birthDate = LocalDate.parse(date);
+            birthDate.plusDays(0);
+            birthDate.plusWeeks(0);
+            birthDate.plusMonths(0);
+            LocalDate minDate = LocalDate.of(1900, 1, 1);           
+            LocalDate maxDate = LocalDate.now();
+            return (birthDate.isAfter(minDate) || birthDate.isEqual(minDate)) && (birthDate.isBefore(maxDate) || birthDate.isEqual(maxDate));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public static boolean isDate2(Date currentDate ,Date newDate) {
+	try {
+            LocalDate birthDate = LocalDate.parse(date);
+            birthDate.plusDays(0);
+            birthDate.plusWeeks(0);
+            birthDate.plusMonths(0);
+            LocalDate minDate = LocalDate.of(1900, 1, 1);           
+            LocalDate maxDate = LocalDate.now();
+            return (birthDate.isAfter(minDate) || birthDate.isEqual(minDate)) && (birthDate.isBefore(maxDate) || birthDate.isEqual(maxDate));
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    
+
+}

@@ -1,0 +1,103 @@
+package fa.training.entities;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Embeddable
+public class SuDungDichVuId implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "maKH")
+	private KhachHang khachHang;
+
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "maDV")
+	private DichVu dichVu;
+
+	@Id
+	@Column(name = "ngaySuDung", columnDefinition = "DATE")
+	private LocalDate ngaySuDung;
+
+	@Id
+	@Column(name = "gioSuDung", columnDefinition = "TIME")
+	private LocalTime gioSuDung;
+
+	public SuDungDichVuId() {
+		super();
+	}
+
+	public SuDungDichVuId(KhachHang khachHang, DichVu dichVu, LocalDate ngaySuDung, LocalTime gioSuDung) {
+		super();
+		this.khachHang = khachHang;
+		this.dichVu = dichVu;
+		this.ngaySuDung = ngaySuDung;
+		this.gioSuDung = gioSuDung;
+	}
+
+	public KhachHang getKhachHang() {
+		return khachHang;
+	}
+
+	public void setKhachHang(KhachHang khachHang) {
+		this.khachHang = khachHang;
+	}
+
+	public DichVu getDichVu() {
+		return dichVu;
+	}
+
+	public void setDichVu(DichVu dichVu) {
+		this.dichVu = dichVu;
+	}
+
+	public LocalDate getNgaySuDung() {
+		return ngaySuDung;
+	}
+
+	public void setNgaySuDung(LocalDate ngaySuDung) {
+		this.ngaySuDung = ngaySuDung;
+	}
+
+	public LocalTime getGioSuDung() {
+		return gioSuDung;
+	}
+
+	public void setGioSuDung(LocalTime gioSuDung) {
+		this.gioSuDung = gioSuDung;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dichVu, gioSuDung, khachHang, ngaySuDung);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SuDungDichVuId other = (SuDungDichVuId) obj;
+		return Objects.equals(dichVu, other.dichVu) && Objects.equals(gioSuDung, other.gioSuDung)
+				&& Objects.equals(khachHang, other.khachHang) && Objects.equals(ngaySuDung, other.ngaySuDung);
+	}
+	
+	
+}

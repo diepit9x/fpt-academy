@@ -1,0 +1,9 @@
+package fa.training.entities;
+
+public class Fresher {
+
+    public Fresher() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

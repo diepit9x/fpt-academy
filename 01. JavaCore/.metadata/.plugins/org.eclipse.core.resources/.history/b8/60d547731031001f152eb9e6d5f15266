@@ -1,0 +1,39 @@
+package fa.training.main;
+
+import java.io.FileWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Properties;
+
+import fa.training.util.DBUtils;
+import fa.training.util.SQLCommand;
+
+public class SaleManagement {
+
+public static void main(String[] args) {
+    try {
+	Connection connection = DBUtils.getInstance().getConnection();
+	PreparedStatement preparedStatement = connection.prepareStatement(SQLCommand.SELECT_ALL_CUSTOMER);
+	ResultSet resultSet = preparedStatement.executeQuery();
+	while (resultSet.next()) {
+	    System.out.println(resultSet.getString("customer_name"));
+	}
+    } catch (Exception e) {
+	e.printStackTrace();
+    }
+}
+
+public static void main(String[] args) throws Exception {
+    // create properties object
+    Properties properties = new Properties();
+    // add property into properties object
+    properties.setProperty("driver", "com.microsoft.sqlserver.jdbc.SQLServerDriver");
+    properties.setProperty("url", "jdbc:sqlserver://localhost:1433;databaseName=SMS;integratedSecurity=true;encrypt=true;trustServerCertificate=true");
+    properties.setProperty("userName", "sa");
+    properties.setProperty("password", "123456789");
+    // write properties to a file
+    properties.store(new FileWriter("resources/ dbConfig.properties"), "Comment here");
+}
+
+}

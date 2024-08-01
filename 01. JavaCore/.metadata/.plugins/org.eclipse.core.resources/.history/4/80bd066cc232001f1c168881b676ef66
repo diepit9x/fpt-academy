@@ -1,0 +1,109 @@
+package fa.training.entities;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public abstract class Candidate {
+    private String candidateId;
+    private String fullName;
+    private Date birthDay;
+    private String phone;
+    private String email;
+    private int candidateType;
+    private static int candidateCount;
+    private List<Certificate> certificates;
+ 
+//    public Candidate() {
+//    }
+
+    public Candidate(String candidateId, String fullName, Date birthDay, String phone, String email,
+	    int candidateType) {
+	super();
+	this.candidateId = candidateId;
+	this.fullName = fullName;
+	this.birthDay = birthDay;
+	this.phone = phone;
+	this.email = email;
+	this.candidateType = candidateType;
+	this.certificates = new ArrayList<>();
+	candidateCount++;
+    }
+
+    public String getCandidateId() {
+	return candidateId;
+    }
+
+    public void setCandidateId(String candidateId) {
+	this.candidateId = candidateId;
+    }
+
+    public String getFullName() {
+	return fullName;
+    }
+
+    public void setFullName(String fullName) {
+	this.fullName = fullName;
+    }
+
+    public LocalDate getBirthDay() {
+	return birthDay;
+    }
+
+    public void setBirthDay(LocalDate birthDay) {
+	this.birthDay = birthDay;
+    }
+
+    public String getPhone() {
+	return phone;
+    }
+
+    public void setPhone(String phone) {
+	this.phone = phone;
+    }
+
+    public String getEmail() {
+	return email;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
+    }
+
+    public int getCandidateType() {
+	return candidateType;
+    }
+
+    public void setCandidateType(int candidateType) {
+	this.candidateType = candidateType;
+    }
+
+    public static int getCandidateCount() {
+	return candidateCount;
+    }
+
+    public List<Certificate> getCertificates() {
+        return certificates;
+    }
+
+    public void setCertificates(List<Certificate> certificates) {
+        this.certificates = certificates;
+    }
+    
+    public void addCertificate(Certificate certificate) {
+        certificates.add(certificate);
+    }
+    
+    public void showInfo() {
+	System.out.println(toString());
+    }
+
+    @Override
+    public String toString() {
+	return "candidateId=" + candidateId + ", fullName=" + fullName + ", birthDay=" + birthDay
+		+ ", phone=" + phone + ", email=" + email + ", candidateType=" + candidateType;
+    }
+
+    public abstract void showMe();
+
+}

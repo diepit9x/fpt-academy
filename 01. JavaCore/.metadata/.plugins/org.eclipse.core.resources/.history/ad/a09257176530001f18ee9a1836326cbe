@@ -1,0 +1,69 @@
+package baitap2.yeucau1;
+
+public class Test {
+    public static void main(String[] args) {
+	CreateArray createArray = new CreateArray();
+	int[] arr = createArray.getArr();
+	long beginTime = 0;
+	long endTime = 0;
+	long sum = 0;
+
+	SumThread task1 = new SumThread(arr);
+	LeftSumThread task2 = new LeftSumThread(arr);
+	RightSumThread task3 = new RightSumThread(arr);
+	Thread thread1 = new Thread(task1);
+	Thread thread2 = new Thread(task2);
+	Thread thread3 = new Thread(task3);
+	
+	System.out.println("====SINGLE THREAD====");
+	beginTime = System.currentTimeMillis();
+	thread1.start();
+	try {
+	    thread1.join();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+	sum = task1.getSum();
+	endTime = System.currentTimeMillis();
+	System.out.println("S = " + sum);
+	System.out.println("Time = " + (endTime - beginTime));
+	System.out.println("======END=====");
+
+	
+	
+	System.out.println("====SINGLE THREAD2====");
+	sum = 0;
+	beginTime = System.currentTimeMillis();
+	for (int i = 0; i < arr.length; i++) {
+	    sum += arr[i];
+	}
+	endTime = System.currentTimeMillis();
+	System.out.println("S = " + sum);
+	System.out.println("Time = " + (endTime - beginTime));
+	System.out.println("======END=====");
+
+	
+	System.out.println("****TWO THREADS****");
+
+
+	long beginTimeMulti = System.currentTimeMillis();
+	thread1.start();
+	thread2.start();
+
+	try {
+	    thread1.join();
+	    thread2.join();
+	} catch (InterruptedException e) {
+	    e.printStackTrace();
+	}
+
+	long sumMulti = task1.getSum() + task2.getSum();
+	long endTimeMulti = System.currentTimeMillis();
+
+	System.out.println("S = " + sumMulti);
+	System.out.println("Time = " + (endTimeMulti - beginTimeMulti));
+	System.out.println("*****END*****");
+
+    }
+
+}

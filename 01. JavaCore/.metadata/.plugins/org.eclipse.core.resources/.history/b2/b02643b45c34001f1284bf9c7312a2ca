@@ -1,0 +1,9 @@
+package fa.training.main;
+
+public class TestConnect {
+
+    public TestConnect() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

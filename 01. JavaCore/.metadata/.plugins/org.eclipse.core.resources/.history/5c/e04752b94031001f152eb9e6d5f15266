@@ -1,0 +1,9 @@
+package fa.training.dao;
+
+public class LineItemDAOImpl implements LineItemDAO {
+
+    public LineItemDAOImpl() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

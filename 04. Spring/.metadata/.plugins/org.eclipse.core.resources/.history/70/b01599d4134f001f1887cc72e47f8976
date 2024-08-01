@@ -1,0 +1,73 @@
+package fa.training.entities;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema = "dbo", name = "SuDungDichVu")
+public class SuDungDichVu {
+	@EmbeddedId
+	private SuDungDichVuId id;
+
+	@ManyToOne
+	@JoinColumn(name = "suDungMay_id", referencedColumnName = "id")
+	private SuDungMay suDungMay;
+
+	@Column(nullable = false)
+	private Integer soLuong;
+
+	@Column(nullable = false)
+	private Integer donGia;
+
+	public SuDungDichVu() {
+		super();
+	}
+
+	public SuDungDichVu(SuDungDichVuId id, SuDungMay suDungMay, Integer soLuong, Integer donGia) {
+		super();
+		this.id = id;
+		this.suDungMay = suDungMay;
+		this.soLuong = soLuong;
+		this.donGia = donGia;
+	}
+
+	public SuDungDichVuId getId() {
+		return id;
+	}
+
+	public void setId(SuDungDichVuId id) {
+		this.id = id;
+	}
+
+	public SuDungMay getSuDungMay() {
+		return suDungMay;
+	}
+
+	public void setSuDungMay(SuDungMay suDungMay) {
+		this.suDungMay = suDungMay;
+	}
+
+	public Integer getSoLuong() {
+		return soLuong;
+	}
+
+	public void setSoLuong(Integer soLuong) {
+		this.soLuong = soLuong;
+	}
+
+	public Integer getDonGia() {
+		return donGia;
+	}
+
+	public void setDonGia(Integer donGia) {
+		this.donGia = donGia;
+	}
+}

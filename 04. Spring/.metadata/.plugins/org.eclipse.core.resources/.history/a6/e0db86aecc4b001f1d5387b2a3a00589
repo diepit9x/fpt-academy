@@ -1,0 +1,13 @@
+package entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(schema = "dbo", name = "DichVu")
+public class DichVu {
+	private String maDV;
+	private String tenDV;
+	private String donViTinh;
+	private Integer donGia;
+}

@@ -1,0 +1,32 @@
+package fa.training.service;
+
+import java.sql.SQLException;
+import java.sql.Date;
+
+import fa.training.dao.CandidateDAO;
+import fa.training.dao.CandidateDAOImpl;
+import fa.training.entities.Candidate;
+import fa.training.entities.Experience;
+import fa.training.entities.Fresher;
+
+public class CandidateService {
+
+public static void main(String[] args) {
+    CandidateDAO candidateDAO = new CandidateDAOImpl();
+    
+   Candidate c1 = new Experience(1, "ex1", Date.valueOf("2003-10-14"), "0987654321", "email@123", 2, "skill");
+   Candidate c2 = new Fresher(1, "f2", Date.valueOf("2003-10-14"), "0987654321", "email@123", 2, "skill");
+   Candidate c3 = new Experience(1, "fresh1", Date.valueOf("2003-10-14"), "0987654321", "email@123", 2, "skill");
+   try {
+    candidateDAO.addCandidate(c1);
+} catch (SQLException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+} catch (Exception e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+}
+    
+}
+
+}

@@ -1,0 +1,30 @@
+package fa.training.main;
+
+public class Main {
+	public static void main(String[] args) {
+		Inventory inventory = new Inventory();
+
+		Thread t1 = new OrderThread(inventory, 13);
+		Thread t2 = new OrderThread(inventory, 91);
+		Thread t3 = new OrderThread(inventory, 50);
+		Thread t4 = new OrderThread(inventory, 30);
+
+		t1.start();
+		t2.start();
+		t3.start();
+		t4.start();
+
+		TaskList taskList = new TaskList();
+
+		Manager manager = new Manager(taskList);
+		manager.start();
+
+		Worker worker1 = new Worker(taskList, "Worker 1");
+		Worker worker2 = new Worker(taskList, "Worker 2");
+		Worker worker3 = new Worker(taskList, "Worker 3");
+
+		worker1.start();
+		worker2.start();
+		worker3.start();
+	}
+}

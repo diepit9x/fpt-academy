@@ -1,0 +1,9 @@
+package baitap2.yeucau1;
+
+public class SingleThread {
+
+    public SingleThread() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

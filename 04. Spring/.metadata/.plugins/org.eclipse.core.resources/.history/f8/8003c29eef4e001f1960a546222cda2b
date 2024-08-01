@@ -1,0 +1,5 @@
+package fa.training.daos;
+
+public interface DichVuDAO {
+
+}

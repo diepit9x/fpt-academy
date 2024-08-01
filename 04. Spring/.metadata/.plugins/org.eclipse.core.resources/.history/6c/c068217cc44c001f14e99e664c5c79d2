@@ -1,0 +1,12 @@
+package daos;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import entities.SuDungMay;
+import utils.HibernateUtil;
+
+public class SuDungMayDAO {
+	
+	
+}

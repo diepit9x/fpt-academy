@@ -1,0 +1,6 @@
+package fa.training.util;
+
+public class Constant {
+    public static final String MONITORID_REGEX = "^M\\d{6}$";
+
+}

@@ -1,0 +1,27 @@
+package fa.training.main;
+
+import fa.training.entities.LineItem;
+import fa.training.service.CustomerService;
+import fa.training.service.LineItemService;
+import fa.training.service.OrderService;
+
+public class SaleManagement {
+    
+    public static void main(String[] args) {
+	CustomerService customerService = new CustomerService();
+	OrderService orderService = new OrderService();
+	LineItemService lineItemService = new LineItemService();
+	
+	try {
+//	    List all customers consist of customer id, customer name in the database
+	    customerService.getAllCustomer();
+	    
+	    
+	    
+	} catch (Exception e) {
+	    System.err.println(e.getMessage());
+	}
+
+    }
+
+}

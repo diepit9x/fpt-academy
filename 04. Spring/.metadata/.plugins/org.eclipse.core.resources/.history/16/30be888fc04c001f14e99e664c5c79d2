@@ -1,0 +1,25 @@
+package daos;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import entities.SuDungMay;
+import utils.HibernateUtil;
+
+public class SuDungMayDAO {
+	
+	public boolean insert(SuDungMay may) {
+		if (may == null) {
+			return false;
+		}
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			Transaction t = session.beginTransaction();
+			session.persist(may);
+			t.commit();
+			return true;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+}

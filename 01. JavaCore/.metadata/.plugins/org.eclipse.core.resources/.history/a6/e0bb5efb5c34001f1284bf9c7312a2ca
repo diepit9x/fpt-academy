@@ -1,0 +1,19 @@
+package fa.training.main;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import fa.training.util.DBUtils;
+
+public class TestConnect {
+
+    public static void main(String[] args) {
+	Connection connection = null;
+	try {
+	    connection = DBUtils.getInstance().getConnection();
+	    System.out.println("ket noi thanh cong");
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+    }
+}

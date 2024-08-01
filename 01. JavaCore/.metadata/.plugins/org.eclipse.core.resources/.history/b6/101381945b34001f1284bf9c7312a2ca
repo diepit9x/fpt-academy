@@ -1,0 +1,10 @@
+package fa.training.util;
+
+public class PhoneException extends Exception {
+    private static final long serialVersionUID = 1L;
+
+    public PhoneException() {
+	super("Phone value is invalid");
+    }
+
+}

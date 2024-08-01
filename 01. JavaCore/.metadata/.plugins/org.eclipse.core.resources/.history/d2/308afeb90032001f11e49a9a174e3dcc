@@ -1,0 +1,18 @@
+package fa.training.entities;
+
+public class Intern extends Candidate {
+    private String major;
+    private int semester;
+    private String universityName;
+    
+    public Intern() {
+	super();
+    }
+
+    @Override
+    public void showMe() {
+	// TODO Auto-generated method stub
+	
+    }
+
+}

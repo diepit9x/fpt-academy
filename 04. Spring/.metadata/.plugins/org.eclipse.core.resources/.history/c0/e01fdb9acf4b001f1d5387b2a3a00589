@@ -1,0 +1,47 @@
+package daos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import entities.May;
+import utils.HibernateUtil;
+
+public class MayDAO {
+	public List<May> findAllMay() {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			Query<May> query = session.createQuery("FROM May", May.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return new ArrayList<>();
+	}
+	
+	public May findById(Integer maMay) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			return session.get(May.class, maMay);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return null;
+	}
+	
+	public boolean insert(May may) {
+		if (may == null) {
+			return false;
+		}
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			Transaction t = session.beginTransaction();
+			session.persist(may);
+			t.commit();
+			return true;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+}

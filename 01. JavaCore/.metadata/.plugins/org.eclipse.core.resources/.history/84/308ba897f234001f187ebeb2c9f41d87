@@ -1,0 +1,9 @@
+package fa.training.service;
+
+public class ReadFileService {
+
+    public ReadFileService() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

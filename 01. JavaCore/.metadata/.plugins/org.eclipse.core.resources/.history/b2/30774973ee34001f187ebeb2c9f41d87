@@ -1,0 +1,9 @@
+package fa.training.entities;
+
+public abstract class Monitor {
+
+    public Monitor() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

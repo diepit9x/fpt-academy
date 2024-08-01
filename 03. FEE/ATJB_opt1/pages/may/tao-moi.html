@@ -1,0 +1,48 @@
+<h1 class="pb-2 border-bottom">Tạo mới máy</h1>
+<form action="may/tao-moi" method="POST" id="tao-may-moi">
+  <div class="form-group row pt-md-3">
+    <label for="viTri" class="col-md-2 col-form-label">Vị trí</label>
+    <div class="col-md-10">
+      <input type="text" class="form-control" id="viTri" name="viTri" placeholder="Vị trí" />
+    </div>
+  </div>
+  <div class="form-group row pt-md-3">
+    <label for="trangThai" class="col-md-2 col-form-label">Trạng thái</label>
+    <div class="col-md-10">
+      <select class="form-control" name="trangThai" id="trangThai">
+        <option value="1">Rảnh</option>
+        <option value="2">Bận</option>
+        <option value="3">Dùng bình thường</option>
+        <option value="4">Đang sửa chữa</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <button type="submit" class="btn btn-outline-dark">Tạo</button>
+    </div>
+  </div>
+</form>
+<script>
+  document.getElementById("tao-may-moi").addEventListener("submit", function (e) {
+    var isValid = true;
+    const viTri = document.getElementById("viTri").value;
+    const trangThai = document.getElementById("trangThai").value;
+
+    if (!isNotEmpty(viTri)) {
+      alert("Vị trí không được để trống");
+      isValid = false;
+    }
+
+    if (!isNotEmpty(trangThai)) {
+      alert("Trạng thái không được để trống");
+      isValid = false;
+    }
+
+    if (!isValid) {
+      e.preventDefault();
+      return;
+    }
+  });
+</script>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;fa.training.entities.Persion&apos; to &apos;Person&apos;&#x0D;&#x0A;- Original project: &apos;Java.M.A301&apos;&#x0D;&#x0A;- Original element: &apos;fa.training.entities.Persion&apos;&#x0D;&#x0A;- Renamed element: &apos;fa.training.entities.Person&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Persion&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;fa.training.entities{Persion.java[Persion" matchStrategy="1" name="Person" qualified="false" references="true" similarDeclarations="false" stamp="1718438918494" textual="false" version="1.0"/>
+</session>

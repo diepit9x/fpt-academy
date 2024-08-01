@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visitor information</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="header">
+            <img class="header-img" src="/assets/img/bg.jpg" alt="img" />
+          </div>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="container border border-dark">
+        <div class="row border-bottom border-dark">
+          <div class="col-12 p-0">
+            <h3 class="text-success pl-1">Visitor information</h3>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center m-2">
+          <div class="col-6 border border-dark">
+            <div class="row mt-1">
+              <label for="firstName" class="col-5">First name: </label>
+              <div class="col-7">
+                <input type="text" id="firstName" />
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <label for="lastName" class="col-5">Last name: </label>
+              <div class="col-7">
+                <input type="text" id="lastName" />
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <label for="gender" class="col-5">Gender: </label>
+              <div class="col-7">
+                <select id="gender">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <label for="telephone" class="col-5">Telephone: </label>
+              <div class="col-7">
+                <input type="text" id="telephone" />
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <label for="email" class="col-5">Email: </label>
+              <div class="col-7">
+                <input type="email" id="email" />
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <label for="youAreIn" class="col-5">You are in: </label>
+              <div class="col-7 d-flex flex-wrap align-content-start">
+                <div class="mr-2"><input type="radio" name="youAreIn" value="Europe" /> Europe</div>
+                <div class="mr-2"><input type="radio" name="youAreIn" value="Africa" /> Africa</div>
+                <div class="mr-2"><input type="radio" name="youAreIn" value="Australia" /> Australia</div>
+                <div class="mr-2"><input type="radio" name="youAreIn" value="Asia" /> Asia</div>
+                <div class="mr-2"><input type="radio" name="youAreIn" value="America" /> America</div>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <label for="hobbies" class="col-5">What are your hobbies: </label>
+              <div class="col-7 d-flex flex-wrap align-content-start">
+                <div class="mr-2"><input type="checkbox" name="hobbies[]" value="Swimming" /> Swimming</div>
+                <div class="mr-2"><input type="checkbox" name="hobbies[]" value="Cooking" /> Cooking</div>
+                <div class="mr-2"><input type="checkbox" name="hobbies[]" value="Shopping" /> Shopping</div>
+                <div class="mr-2"><input type="checkbox" name="hobbies[]" value="Sport" /> Sport</div>
+                <div class="mr-2"><input type="checkbox" name="hobbies[]" value="Dance" /> Dance</div>
+                <div class="mr-2"><input type="checkbox" name="hobbies[]" value="Sing" /> Sing</div>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <label for="description" class="col-5">Description: </label>
+              <div class="col-7 d-flex flex-wrap align-content-start">
+                <textarea name="" id="description" cols="30" rows="8"></textarea>
+              </div>
+            </div>
+            <div class="row align-items-center m-2">
+              <label class="col-5"></label>
+              <div class="col-7 d-flex flex-wrap align-content-start">
+                <input type="submit" onclick="register()" value="Register" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/assets/jquery/jquery-3.7.1.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/custom.js"></script>
+  </body>
+</html>

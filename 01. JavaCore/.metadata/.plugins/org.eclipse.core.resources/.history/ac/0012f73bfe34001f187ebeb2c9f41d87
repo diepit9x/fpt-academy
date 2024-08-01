@@ -1,0 +1,22 @@
+package fa.training.main;
+
+import java.util.List;
+
+import fa.training.dao.MonitorDAO;
+import fa.training.dao.MonitorDAOImpl;
+import fa.training.entities.Monitor;
+import fa.training.service.ReadFileService;
+
+public class Main {
+public static void main(String[] args) {
+    ReadFileService readFileService = new ReadFileService();
+    MonitorDAO monitorDAO = new MonitorDAOImpl();
+    
+    List<Monitor> monitors = readFileService.convertToMonintor(readFileService.readFile());
+    
+    
+}
+    
+    
+    
+}

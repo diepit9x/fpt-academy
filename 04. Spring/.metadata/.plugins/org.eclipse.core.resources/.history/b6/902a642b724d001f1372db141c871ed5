@@ -1,0 +1,60 @@
+package entities;
+
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.Subselect;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Immutable
+public class SuDungDichVuMay {
+
+    @Id
+    @Column(name = "maKH")
+    private String maKH;
+
+    @Column(name = "tenKH")
+    private String tenKH;
+
+    @Column(name = "maMay")
+    private String maMay;
+
+    @Column(name = "viTri")
+    private String viTri;
+
+    @Column(name = "trangThai")
+    private String trangThai;
+
+    @Column(name = "ngaybatDauSuDung")
+    private LocalDate ngaybatDauSuDung;
+
+    @Column(name = "gioBatDauSuDung")
+    private LocalTime gioBatDauSuDung;
+
+    @Column(name = "thoiGianSuDung")
+    private Integer thoiGianSuDung;
+
+    @Column(name = "maDV")
+    private String maDV;
+
+    @Column(name = "ngaySuDung")
+    private LocalDate ngaySuDung;
+
+    @Column(name = "gioSuDung")
+    private LocalTime gioSuDung;
+
+    @Column(name = "soLuong")
+    private Integer soLuong;
+
+    @Column(name = "donGia")
+    private Double donGia;
+}

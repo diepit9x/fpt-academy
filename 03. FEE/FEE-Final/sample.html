@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/fontawesome5/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/jquery/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="input-data">
+        <div class="flex-row">
+          <h5 class="text-center mt-2 mb-3">QUẢN LÝ HỌC SINH <span class="text-school">TRƯỜNG THPT ABC</span></h5>
+          <div class="form-row">
+            <input type="hidden" id="idHocSinh" value="" />
+            <div class="col-md-6">
+              <label for="hoVaTen">Họ và tên học sinh</label>
+              <input type="text" class="form-control" id="hoVaTen" placeholder="Họ và tên" />
+              <span class="small text-danger"></span>
+            </div>
+            <div class="col-md-6">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="gioiTinh">Giới Tính</label>
+                  <div class="row">
+                    <div class="form-group col-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gioiTinh" id="gioiTinh1" value="1" checked />
+                        <label class="form-check-label" for="gioiTinh1"> Nam </label>
+                      </div>
+                    </div>
+                    <div class="form-group col-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gioiTinh" id="gioiTinh0" value="0" />
+                        <label class="form-check-label" for="gioiTinh0"> Nữ </label>
+                      </div>
+                    </div>
+                    <div class="form-group col-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gioiTinh" id="gioiTinh2" value="2" />
+                        <label class="form-check-label" for="gioiTinh2"> Khác </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="ngaySinh">Ngày sinh</label>
+                  <input type="date" class="form-control" id="ngaySinh" placeholder="Ngày sinh" />
+                  <span class="small text-danger"></span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="khoiLopHoc">Khối lớp học</label>
+              <select class="form-control" id="khoiLopHoc">
+                <option value="">Chọn khối lớp học...</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <span class="small text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="lopHoc">Lớp học</label>
+              <select class="form-control" id="lopHoc">
+                <option value="">Chọn lớp học...</option>
+              </select>
+              <span class="small text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="diemMonToan">Điểm môn toán</label>
+              <input type="number" class="form-control" id="diemMonToan" placeholder="Điểm môn toán" />
+              <span class="small text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="diemMonLy">Điểm môn lý</label>
+              <input type="number" class="form-control" id="diemMonLy" placeholder="Điểm môn lý" />
+              <span class="small text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="diemMonHoa">Điểm môn hóa</label>
+              <input type="number" class="form-control" id="diemMonHoa" placeholder="Điểm môn hóa" />
+              <span class="small text-danger"></span>
+            </div>
+            <div class="form-group col-12"><button type="submit" id="saveBtn" class="btn btn-outline-danger">Lưu thông tin</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="show-data">
+        <div class="flex-row">
+          <h5 class="text-center mt-5 mb-3">DANH SÁCH HỌC SINH</h5>
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="timHocSinh">Nhập tên học sinh cần tìm kiếm</label>
+            </div>
+            <div class="form-group col-md-8">
+              <input type="text" class="form-control" id="timHocSinh" placeholder="Nhập tên học sinh" />
+              <span class="text-danger"></span>
+            </div>
+            <div class="form-group col-auto">
+              <button type="submit" id="searchBtn" class="btn btn-success">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="flex-row w-100">
+          <div class="table-responsive table-fixed">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Họ và tên</th>
+                  <th scope="col">Giới tính</th>
+                  <th scope="col">Ngày sinh</th>
+                  <th scope="col">Khối</th>
+                  <th scope="col">Lớp học</th>
+                  <th scope="col">M. Toán</th>
+                  <th scope="col">M. Lý</th>
+                  <th scope="col">M. Hóa</th>
+                  <th scope="col">Đ.TB</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="hocSinhList">
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>
+                    <button class="btn btn-outline-warning editHocSinh"><i class="far fa-edit"></i></button> <button class="btn btn-outline-danger removeHocSinh"><i class="far fa-trash-alt"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/validator.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+package fa.training.util;
+
+public class EmailException extends Exception {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    public EmailException() {
+	super("Email format is invalid");
+    }
+
+}

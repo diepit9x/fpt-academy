@@ -1,0 +1,9 @@
+package baitap2.cach2;
+
+public class Reactangle {
+
+    public Reactangle() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

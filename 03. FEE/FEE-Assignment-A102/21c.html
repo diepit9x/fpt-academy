@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.1c</title>
+    <style>
+      .container {
+        margin: auto 10%;
+      }
+      ol {
+        counter-reset: li;
+        list-style: none;
+        padding: 0;
+      }
+
+      ol ol {
+        margin: 0 0 0 2em;
+      }
+      .rounded-list a {
+        position: relative;
+        display: block;
+        padding: 10px 10px 10px 30px;
+        margin: 10px 0;
+        background: #ddd;
+        color: #444;
+        text-decoration: none;
+        border-radius: 0.3em;
+      }
+      .rounded-list a:before {
+        content: counter(li);
+        counter-increment: li;
+        position: absolute;
+        left: -1.3em;
+        top: 50%;
+        margin-top: -1.3em;
+        background: #87ceeb;
+        height: 2em;
+        width: 2em;
+        line-height: 2em;
+        border: 0.3em solid #fff;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ol class="rounded-list">
+        <li><a href="">List item</a></li>
+        <li><a href="">List item</a></li>
+        <li>
+          <a href="">List item</a>
+          <ol>
+            <li><a href="">List sub item</a></li>
+            <li><a href="">List sub item</a></li>
+            <li><a href="">List sub item</a></li>
+          </ol>
+        </li>
+        <li><a href="">List item</a></li>
+        <li><a href="">List item</a></li>
+      </ol>
+    </div>
+  </body>
+</html>

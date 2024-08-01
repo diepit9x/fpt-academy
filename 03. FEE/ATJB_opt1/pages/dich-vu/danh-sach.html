@@ -1,0 +1,101 @@
+<h1 class="pb-2 border-bottom">Danh sách khách hàng</h1>
+<div class="flex-row">
+  <form action="/may/tim-kiem" method="POST">
+    <div class="input-group mb-2 mt-4">
+      <input type="text" class="form-control" name="keyword" placeholder="Tìm kiếm..." />
+      <div class="input-group-append">
+        <button class="btn btn-outline-info" id="searchBtn" type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="flex-row">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Mã DV</th>
+          <th>Tên DV</th>
+          <th>Đơn vị</th>
+          <th>Đơn giá</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- <tr>
+          <td>DV001</td>
+          <td>Bán máy</td>
+          <td>VND</td>
+          <td>1000</td>
+          <td>
+            <button class="btn btn-warning edit-may"><i class="fa fa-pencil-square-o"></i></button>
+            <button class="btn btn-danger delete-may"><i class="fa fa-trash-o"></i></button>
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link">Previous</a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<script>
+  var data = [
+    {
+      maDV: "DV001",
+      tenDV: "Ban may",
+      donVi: "VND",
+      donGia: "10000",
+    },
+    {
+      maDV: "DV002",
+      tenDV: "Thue may",
+      donVi: "VND",
+      donGia: "3000",
+    },
+  ];
+
+  function populateTable(data) {
+    var tableBody = document.getElementById("table-body");
+    tableBody.innerHTML = ""; // Clear existing rows
+
+    data.forEach(function (item, index) {
+      var row = document.createElement("tr");
+      row.innerHTML = `
+          <td>${item.maDV}</td>
+          <td>${item.tenDV}</td>
+          <td>${item.donVi}</td>
+          <td>${item.donGia}</td>
+          <td>
+            <button class="btn btn-warning edit-dichVu"><i class="fa fa-pencil-square-o"></i></button>
+            <button class="btn btn-danger delete-dichVu" data-index="${index}"><i class="fa fa-trash-o"></i></button>
+          </td>
+      `;
+      tableBody.appendChild(row);
+    });
+
+    // Add event listeners for delete buttons
+    var deleteButtons = document.querySelectorAll(".delete-dichVu");
+    deleteButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var index = this.dataset.index;
+        var confirmDelete = confirm("Bạn có chắc chắn muốn xóa không?");
+        if (confirmDelete) {
+          data.splice(index, 1);
+          populateTable(data);
+        }
+      });
+    });
+  }
+  populateTable(data);
+</script>

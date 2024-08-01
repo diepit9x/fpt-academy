@@ -1,0 +1,9 @@
+package fa.training.util;
+
+public class PhoneException extends Exception {
+
+    public PhoneException() {
+	super("Phone value is invalid");
+    }
+
+}

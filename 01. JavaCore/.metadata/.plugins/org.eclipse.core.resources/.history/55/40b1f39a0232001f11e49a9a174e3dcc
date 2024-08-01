@@ -1,0 +1,14 @@
+package fa.training.entities;
+
+import java.util.Date;
+
+public class Certificate {
+    private int certificateId;
+    private String certificateName;
+    private int certificateRank;
+    private Date certificateDate;
+    
+    public Certificate() {
+    }
+
+}

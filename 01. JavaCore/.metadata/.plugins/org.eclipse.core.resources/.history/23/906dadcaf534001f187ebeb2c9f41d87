@@ -1,0 +1,9 @@
+package fa.training.exception;
+
+public class TypeException {
+
+    public TypeException() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

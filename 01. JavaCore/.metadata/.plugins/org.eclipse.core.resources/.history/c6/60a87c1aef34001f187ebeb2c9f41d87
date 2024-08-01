@@ -1,0 +1,9 @@
+package fa.training.entities;
+
+public class GraphicsMonitor {
+
+    public GraphicsMonitor() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

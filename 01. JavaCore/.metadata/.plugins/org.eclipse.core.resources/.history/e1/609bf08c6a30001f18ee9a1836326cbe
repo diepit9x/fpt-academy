@@ -1,0 +1,30 @@
+package baitap2.yeucau2;
+
+import java.util.Random;
+
+public class CreateArray {
+    private int[] arr = new int[1000000];
+    private long sum;
+
+    public CreateArray() {
+	Random random = new Random();
+	for (int i = 0; i < arr.length; i++) {
+	    arr[i] = random.nextInt(100);
+	}
+    }
+    
+    public long getSum() {
+        return sum;
+    }
+    
+    public void sumCaculator() {
+	for (int i = 0; i < arr.length; i++) {
+	    this.sum += arr[i];
+	}
+    }
+
+    public int[] getArr() {
+        return arr;
+    }
+
+}

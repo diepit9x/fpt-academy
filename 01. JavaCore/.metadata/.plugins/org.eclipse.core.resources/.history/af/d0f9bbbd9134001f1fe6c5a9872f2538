@@ -1,0 +1,8 @@
+
+public class ExampleDTO {
+
+    public ExampleDTO() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

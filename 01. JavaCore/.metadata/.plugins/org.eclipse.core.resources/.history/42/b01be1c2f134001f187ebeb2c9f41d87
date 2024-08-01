@@ -1,0 +1,9 @@
+package fa.training.exception;
+
+public class BrandException {
+
+    public BrandException() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

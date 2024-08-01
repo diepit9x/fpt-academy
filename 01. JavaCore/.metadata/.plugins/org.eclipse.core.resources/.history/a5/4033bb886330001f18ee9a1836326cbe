@@ -1,0 +1,9 @@
+package baitap2.yeucau1;
+
+public class SumThread {
+
+    public SumThread() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

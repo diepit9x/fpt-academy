@@ -1,0 +1,11 @@
+package fa.training.dao;
+
+import java.sql.SQLException;
+
+import fa.training.entities.Candidate;
+
+public class FresherDAO {
+    
+    boolean addFresher(Candidate candidate) throws SQLException;
+
+}

@@ -1,0 +1,14 @@
+package baitap2.yeucau2;
+
+public class Test {
+    public static void main(String[] args) {
+	CreateArray createArray = new CreateArray();
+	createArray.getSum();
+	
+	System.out.println("dum: " + createArray.getSum());
+	
+	
+	
+    }
+
+}

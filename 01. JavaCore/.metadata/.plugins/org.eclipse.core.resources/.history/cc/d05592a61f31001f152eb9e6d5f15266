@@ -1,0 +1,66 @@
+package fa.training.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import fa.training.entities.Customer;
+import fa.training.util.DBUtils;
+import fa.training.util.SQLCommand;
+
+public class CustomerDAOImpl implements CustomerDAO {
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet results = null;
+    
+    @Override
+    public List<Customer> getAllCustomer() throws SQLException {
+	List<Customer> customers = new ArrayList<>();
+	Customer customer = null;
+	try {
+	    connection = DBUtils.getInstance().getConnection();
+	    preparedStatement = connection.prepareStatement(SQLCommand.GET_ALL_CUSTOMER);
+	    results = preparedStatement.executeQuery();
+	    while (results.next()) {
+		customer = new Customer();
+		customer.setCustomerId(results.getInt("customer_id"));
+		customer.setCustomerName(results.getString("customer_name"));
+		customers.add(customer);
+	    }
+	} finally {
+	    // TODO: handle finally clause
+	}
+	
+	return customers;
+    }
+
+    @Override
+    public Customer findCustomerById(int customerId) throws SQLException {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    @Override
+    public boolean addCustomer(Customer customer) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+    @Override
+    public boolean deleteCustomer(int customerId) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+    @Override
+    public boolean updateCustomer(Customer customer) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+
+
+}

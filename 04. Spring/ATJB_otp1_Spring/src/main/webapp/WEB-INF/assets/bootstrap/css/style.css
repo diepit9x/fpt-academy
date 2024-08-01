@@ -1,0 +1,69 @@
+.container {
+  max-width: 100%;
+}
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7;
+}
+.login-box {
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #fff;
+  overflow: hidden;
+}
+.login-header {
+  background-color: #d4d4d4;
+  padding: 10px 20px;
+  font-size: large;
+}
+.login-body {
+  padding: 20px;
+}
+.login-box .btn-primary {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.profile-box {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #fff;
+  overflow: hidden;
+}
+.profile-body {
+  padding: 15px;
+}
+
+.profile-body label {
+  font-weight: bold;
+}
+.nav-item {
+  border-bottom: 1px solid #bdbdbd;
+  padding: 5px;
+}
+.sidebar {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Đảm bảo sidebar hiển thị trước mọi nội dung */
+  padding: 10px 0 0; /* Thêm padding để tránh bị che phủ nội dung */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng shadow cho sidebar */
+}
+main > h2 {
+  padding: 10px 10px 10px 0px;
+}
+li.nav-item:hover {
+  background-color: #ebebeb;
+}
+
+.form-inline .custom-select,
+.form-inline .input-group {
+  width: 100%;
+  padding-bottom: 8px;
+}

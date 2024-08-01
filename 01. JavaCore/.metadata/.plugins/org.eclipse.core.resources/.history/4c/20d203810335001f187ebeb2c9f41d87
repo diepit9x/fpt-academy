@@ -1,0 +1,102 @@
+package fa.training.main;
+
+import java.awt.Choice;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
+
+import fa.training.dao.MonitorDAO;
+import fa.training.dao.MonitorDAOImpl;
+import fa.training.entities.Monitor;
+import fa.training.service.ReadFileService;
+import fa.training.util.Constant;
+
+public class Main {
+    public static void main(String[] args) {
+	Scanner scanner = null;
+	String choice;
+	boolean exit = false;
+	MonitorDAO monitorDAO = new MonitorDAOImpl();
+	
+	try {
+		do {
+		    menu();
+		    choice = scanner.nextLine();
+		    try {
+			switch (choice) {
+			case "1": {
+			    monitorDAO.getAll();
+			   break;
+			}
+			case "2": {
+				   break;
+				}
+
+			case "3": {
+			    
+				   break;
+				}
+			case "4": {
+			exit = true;
+				   break;
+				}
+			default:
+			    continue;
+			}
+			
+		    } catch (Exception e) {
+			System.out.println(Constant.DEFAULT_EXCEPTION);
+		    }
+		   
+		    if (exit) {
+			break;
+		    }
+		} while (true);
+	} finally {
+	    if (scanner != null) {
+		scanner.close();
+	    }
+	}
+
+    }
+    
+public static void main2(String[] args) {
+    ReadFileService readFileService = new ReadFileService();
+    MonitorDAO monitorDAO = new MonitorDAOImpl();
+    
+//   
+//    for (String string :  readFileService.readFile()) {
+//	System.out.println(string);
+//    }
+    
+    List<Monitor> monitors = readFileService.convertToMonintor(readFileService.readFile());
+    
+    try {
+//	monitorDAO.addMonitor(monitors);
+	
+	 List<Monitor>monitors2 = monitorDAO.getAll();
+	 
+	 for (Monitor monitor : monitors2) {
+	    monitor.showInfo();
+	}
+    } catch (Exception e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+    }
+    
+    
+}
+    
+    
+    public static void menu() {
+	System.out.println("1. THONG TIN");
+	System.out.println("2. CAP NHAT GIA");
+	System.out.println("3. xxxx");
+	System.out.println("4. eXIT");
+	System.out.print("Choose: ");
+    }
+    
+    public static void showInfomation(MonitorDAO monitorDAO) {
+	
+    }
+}

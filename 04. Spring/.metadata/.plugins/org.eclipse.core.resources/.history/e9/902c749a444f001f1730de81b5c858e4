@@ -1,0 +1,23 @@
+<%@page import="fa.training.models.ResponseData"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<%
+	//set title
+	request.setAttribute("pageTitle", "Tạo máy mới");
+	ResponseData responseData = request.getAttribute("responseData") != null ? ((ResponseData) request.getAttribute("responseData")) : new ResponseData(204, null);
+%>
+
+<jsp:include page="../../header.jsp" />
+        <h1 class="pb-2 border-bottom">Tạo mới máy</h1>
+        <form:form action="/may/tao-moi" method="POST" modelAttribute="may" id="tao-may-moi">
+
+          
+          <div class="form-group row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+              <form:button type="submit" class="btn btn-outline-dark">Tạo</form:button>
+            </div>
+          </div>
+        </form:form>
+<jsp:include page="../../footer.jsp" />

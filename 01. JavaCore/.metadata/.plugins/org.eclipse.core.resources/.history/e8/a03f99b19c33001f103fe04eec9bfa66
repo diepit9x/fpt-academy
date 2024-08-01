@@ -1,0 +1,9 @@
+package fa.training.util;
+
+public class PhoneException {
+
+    public PhoneException() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

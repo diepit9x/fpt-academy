@@ -1,0 +1,24 @@
+package fa.training.util;
+
+import java.sql.Connection;
+import java.util.Properties;
+
+public class DBUtils {
+    private static DBUtils instance;
+    private Connection connection;
+    
+    private DBUtils() {
+	Properties properties = new Properties();
+	
+	try {
+	    properties.load(DBUtils.class.getResourceAsStream("/dbConfig.properties"));
+	    String driver = properties.getProperty("driver");
+	    String url = properties.getProperty("url");
+	    String userName = properties.getProperty("userName");
+	    String password = properties.getProperty("password")
+	} catch (Exception e) {
+	    // TODO: handle exception
+	}
+    }
+
+}

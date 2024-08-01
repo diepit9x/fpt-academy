@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="assets/jquery/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <input type="date" id="demo" />
+    <p>The selected date is: <span id="selectedDate"></span></p>
+
+    <script>
+      $("#demo").on("change", function (e) {
+        var dateFrom = new Date(2024, 7, 1);
+        var dateTo = new Date(2024, 7, 31);
+        var date = new Date($(this).val());
+        if (date >= dateFrom && date <= dateTo) {
+          $("#selectedDate").text(date.toLocaleDateString());
+        } else {
+          $("#selectedDate").text("Invalid date");
+        }
+      });
+    </script>
+  </body>
+</html>

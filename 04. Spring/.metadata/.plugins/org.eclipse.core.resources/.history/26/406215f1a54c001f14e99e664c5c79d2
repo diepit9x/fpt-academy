@@ -1,0 +1,13 @@
+package models;
+
+public class SelectData {
+	public static String trangThai(String status) {
+		switch (status) {
+		case "1":
+			return "";
+		
+		default:
+			return "undefined";
+		}
+	}
+}

@@ -1,0 +1,9 @@
+package fa.training.common;
+
+public class Connect {
+
+    public Connect() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

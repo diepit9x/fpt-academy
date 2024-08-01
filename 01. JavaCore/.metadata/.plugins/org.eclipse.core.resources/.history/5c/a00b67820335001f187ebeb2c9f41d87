@@ -1,0 +1,122 @@
+package fa.training.dao;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import fa.training.entities.GamingMonitor;
+import fa.training.entities.GraphicsMonitor;
+import fa.training.entities.Monitor;
+import fa.training.entities.NormalMonitor;
+import fa.training.util.Constant;
+import fa.training.util.DBUtils;
+
+public class MonitorDAOImpl implements MonitorDAO {
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private CallableStatement callableStatement = null;
+    private ResultSet results = null;
+
+    public List<Monitor> getAll() throws SQLException, Exception {
+	List<Monitor> monitors = new ArrayList<>();
+	Monitor monitor;
+	try {
+	    connection = DBUtils.getInstance().getConnection();
+	    preparedStatement = connection.prepareStatement("SELECT * FROM Monitor");
+	    results = preparedStatement.executeQuery();
+	    while (results.next()) {
+		
+		if (results.getInt("type") == 1) {
+		    monitor = new NormalMonitor();
+		} else if (results.getInt("type") == 2) {
+		    monitor = new GraphicsMonitor();
+		} else {
+		    monitor = new GamingMonitor();
+		}
+		monitor.setType(results.getInt("type"));
+		monitor.setMonitorId(results.getString("monitorId"));
+		monitor.setName(results.getString("monitorId"));
+		monitor.setBrand(results.getString("brand"));;
+		monitor.setSize(results.getString("size"));
+		monitor.setResolution(results.getString("resolution"));
+		monitor.setPanel(results.getString("panel"));
+		monitor.setImportDate(results.getDate("importDate"));
+		monitor.setWarrantYear(results.getInt("warrantYear"));
+		monitor.setPrice(results.getInt("price"));
+		
+		if (monitor.getType() == 1) {
+		    ((NormalMonitor) monitor).setTouchScreen(results.getString("touchScreen"));
+		} else if (monitor.getType() == 2) {
+		    ((GraphicsMonitor) monitor).setsRGB(results.getString("sRGB"));
+		    ((GraphicsMonitor) monitor).setAdobeRGB(results.getString("adobeRGB"));
+		} else {
+		    ((GamingMonitor) monitor).setRefreshRate(results.getString("refreshRate"));
+		    ((GamingMonitor) monitor).setResponseTime(results.getString("responseTime"));
+		}
+		monitors.add(monitor);
+	    }
+	} catch (SQLException e) {
+	    System.out.println(e.getMessage());
+	} finally {
+	    if (preparedStatement != null) {
+		preparedStatement.close();
+	    }
+	    if (connection != null) {
+		connection.close();
+	    }
+	}
+	return monitors;
+    }
+
+    @Override
+    public boolean addMonitor(List<Monitor> monitors) throws SQLException {
+	boolean status = false;
+	try {
+	    connection = DBUtils.getInstance().getConnection();
+	    preparedStatement = connection.prepareStatement(
+		    "INSERT INTO Monitor(type, monitorId, name, brand, size, resolution, panel, importDate, warrantYear, price, touchScreen, sRGB, adobeRGB, refreshRate, responseTime) "
+			    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	    for (Monitor monitor : monitors) {
+		preparedStatement.setInt(1, monitor.getType());
+		preparedStatement.setString(2, monitor.getMonitorId());
+		preparedStatement.setString(3, monitor.getName());
+		preparedStatement.setString(4, monitor.getBrand());
+		preparedStatement.setString(5, monitor.getSize());
+		preparedStatement.setString(6, monitor.getResolution());
+		preparedStatement.setString(7, monitor.getPanel());
+		preparedStatement.setDate(8, monitor.getImportDate());
+		preparedStatement.setInt(9, monitor.getWarrantYear());
+		preparedStatement.setInt(10, monitor.getPrice());
+
+		if (monitor.getType() == 1) {
+			preparedStatement.setString(11, ((NormalMonitor) monitor).getTouchScreen());
+		} else if (monitor.getType() == 1) {
+			preparedStatement.setString(12, ((GraphicsMonitor) monitor).getsRGB());
+			preparedStatement.setString(13, ((GraphicsMonitor) monitor).getAdobeRGB());
+		} else {
+			preparedStatement.setString(14, ((GamingMonitor) monitor).getRefreshRate());
+			preparedStatement.setString(15, ((GamingMonitor) monitor).getResponseTime());
+		}
+		preparedStatement.executeQuery();
+	    }
+//	    preparedStatement.executeBatch();
+	    status = true;
+	} catch (SQLException e) {
+	    System.out.println(e.getMessage());
+	} finally {
+	    if (preparedStatement != null) {
+		preparedStatement.close();
+	    }
+	    if (connection != null) {
+		connection.close();
+	    }
+	}
+	return status;
+    }
+
+}

@@ -1,0 +1,7 @@
+#Tomcat publish data
+#Thu Aug 01 16:52:14 ICT 2024
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\DiepNT12\\.m2\\repository\\org\\apache\\tomcat\\tomcat-jasper-el\\9.0.82\\tomcat-jasper-el-9.0.82.jar=WEB-INF/lib/tomcat-jasper-el-9.0.82.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\DiepNT12\\.m2\\repository\\org\\apache\\tomcat\\tomcat-jasper\\9.0.82\\tomcat-jasper-9.0.82.jar=WEB-INF/lib/tomcat-jasper-9.0.82.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\DiepNT12\\.m2\\repository\\org\\apache\\tomcat\\tomcat-websocket\\9.0.82\\tomcat-websocket-9.0.82.jar=WEB-INF/lib/tomcat-websocket-9.0.82.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\DiepNT12\\.m2\\repository\\org\\springframework\\spring-web\\5.1.5.RELEASE\\spring-web-5.1.5.RELEASE.jar=WEB-INF/lib/spring-web-5.1.5.RELEASE.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\DiepNT12\\.m2\\repository\\org\\springframework\\spring-web\\6.0.10\\spring-web-6.0.10.jar=WEB-INF/lib/spring-web-6.0.10.jar

@@ -1,0 +1,7 @@
+package fa.training.util;
+
+public class SQLCommand {
+    //Customer queries
+    public static String CUSTOMER_QUERY_FIND_ALL_CUSTOMERS = "SELECT * FROM Customer";
+    public static String CUSTOMER_QUERY_FIND_BY_CUSTOMERID = "SELECT * FROM Customer WHERE customer_id = ?";
+}

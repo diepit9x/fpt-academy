@@ -1,0 +1,54 @@
+package baitap2.yeucau1;
+
+public class Test {
+    public static void main(String[] args) {
+	CreateArray createArray = new CreateArray();
+	int[] arr = createArray.getArr();
+	
+	System.out.println("====SINGLE THREAD====");
+	long beginTime = System.currentTimeMillis();
+	SumThread task0 = new SumThread(arr);
+	Thread thread0 = new Thread(task0);
+	thread0.start();
+	try {
+	    thread0.join();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+	long sum = task0.getSum();
+	
+//	for (int i = 0; i < arr.length; i++) {
+//	    sum += arr[i];
+//	}
+	long endTime = System.currentTimeMillis();
+	System.out.println("S = " + sum);
+	System.out.println("Time = " + (endTime - beginTime));
+	System.out.println("======END=====");
+	
+        System.out.println("****TWO THREADS****");
+        LeftSumThread task1 = new LeftSumThread(arr);
+        RightSumThread task2 = new RightSumThread(arr);
+        Thread thread1 = new Thread(task1);
+        Thread thread2 = new Thread(task2);
+
+        long beginTimeMulti = System.currentTimeMillis();
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        long sumMulti = task1.getSum() + task2.getSum();
+        long endTimeMulti = System.currentTimeMillis();
+
+        System.out.println("S = " + sumMulti);
+        System.out.println("Time = " + (endTimeMulti - beginTimeMulti));
+        System.out.println("*****END*****");
+	
+    }
+
+}

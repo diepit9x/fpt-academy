@@ -1,0 +1,45 @@
+package fa.training.util;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class DBUtils {
+    private static DBUtils instance;
+    private Connection connection;
+    private static String DB_URL = "jdbc:sqlserver://localhost:1433;databaseName=SMS;integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
+    private static String USER_NAME = "sa";
+    private static String PASSWORD = "123456789";
+    private static String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    
+    
+    private DBUtils() {
+	Properties properties = new Properties();
+	
+	try {
+//	    properties.load(DBUtils.class.getResourceAsStream("/dbConfig.properties"));
+//	    String driver = properties.getProperty("driver");
+//	    String url = properties.getProperty("url");
+//	    String userName = properties.getProperty("userName");
+//	    String password = properties.getProperty("password");
+	    Class.forName(DRIVER);
+	    connection = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
+	} catch (ClassNotFoundException | SQLException | IOException e) {
+	    System.out.println("Connect fail");
+	    e.printStackTrace();
+	}
+    }
+    
+    public Connection getConnection() {
+	return connection;
+    }
+
+    public static DBUtils getInstance() throws SQLException {
+	if (instance == null || instance.getConnection().isClosed()) {
+	    instance = new DBUtils();
+	}
+	return instance;
+    }
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;utils&apos; to &apos;ATJB_otp1_Spring/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;ATJB_opt1_Servlet&apos;&#x0D;&#x0A;- Destination element: &apos;ATJB_otp1_Spring/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;ATJB_opt1_Servlet/src/main/java/utils&apos;" description="Copy package" destination="=ATJB_otp1_Spring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;utils" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1722483009208" version="1.0"/>
+</session>

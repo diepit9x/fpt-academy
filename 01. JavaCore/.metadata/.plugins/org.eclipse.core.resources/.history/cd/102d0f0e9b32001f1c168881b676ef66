@@ -1,0 +1,9 @@
+package fa.training.dto;
+
+public class CandidateDAO {
+
+    public CandidateDAO() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

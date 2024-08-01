@@ -1,0 +1,9 @@
+package fa.training.dao;
+
+public class OrderDAOImpl {
+
+    public OrderDAOImpl() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

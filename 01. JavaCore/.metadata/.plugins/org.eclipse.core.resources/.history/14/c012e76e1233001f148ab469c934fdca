@@ -1,0 +1,69 @@
+package fa.training.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import fa.training.entities.Candidate;
+import fa.training.entities.Fresher;
+import fa.training.entities.Intern;
+import fa.training.util.DBUtils;
+import fa.training.util.SQLCommand;
+
+public class InternDAOImpl implements InternDAO {
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet resultSet = null;
+    
+    @Override
+    public boolean addIntern(Candidate candidate) throws SQLException {
+	boolean status = false;
+	try {
+	    connection = DBUtils.getInstance().getConnection();
+	    connection.setAutoCommit(false);
+	    preparedStatement = connection.prepareStatement(
+		    SQLCommand.EXPERIENCE_QUERY,
+		    ResultSet.TYPE_SCROLL_SENSITIVE, 
+		    ResultSet.CONCUR_UPDATABLE);
+	    resultSet = preparedStatement.executeQuery();
+	    resultSet.moveToInsertRow();
+		resultSet.updateInt("candidateId", candidate.getCandidateId());
+		resultSet.updateString("major", ((Intern) candidate).getMajor());
+		resultSet.updateInt("semester", ((Intern) candidate).getSemester());
+		resultSet.updateString("universityName", ((Intern) candidate).getUniversityName());
+	    resultSet.insertRow();
+	    status = true;
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	    if (connection != null) {
+		try {
+		    connection.rollback();
+		} catch (SQLException ex) {
+		    ex.printStackTrace();
+		}
+	    }
+	} finally {
+	    try {
+		if (connection != null) {
+		    connection.close();
+		}
+		if (preparedStatement != null) {
+		    preparedStatement.close();
+		}
+	    } catch (SQLException e) {
+		e.printStackTrace();
+	    }
+	}
+	return status;
+    }
+
+    @Override
+    public boolean updateIntern(Candidate candidate) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+
+
+}

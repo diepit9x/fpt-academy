@@ -1,0 +1,72 @@
+package fa.training.dao;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import fa.training.entities.Order;
+
+public class OrderDAOImpl implements OrderDAO {
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private CallableStatement callableStatement = null;
+    private ResultSet results = null;
+
+    @Override
+    public List<Order> getAllOrdersByCustomerId(int customerId) throws SQLException {
+	List<Order> orders = new ArrayList<>();
+	Order order = null;
+	try {
+	    
+	} finally {
+	    try {
+		if (connection != null) {
+		    connection.close();
+		}
+		if (preparedStatement != null) {
+		    preparedStatement.close();
+		}
+	    } catch (SQLException e) {
+		e.printStackTrace();
+	    }
+	}
+	return orders;
+    }
+
+    @Override
+    public Order findOrderById(int orderId) throws SQLException {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    @Override
+    public boolean updateOrderTotal(int orderId) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+    @Override
+    public boolean addOrder(Order order) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+    @Override
+    public boolean updateOrder(Order order) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+    @Override
+    public boolean deleteOrder(int orderId) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+
+
+}

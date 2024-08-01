@@ -1,0 +1,57 @@
+package entities;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class SuDungMayPK implements Serializable {
+	private KhachHang khachHang;
+	private May may;
+	private LocalDate ngayBatDauSuDung;
+	private LocalTime gioBatDauSuDung;
+
+	public SuDungMayPK() {
+		super();
+	}
+
+	public SuDungMayPK(KhachHang khachHang, May may, LocalDate ngayBatDauSuDung, LocalTime gioBatDauSuDung) {
+		super();
+		this.khachHang = khachHang;
+		this.may = may;
+		this.ngayBatDauSuDung = ngayBatDauSuDung;
+		this.gioBatDauSuDung = gioBatDauSuDung;
+	}
+
+	public KhachHang getKhachHang() {
+		return khachHang;
+	}
+
+	public void setKhachHang(KhachHang khachHang) {
+		this.khachHang = khachHang;
+	}
+
+	public May getMay() {
+		return may;
+	}
+
+	public void setMay(May may) {
+		this.may = may;
+	}
+
+	public LocalDate getNgayBatDauSuDung() {
+		return ngayBatDauSuDung;
+	}
+
+	public void setNgayBatDauSuDung(LocalDate ngayBatDauSuDung) {
+		this.ngayBatDauSuDung = ngayBatDauSuDung;
+	}
+
+	public LocalTime getGioBatDauSuDung() {
+		return gioBatDauSuDung;
+	}
+
+	public void setGioBatDauSuDung(LocalTime gioBatDauSuDung) {
+		this.gioBatDauSuDung = gioBatDauSuDung;
+	}
+
+}

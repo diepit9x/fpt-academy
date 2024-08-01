@@ -1,0 +1,15 @@
+package controllers;
+
+import daos.MayDAO;
+import entities.May;
+
+public class test {
+public static void main(String[] args) {
+	May may = new May();
+	may.setViTri("23423");
+	may.setTrangThai("1");
+	
+	MayDAO mayDAO = new MayDAO();
+	mayDAO.insert(may);
+}
+}

@@ -1,0 +1,9 @@
+package fa.training.entities;
+
+public class Candidate {
+
+    public Candidate() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

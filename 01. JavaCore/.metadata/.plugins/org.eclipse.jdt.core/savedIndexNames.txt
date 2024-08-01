@@ -1,0 +1,21 @@
+INDEX VERSION 1.134+E:\01. FPT Academy\Assignment\.metadata\.plugins\org.eclipse.jdt.core
+2376818743.index
+120316329.index
+1433008623.index
+136063463.index
+238452211.index
+1865797976.index
+267655108.index
+2133577849.index
+192506742.index
+4035188114.index
+3758023208.index
+84178808.index
+1190638482.index
+2452405027.index
+1856363337.index
+2414730862.index
+3861021123.index
+229812637.index
+3296837976.index
+180027713.index

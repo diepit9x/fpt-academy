@@ -1,0 +1,2 @@
+Airport [id=AP12345, name=airport 1, runwaySize=6000.0, maxFixedWingParkingPlace=5, listOfFixedWingAirplaneId=[], maxRotatedWingParkingPlace=5, listOfHelicoptersId=[]]
+Airport [id=AP12346, name=airport 2, runwaySize=3000.0, maxFixedWingParkingPlace=1, listOfFixedWingAirplaneId=[], maxRotatedWingParkingPlace=1, listOfHelicoptersId=[]]

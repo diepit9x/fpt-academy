@@ -1,0 +1,9 @@
+package baitap1.cach3;
+
+public class Rectangle {
+
+    public Rectangle() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

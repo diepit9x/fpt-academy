@@ -1,0 +1,9 @@
+package fa.training.dao;
+
+public class CertificateDAO {
+
+    public CertificateDAO() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

@@ -1,0 +1,14 @@
+package fa.training.dto;
+
+import java.sql.SQLException;
+
+import fa.training.entities.Candidate;
+
+public interface CandidateDAO {
+    
+    boolean addCandidate(Candidate candidate) throws SQLException, Exception;
+    
+    
+    
+
+}

@@ -1,0 +1,16 @@
+package fa.training.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import fa.training.entities.Candidate;
+
+public interface CandidateDAO {
+    
+    boolean addCandidate(Candidate candidate) throws SQLException;
+    boolean updateCandidate(Candidate candidate) throws SQLException;
+    List<Candidate> getAllCandidate() throws SQLException;
+    Candidate getCandidateByCandidateId(int candidateId) throws SQLException;
+    
+
+}

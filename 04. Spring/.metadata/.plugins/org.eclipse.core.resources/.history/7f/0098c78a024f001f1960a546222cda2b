@@ -1,0 +1,189 @@
+package fa.training.daos.impl;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import fa.training.daos.MayDAO;
+import fa.training.entities.KhachHang;
+import fa.training.entities.May;
+import fa.training.entities.SuDungMay;
+import fa.training.models.PagedResult;
+
+@Repository
+public class MayDAOImp implements MayDAO {
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	public List<May> findAllMay(String search) {
+		try (Session session = sessionFactory.getSessionFactory().openSession()) {
+//			Query<May> query = session
+//					.createQuery("FROM May m WHERE :search IS NULL OR :search = '' OR m.maMay = :search", May.class);
+//			query.setParameter("search", search);
+			Query<May> query = session.createNativeQuery("SELECT * FROM May", May.class);
+			return query.getResultList();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return new ArrayList<>();
+	}
+
+	public PagedResult<May> findAllMay(String search, int page, int pageSize) {
+		try (Session session = sessionFactory.getSessionFactory().openSession()) {
+			// count record
+			String countHql = "SELECT COUNT(m) FROM May m WHERE :search IS NULL OR :search = '' OR CAST(m.maMay AS string) LIKE :search OR m.viTri LIKE  :search";
+			Query<Long> countQuery = session.createQuery(countHql, Long.class);
+			countQuery.setParameter("search", search != null ? "%" + search + "%" : null);
+
+			Long totalRecords = countQuery.getSingleResult();
+			int totalPages = (int) Math.ceil((double) totalRecords / pageSize);
+
+			// get record
+			String listHql = "FROM May m WHERE :search IS NULL OR :search = '' OR CAST(m.maMay AS string) LIKE :search OR m.viTri LIKE  :search";
+			Query<May> listQuery = session.createQuery(listHql, May.class);
+			listQuery.setParameter("search", search != null ? "%" + search + "%" : null);
+			listQuery.setFirstResult((page - 1) * pageSize);
+			listQuery.setMaxResults(pageSize);
+
+			List<May> mays = listQuery.getResultList();
+
+			return new PagedResult<>(page, totalPages, mays);
+		} catch (Exception e) {
+			System.err.println("Error: " + e.getMessage());
+		}
+		return new PagedResult<>(page, 0, new ArrayList<>());
+	}
+
+	public May findById(Integer maMay) {
+		try (Session session = sessionFactory.getSessionFactory().openSession()) {
+			return session.get(May.class, maMay);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return null;
+	}
+
+	public boolean insert(May may) {
+		if (may == null) {
+			return false;
+		}
+		try (Session session = sessionFactory.getSessionFactory().openSession()) {
+			Transaction t = session.beginTransaction();
+			session.persist(may);
+			t.commit();
+			return true;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+
+	public boolean update(May may) {
+		try (Session session = sessionFactory.getSessionFactory().openSession()) {
+			May existingMay = findById(may.getMaMay());
+			if (existingMay == null) {
+				throw new Exception("Mã máy không tồn tại");
+			}
+			may.setMaMay(existingMay.getMaMay());
+
+			Transaction t = session.beginTransaction();
+			session.merge(may);
+			t.commit();
+			return true;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+
+	public boolean delete(Integer maMay) {
+		try (Session session = sessionFactory.getSessionFactory().openSession()) {
+			May existingMay = findById(maMay);
+			if (existingMay == null) {
+				throw new Exception("Mã máy không tồn tại");
+			}
+			Transaction t = session.beginTransaction();
+			session.remove(existingMay);
+			t.commit();
+			return true;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+
+	public boolean registerToUse(SuDungMay suDungMay) {
+		if (suDungMay == null) {
+			return false;
+		}
+		try (Session session = sessionFactory.getSessionFactory().openSession()) {
+			Transaction t = session.beginTransaction();
+			session.merge(suDungMay.getMay());
+			session.persist(suDungMay);
+			t.commit();
+			return true;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+
+	public SuDungMay findSDMByKH(KhachHang khachHang) {
+		if (khachHang == null) {
+			return null;
+		}
+		try (Session session = sessionFactory.getSessionFactory().openSession()) {
+			Query<SuDungMay> query = session.createQuery(
+					"FROM SuDungMay sdm WHERE sdm.khachHang = :khachHang AND sdm.thoiGianSuDung IS NULL",
+					SuDungMay.class);
+			query.setParameter("khachHang", khachHang);
+			return query.getSingleResult();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
+	public boolean updateThoiGianSuDung(May may) {
+		if (may == null) {
+			return false;
+		}
+		try (Session session = sessionFactory.getSessionFactory().openSession()) {
+			Query<SuDungMay> query = session.createQuery(
+					"FROM SuDungMay sdm WHERE sdm.may = :may AND sdm.thoiGianSuDung IS NULL", SuDungMay.class);
+			query.setParameter("may", may);
+			SuDungMay suDungMay = query.getSingleResult();
+			if (suDungMay != null) {
+				int thoiGianSuDung = calculateThoiGianSuDung(suDungMay.getNgaybatDauSuDung(),
+						suDungMay.getGioBatDauSuDung());
+				suDungMay.setThoiGianSuDung(thoiGianSuDung);
+				Transaction t = session.beginTransaction();
+				session.merge(may);
+				session.merge(suDungMay);
+				t.commit();
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
+
+	private int calculateThoiGianSuDung(LocalDate ngayBatDau, LocalTime gioBatDau) {
+		LocalDateTime batDau = LocalDateTime.of(ngayBatDau, gioBatDau);
+		LocalDateTime hienTai = LocalDateTime.now();
+
+		return (int) ChronoUnit.MINUTES.between(batDau, hienTai);
+	}
+}

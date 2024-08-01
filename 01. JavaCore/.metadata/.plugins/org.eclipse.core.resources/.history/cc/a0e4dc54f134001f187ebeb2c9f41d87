@@ -1,0 +1,16 @@
+package fa.training.util;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Validator {
+    private static Matcher matcher;
+    private static Pattern pattern;
+    
+    public static boolean isMonitorId() {
+	pattern = Pattern.compile(Constant.MONITORID_REGEX);
+	matcher = pattern.matcher(date);
+	return matcher.matches();
+    }
+
+}

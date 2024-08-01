@@ -1,0 +1,72 @@
+package fa.training.readfile;
+
+import fa.training.exception.EmailException;
+import fa.training.util.PhoneException;
+
+public class Student {
+    private String stdNo;
+    private String stdName;
+    private String phone;
+    private String email;
+    private int gradePoint;
+    
+    public Student() {
+	// TODO Auto-generated constructor stub
+    }
+
+    public Student(String sdtNo, String sdtName, String phone, String email, int gradePoint) {
+	super();
+	this.sdtNo = sdtNo;
+	this.sdtName = sdtName;
+	this.phone = phone;
+	this.email = email;
+	this.gradePoint = gradePoint;
+    }
+
+    public String getSdtNo() {
+        return sdtNo;
+    }
+
+    public void setSdtNo(String sdtNo) {
+        this.sdtNo = sdtNo;
+    }
+
+    public String getSdtName() {
+        return sdtName;
+    }
+
+    public void setSdtName(String sdtName) {
+        this.sdtName = sdtName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) throws PhoneException {
+	if (!Validator.isPhone(phone)) {
+	    throw new PhoneException();
+	}
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) throws EmailException {
+	if (!Validator.isEmail(email)) {
+	    throw new EmailException();
+	}
+        this.email = email;
+    }
+
+    public int getGradePoint() {
+        return gradePoint;
+    }
+
+    public void setGradePoint(int gradePoint) {
+        this.gradePoint = gradePoint;
+    }
+    
+}

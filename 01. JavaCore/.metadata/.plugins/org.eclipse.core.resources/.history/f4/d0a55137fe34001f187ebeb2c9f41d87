@@ -1,0 +1,18 @@
+package fa.training.main;
+
+import java.util.List;
+
+import fa.training.entities.Monitor;
+import fa.training.service.ReadFileService;
+
+public class Main {
+public static void main(String[] args) {
+    ReadFileService readFileService = new ReadFileService();
+    
+    List<Monitor> monitors = readFileService.convertToMonintor(readFileService.readFile());
+    
+}
+    
+    
+    
+}

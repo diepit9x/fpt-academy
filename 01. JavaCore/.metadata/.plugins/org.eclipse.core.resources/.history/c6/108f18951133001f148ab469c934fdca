@@ -1,0 +1,9 @@
+package fa.training.dao;
+
+public class FresherDAOImpl {
+
+    public FresherDAOImpl() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

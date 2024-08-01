@@ -1,0 +1,13 @@
+package fa.training.service;
+
+import fa.training.dao.CustomerDAO;
+import fa.training.dao.CustomerDAOImpl;
+
+public class CustomerService {
+    CustomerDAO customerDAO = new CustomerDAOImpl();
+    
+    public CustomerService() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

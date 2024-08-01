@@ -1,0 +1,13 @@
+INDEX VERSION 1.4+E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+522498336.index
+3200937241.index
+4000023386.index
+2374988273.index
+888780845.index
+2816000473.index
+988107827.index
+2593544591.index
+147029693.index
+1845161764.index
+2867439644.index
+3239752520.index

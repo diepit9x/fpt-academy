@@ -1,0 +1,6 @@
+Customer [name=customer 1, phoneNumber=0987654321, address=email@gmail.com, orders=[Order [number=123, date=10/01/2020]]]
+Customer [name=customer 3, phoneNumber=0987654323, address=addd, orders=[Order [number=123123, date=20/01/2020]]]
+Customer [name=name, phoneNumber=0987654324, address=gggg@hhh.h, orders=[Order [number=123123, date=10/01/2020]]]
+Customer [name=c3, phoneNumber=0987654321, address=123123123, orders=[Order [number=1312312321313, date=10/01/2020]]]
+Customer [name=c4, phoneNumber=0987654321, address=12312312, orders=[Order [number=12312312312, date=10/01/2020], Order [number=234234234, date=10/01/2001]]]
+Customer [name=name, phoneNumber=0987654321, address=123123, orders=[Order [number=13123, date=10/01/2020], Order [number=10/10/2020, date=10/01/1020]]]

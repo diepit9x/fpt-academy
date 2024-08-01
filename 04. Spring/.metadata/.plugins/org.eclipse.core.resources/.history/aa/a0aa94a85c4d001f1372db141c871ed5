@@ -1,0 +1,34 @@
+package entities;
+
+import java.sql.Date;
+
+import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.Subselect;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+@Immutable
+@Subselect("SELECT kh.maKH, kh.tenKH, m.maMay, m.viTri, m.trangThai, sdm.ngaybatDauSuDung, sdm.gioBatDauSuDung, sdm.thoiGianSuDung, sddv.maDV, sddv.ngaySuDung, sddv.gioSuDung, sddv.soLuong, sddv.donGia FROM SuDungDichVu_May")
+public class SuDungDichVuMay {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
+    private String tenKH;
+    private String viTri;
+    private String trangThai;
+    private Date ngaybatDauSuDung;
+    private String gioBatDauSuDung;
+    private Integer thoiGianSuDung;
+    private Date ngaySuDung;
+    private String gioSuDung;
+    private Integer soLuong;
+    private Integer donGia;
+
+    // getters and setters
+}
+

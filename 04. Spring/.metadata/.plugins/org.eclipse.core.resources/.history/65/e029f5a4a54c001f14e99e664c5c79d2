@@ -1,0 +1,7 @@
+package models;
+
+public class SelectData {
+	public static String trangThai(String status) {
+		
+	}
+}

@@ -1,0 +1,12 @@
+package fa.training.util;
+
+import java.sql.Connection;
+
+public class DBUtils {
+    private static DBUtils instance;
+    private Connection connection;
+    public DBUtils() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

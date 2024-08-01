@@ -1,0 +1,9 @@
+package baitap2.yeucau1;
+
+public class LeftSumThread {
+
+    public LeftSumThread() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

@@ -1,0 +1,130 @@
+package fa.training.dao;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import fa.training.entities.Candidate;
+import fa.training.entities.Experience;
+import fa.training.entities.Fresher;
+import fa.training.entities.Intern;
+import fa.training.util.Constant;
+import fa.training.util.DBUtils;
+import fa.training.util.SQLCommand;
+
+public class CandidateDAOImpl implements CandidateDAO {
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet resultSet = null;
+    private ExperienceDAO experienceDAO;
+    private FresherDAO fresherDAO;
+    private InternDAO internDAO;
+    
+    @Override
+    public boolean addCandidate(Candidate candidate) throws Exception {
+	boolean status = false;
+	try {
+	    connection = DBUtils.getInstance().getConnection();
+	    connection.setAutoCommit(false);
+	    preparedStatement = connection.prepareStatement(
+		    SQLCommand.CANDIDATE_QUERY,
+		    ResultSet.TYPE_SCROLL_SENSITIVE,
+		    ResultSet.CONCUR_UPDATABLE);
+	    resultSet = preparedStatement.executeQuery();
+	    resultSet.moveToInsertRow();
+	    resultSet.updateString("fullName", candidate.getFullName());
+	    resultSet.updateDate("birthDay", candidate.getBirthDay());
+	    resultSet.updateString("phone", candidate.getPhone());
+	    resultSet.updateString("email", candidate.getEmail());
+	    resultSet.updateInt("candidateType", candidate.getCandidateType());
+	    resultSet.insertRow();
+	    //get new id value
+	    resultSet.last();
+	    int candidateId = resultSet.getInt("candidateId");
+	    candidate.setCandidateId(candidateId);
+	    if (candidate instanceof Experience) {
+		experienceDAO = new ExperienceDAOImpl();
+		experienceDAO.addExperience(candidate);
+	    } else if (candidate instanceof Fresher) {
+		fresherDAO = new FresherDAOImpl();
+		fresherDAO.addFresher(candidate);
+	    } else if (candidate instanceof Intern) {
+		internDAO = new InternDAOImpl();
+		internDAO.addIntern(candidate);
+	    } else {
+		throw new Exception(Constant.DEFAULT_EXCEPTION_MESSAGE);
+	    }
+	    resultSet.moveToCurrentRow();
+	    status = true;
+	} catch(SQLException e) {
+	    e.printStackTrace();
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+	} finally {
+	    try {
+		if (connection != null) {
+		    connection.close();
+		}
+		if (preparedStatement != null) {
+		    preparedStatement.close();
+		}
+	    } catch (SQLException e) {
+		e.printStackTrace();
+	    }
+	}
+	return status;
+    }
+
+    @Override
+    public boolean updateCandidate(Candidate candidate) throws SQLException, Exception {
+	boolean status = false;
+	try {
+	    connection = DBUtils.getInstance().getConnection();
+	    connection.setAutoCommit(false);
+	    preparedStatement = connection.prepareStatement(
+		    SQLCommand.CANDIDATE_QUERY_UPDATE,
+		    ResultSet.TYPE_SCROLL_SENSITIVE,
+		    ResultSet.CONCUR_UPDATABLE);
+	    resultSet = preparedStatement.executeQuery();
+	    resultSet.moveToInsertRow();
+	    resultSet.updateString("fullName", candidate.getFullName());
+	    resultSet.updateDate("birthDay", candidate.getBirthDay());
+	    resultSet.updateString("phone", candidate.getPhone());
+	    resultSet.updateString("email", candidate.getEmail());
+	    resultSet.updateInt("candidateType", candidate.getCandidateType());
+	    resultSet.insertRow();
+	    
+	    if (candidate instanceof Experience) {
+	    } else if (candidate instanceof Fresher) {
+		resultSet = preparedStatement.executeQuery(SQLCommand.FRESHER_QUERY);
+	    } else if (candidate instanceof Intern) {
+	    } else {
+		throw new Exception(Constant.DEFAULT_EXCEPTION_MESSAGE);
+	    }
+	    resultSet.moveToCurrentRow();
+	    connection.commit();
+	    status = true;
+	} finally {
+	    try {
+		if (connection != null) {
+		    connection.close();
+		}
+		if (preparedStatement != null) {
+		    preparedStatement.close();
+		}
+	    } catch (SQLException e) {
+		e.printStackTrace();
+	    }
+	}
+	return status;
+    }
+
+}

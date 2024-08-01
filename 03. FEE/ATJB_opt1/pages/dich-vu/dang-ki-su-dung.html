@@ -1,0 +1,77 @@
+<h1 class="pb-2 border-bottom">Đăng kí sử dụng dịch vụ</h1>
+<form action="/dich-vu/dang-ki-su-dung" method="POST" id="dang-ki-su-dung">
+  <div class="form-group row pt-md-3">
+    <label for="maKhachHang" class="col-md-2 col-form-label">Mã KH</label>
+    <div class="col-md-10">
+      <input type="text" class="form-control" id="maKhachHang" name="maKhachHang" placeholder="Mã khách hàng" />
+    </div>
+  </div>
+  <div class="form-group row pt-md-3">
+    <label for="maDichVu" class="col-md-2 col-form-label">Mã DV</label>
+    <div class="col-md-10">
+      <input type="text" class="form-control" id="maDichVu" name="maDichVu" placeholder="Mã dịch vụ" />
+    </div>
+  </div>
+  <div class="form-group row pt-md-3">
+    <label for="ngaySuDung" class="col-md-2 col-form-label">Ngày sử dụng</label>
+    <div class="col-md-10">
+      <input type="date" class="form-control" id="ngaySuDung" name="ngaySuDung" placeholder="Ngày sử dụng" />
+    </div>
+  </div>
+  <div class="form-group row pt-md-3">
+    <label for="gioSuDung" class="col-md-2 col-form-label">Giờ sử dụng</label>
+    <div class="col-md-10">
+      <input type="time" class="form-control" id="gioSuDung" name="gioSuDung" placeholder="hrs:mins" />
+    </div>
+  </div>
+  <div class="form-group row pt-md-3">
+    <label for="soLuong" class="col-md-2 col-form-label">Số lượng</label>
+    <div class="col-md-10">
+      <input type="number" class="form-control" id="soLuong" name="soLuong" placeholder="Số lượng" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <button type="submit" class="btn btn-success">Đăng kí</button>
+    </div>
+  </div>
+</form>
+<script>
+  document.getElementById("dang-ki-su-dung").addEventListener("submit", function (e) {
+    var isValid = true;
+
+    //const
+    const maKhachHang = document.getElementById("maKhachHang").value;
+    const maDichVu = document.getElementById("maDichVu").value;
+    const ngaySuDung = document.getElementById("ngaySuDung").value;
+    const gioSuDung = document.getElementById("gioSuDung").value;
+    const soLuong = document.getElementById("soLuong").value;
+
+    if (!isMaKH(maKhachHang)) {
+      alert("Mã KH: Có format là KHxxxxx (x: ký tự số)");
+      isValid = false;
+    }
+    if (!isMaDV(maDichVu)) {
+      alert("Mã DV: Có format là DVxxx (x: ký tự số)");
+      isValid = false;
+    }
+    if (!isNotEmpty(ngaySuDung)) {
+      alert("Ngày sử dụng không hợp lệ");
+      isValid = false;
+    }
+    if (!isNotEmpty(gioSuDung)) {
+      alert("Giờ sử dụng không hợp lệ");
+      isValid = false;
+    }
+
+    if (!isInteger(soLuong) || Number(soLuong) <= 0) {
+      alert("Số lượng không hợp lệ");
+      isValid = false;
+    }
+    if (!isValid) {
+      e.preventDefault();
+      return;
+    }
+  });
+</script>

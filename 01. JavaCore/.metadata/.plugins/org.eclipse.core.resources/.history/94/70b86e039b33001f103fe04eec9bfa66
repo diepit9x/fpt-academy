@@ -1,0 +1,9 @@
+package fa.training.readfile;
+
+public class ReadFile {
+
+    public ReadFile() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

@@ -1,0 +1,58 @@
+package fa.training.entities;
+
+import java.util.Date;
+
+public class Fresher extends Candidate {
+    private Date graduationDate;
+    private int graduationRank;
+    private String education;
+    
+    public Fresher() {
+	super();
+    }
+    
+    public Fresher(String candidateId, String fullName, java.sql.Date birthDay, String phone, String email,
+	    int candidateType, Date graduationDate, int graduationRank, String education) {
+	super(candidateId, fullName, birthDay, phone, email, candidateType);
+	this.graduationDate = graduationDate;
+	this.graduationRank = graduationRank;
+	this.education = education;
+    }
+
+    public Date getGraduationDate() {
+        return graduationDate;
+    }
+
+    public void setGraduationDate(Date graduationDate) {
+        this.graduationDate = graduationDate;
+    }
+
+    public int getGraduationRank() {
+        return graduationRank;
+    }
+
+    public void setGraduationRank(int graduationRank) {
+        this.graduationRank = graduationRank;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    @Override
+    public void showMe() {
+	System.out.println(toString());
+    }
+
+    @Override
+    public String toString() {
+	return "Fresher [" + super.toString() + ", graduationDate=" + graduationDate + ", graduationRank=" + graduationRank + ", education="
+		+ education + "]";
+    }
+    
+
+}

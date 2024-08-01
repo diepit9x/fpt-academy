@@ -1,0 +1,9 @@
+package fa.training.dao;
+
+public class InternDAO {
+
+    public InternDAO() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

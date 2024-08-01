@@ -1,0 +1,24 @@
+<div class="flex-row">
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-info active"> <input type="radio" name="options" id="option1" /> Active </label>
+    <label class="btn btn-dark"> <input type="radio" name="options" id="option2" /> Drafts </label>
+    <label class="btn btn-light btn-outline-dark"> <input type="radio" name="options" id="option3" /> Closed </label>
+  </div>
+</div>
+<div class="flex-row pt-4">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th class="mw-100">The list of questions and issues within</th>
+          <th>Management</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+</div>
+<script>
+  showQuestionList();
+</script>

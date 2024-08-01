@@ -1,0 +1,13 @@
+.container-fluid {
+  padding: 0px;
+}
+.nav-item a {
+  color: rgba(255, 255, 255, 0.5);
+}
+.nav-link {
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.col-form-label {
+  font-weight: 600;
+}

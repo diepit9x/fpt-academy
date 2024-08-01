@@ -1,0 +1,10 @@
+package fa.training.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import fa.training.entities.Order;
+
+public interface OrderDAO {
+    List<Order> getAllOrdersByCustomerId(int customerId) throws SQLException;
+}

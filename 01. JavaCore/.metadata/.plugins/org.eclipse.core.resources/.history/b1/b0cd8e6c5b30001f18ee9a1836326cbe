@@ -1,0 +1,9 @@
+package baitap2.yeucau1;
+
+public class CreateArray {
+
+    public CreateArray() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

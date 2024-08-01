@@ -1,0 +1,82 @@
+package daos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import entities.May;
+import utils.HibernateUtil;
+
+public class MayDAO {
+	public List<May> findAllMay(String search) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			Query<May> query = session.createQuery("FROM May m WHERE :search IS NULL OR :search = '' OR m.maMay = :search", May.class);
+			query.setParameter("search", search)
+			return query.getResultList();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return new ArrayList<>();
+	}
+	
+	public May findById(Integer maMay) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			return session.get(May.class, maMay);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return null;
+	}
+	
+	public boolean insert(May may) {
+		if (may == null) {
+			return false;
+		}
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			Transaction t = session.beginTransaction();
+			session.persist(may);
+			t.commit();
+			return true;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+	
+	public boolean update(May may) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			May existingMay = findById(may.getMaMay());
+			if (existingMay == null) {
+				throw new Exception("Mã máy không tồn tại");
+			}
+			may.setMaMay(existingMay.getMaMay());
+			
+			Transaction t = session.beginTransaction();
+			session.persist(may);
+			t.commit();
+			return true;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+	
+	public boolean delete(Integer maMay) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			May existingMay = findById(maMay);
+			if (existingMay == null) {
+				throw new Exception("Mã máy không tồn tại");
+			}
+			Transaction t = session.beginTransaction();
+			session.persist(maMay);
+			t.commit();
+			return true;
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return false;
+	}
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function isCardNumber(cardNumber) {
+        const regex = /^[0-9]{16}$/;
+        return regex.test(cardNumber);
+      }
+      function isNumber(number) {
+        const regex = /^[0-9]+$/;
+        return regex.test(number);
+      }
+
+      function isUrl(url) {
+        const regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+        return regex.test(url);
+      }
+      function isEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+      }
+      function isAlphabet(str) {
+        const regex = /^[a-zA-Z0-9]+$/;
+        return regex.test(str);
+      }
+    </script>
+  </body>
+</html>

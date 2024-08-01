@@ -1,0 +1,9 @@
+package fa.training.entities;
+
+public class NormalMonitor {
+
+    public NormalMonitor() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

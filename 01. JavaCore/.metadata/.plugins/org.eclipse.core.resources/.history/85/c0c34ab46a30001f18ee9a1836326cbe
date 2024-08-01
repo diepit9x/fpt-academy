@@ -1,0 +1,25 @@
+package baitap2.yeucau2;
+
+public class CreateArray {
+    private int[] arr;
+    private long sum;
+
+    public CreateArray() {
+	arr = new int[] {1,2,3,4,5,6,7,8,9,10};
+    }
+    
+    public long getSum() {
+        return sum;
+    }
+    
+    public void sumCaculator() {
+	for (int i = 0; i < arr.length; i++) {
+	    this.sum += arr[i];
+	}
+    }
+
+    public int[] getArr() {
+        return arr;
+    }
+
+}

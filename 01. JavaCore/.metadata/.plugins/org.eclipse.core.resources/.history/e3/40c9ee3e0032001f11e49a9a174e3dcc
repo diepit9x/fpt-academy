@@ -1,0 +1,14 @@
+package fa.training.entities;
+
+import java.util.Date;
+
+public class Fresher extends Candidate {
+    private Date graduationDate;
+    private int graduationRank;
+    private String education;
+    
+    public Fresher() {
+	super();
+    }
+
+}

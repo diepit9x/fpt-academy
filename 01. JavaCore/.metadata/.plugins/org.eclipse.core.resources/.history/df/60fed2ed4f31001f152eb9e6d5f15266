@@ -1,0 +1,9 @@
+package fa.training.service;
+
+public class LineItemService {
+
+    public LineItemService() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

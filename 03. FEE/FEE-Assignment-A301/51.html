@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var users = [
+        { id: 1, first_name: "Eamon", last_name: "Harhoff", email: "eharhoff0@imageshack.us", gender: "Male", age: 76, salary: 18888 },
+        { id: 2, first_name: "Laney", last_name: "Whittam", email: "lwhittam1@issuu.com", gender: "Female", age: 42, salary: 15018 },
+        { id: 3, first_name: "Lynett", last_name: "Twinberrow", email: "ltwinberrow2@gov.uk", gender: "Female", age: 99, salary: 13343 },
+        { id: 1, first_name: "Jonh", last_name: "Mari", email: "jonhmari@imageshack.us", gender: "Male", age: 38, salary: 18888 },
+      ];
+      document.body.innerHTML += "<h2>danh sách user:</h2>";
+      //Hiển thị danh sách
+      users.forEach((user) => {
+        document.body.innerHTML += `<p>${user.first_name} ${user.last_name} - ${user.email} - ${user.age} - ${user.salary}</p>`;
+      });
+
+      //Sử dụng hàm filter để lọc và hiển thị các user có gender là male và age dưới 40;
+      var filteredUsers = users.filter((user) => user.gender === "Male" && user.age < 40);
+      //Hiển thị kết quả
+      document.body.innerHTML += "<h2>Users có gender là male và age dưới 40:</h2>";
+      filteredUsers.forEach((user) => {
+        document.body.innerHTML += `<p>${user.first_name} ${user.last_name} - ${user.email} - ${user.age} - ${user.salary}</p>`;
+      });
+
+      //Sử dụng hàm map  để lọc và hiển thị FullName (Nối First name và last name);
+      var fullNames = users.map((user) => `${user.first_name} ${user.last_name}`);
+      //Hiển thị kết quả
+      document.body.innerHTML += "<h2>FullNames:</h2>";
+      fullNames.forEach((fullName) => {
+        document.body.innerHTML += `<p>${fullName}</p>`;
+      });
+
+      //-Sử dụng hàm reduce để tính trung bình chung độ tuổi của các user
+      var averageAge = users.reduce((accumulator, user) => accumulator + user.age, 0) / users.length;
+      //Hiển thị kết quả
+      document.body.innerHTML += `<h2>Tuổi trung bình của các user:</h2>`;
+      document.body.innerHTML += `<p>${averageAge}</p>`;
+    </script>
+  </body>
+</html>

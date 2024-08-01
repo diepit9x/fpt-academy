@@ -1,0 +1,9 @@
+package fa.training.entities;
+
+public class Certificate {
+    private int certificatedId;
+    
+    public Certificate() {
+    }
+
+}

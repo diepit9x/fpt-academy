@@ -1,0 +1,9 @@
+package fa.training.util;
+
+public class EmailException {
+
+    public EmailException() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

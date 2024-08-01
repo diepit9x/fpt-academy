@@ -1,0 +1,57 @@
+package fa.training.readfile;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ReadFile {
+    private static final String FILE_NAME_IN = "src/fa/training/readfile/SDT.csv";
+    private static final String FILE_NAME_OUT = "src/fa/training/readfile/error.txt";
+    
+    
+    public List<String> readFile() {
+	    List<String> students = new ArrayList<>();
+	    try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_IN))) {
+		String student;
+		while ((student = br.readLine()) != null) {
+		   students.add(student);
+		}
+	    } catch (IOException e) {
+		System.err.println(e.getMessage());
+	    }
+	    return students;
+    }
+    
+    public List<Student> convertStudent(List<String> studentString) {
+	List<Student>students = new ArrayList<>();
+	String[] stdArr;
+	for (int i = 0; i < studentString.size(); i++) {
+	    stdArr = studentStrp
+	    
+	}
+	
+	try {
+	    
+	} catch (Exception e) {
+	    // TODO: handle exception
+	}
+    }
+    
+    public void writeFile(List<String> candidates) {
+	    try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(FILE_NAME_OUT))) {
+		for (String candidate : candidates) {
+		    bos.write(candidate.getBytes(StandardCharsets.UTF_8));
+		    bos.write(System.lineSeparator().getBytes(StandardCharsets.UTF_8));
+		}
+	    } catch (IOException e) {
+		System.err.println(e.getMessage());
+	    }
+    }
+
+}

@@ -1,0 +1,52 @@
+package fa.training.configuration;
+
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+import org.hibernate.cfg.AvailableSettings;
+import org.springframework.context.annotation.Bean;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+
+//@Configuration
+//@EnableTransactionManagement
+//@ComponentScan(basePackages = "fa.training")
+public class HibernateConfig {
+
+	@Bean
+	public LocalSessionFactoryBean sessionFactory() {
+		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+		sessionFactory.setDataSource(dataSource());
+		sessionFactory.setPackagesToScan("fa.training.entities");
+		sessionFactory.setHibernateProperties(hibernateProperties());
+		return sessionFactory;
+	}
+
+	@Bean
+	public DataSource dataSource() {
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		dataSource.setUrl(
+				"jdbc:sqlserver://localhost:1433;databaseName=ATJB_otp1;encrypt=true;trustServerCertificate=true;sendTimeAsDateTime=false;");
+		dataSource.setUsername("sa");
+		dataSource.setPassword("123456789");
+		return dataSource;
+	}
+
+	@Bean
+	public HibernateTransactionManager transactionManager() {
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+		transactionManager.setSessionFactory(sessionFactory().getObject());
+		return transactionManager;
+	}
+
+	private Properties hibernateProperties() {
+		Properties hibernateProperties = new Properties();
+		hibernateProperties.setProperty(AvailableSettings.HBM2DDL_AUTO, "none");
+		hibernateProperties.setProperty(AvailableSettings.SHOW_SQL, "true");
+		hibernateProperties.setProperty(AvailableSettings.DIALECT, "org.hibernate.dialect.SQLServer2012Dialect");
+		return hibernateProperties;
+	}
+}

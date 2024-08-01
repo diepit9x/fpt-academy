@@ -1,0 +1,26 @@
+package fa.training.readfile;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import fa.training.util.Constant;
+
+public class ReadFile {
+    private static final String FILE_NAME = "src/fa/training/readfile/student.csv";
+    public List<String> readFile() {
+	    List<String> candidates = new ArrayList<>();
+	    try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {
+		String candidate;
+		while ((candidate = br.readLine()) != null) {
+		    candidates.add(candidate);
+		}
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
+	    return candidates;
+    }
+
+}

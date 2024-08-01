@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
+body {
+  font-family: "Kaushan Script", cursive;
+  background-color: beige;
+}
+.bg-color {
+  background-color: #ff075a;
+}
+.col-md-4 {
+  padding: 0px;
+}
+.card-img,
+.card-img-bottom,
+.card-img-top {
+  height: 230px;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Visitor</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="header">
+            <img class="header-img" src="/assets/img/bg.jpg" alt="img" />
+          </div>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="container border border-dark">
+        <div class="row border-bottom border-dark">
+          <div class="col-12 p-0">
+            <h3 class="text-success pl-1">Search Visitor</h3>
+          </div>
+          <div class="d-flex flex-wrap mb-1">
+            <span class="mr-3">Keyword:</span>
+            <input class="mr-3" type="text" id="keyword" />
+            <button type="submit" onclick="searchVisitor()">Search</button>
+            <span> (Type keyword and Click search button)</span>
+          </div>
+        </div>
+        <div class="row m-0">
+          <div class="col-12 mt-2">
+            <table class="table-bordered text-center w-100">
+              <thead>
+                <tr style="background-color: #d8d8d8">
+                  <th>First name</th>
+                  <th>Last name</th>
+                  <th>Gender</th>
+                  <th>Telephone</th>
+                  <th>You're in</th>
+                  <th>Hobbies</th>
+                  <th style="width: 35%">Description</th>
+                </tr>
+              </thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/assets/jquery/jquery-3.7.1.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/custom.js"></script>
+    <script>
+      $(document).ready(function () {
+        searchVisitor();
+      });
+    </script>
+  </body>
+</html>

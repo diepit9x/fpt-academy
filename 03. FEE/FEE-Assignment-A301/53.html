@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5.3</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
+    <style>
+      .actions {
+        display: flex;
+        flex-direction: row;
+      }
+      .actions > .text-info,
+      .text-danger {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+      .name {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center">To do list</h2>
+      <div class="flex-row">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Name..." id="toDoName" />
+          <div class="input-group-append">
+            <button id="btnAdd" class="btn btn-light btn-outline-success" type="submit">Add item</button>
+          </div>
+        </div>
+        <span class="text-danger ml-3" id="errorToDoName"></span>
+      </div>
+      <div class="d-flex flex-column mt-5">
+        <ul id="toDoList" class="list-group"></ul>
+        <div class="mt-3 text-center">
+          <button class="btn btn-light btn-outline-danger" id="clearItems">Clear items</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const toDoArr = [];
+      const btnAdd = document.getElementById("btnAdd");
+      btnAdd.addEventListener("click", function (event) {
+        const toDoName = document.getElementById("toDoName").value;
+        document.getElementById("errorToDoName").textContent = "";
+        if (toDoName.trim() === "") {
+          document.getElementById("errorToDoName").textContent = "Name is required";
+          return;
+        }
+        toDoArr.push(toDoName);
+        document.getElementById("toDoName").value = "";
+        loadToDoList();
+      });
+
+      const clearItems = document.getElementById("clearItems");
+      clearItems.addEventListener("click", function () {
+        document.getElementById("toDoList").textContent = "";
+        toDoArr.length = 0;
+      });
+
+      function loadToDoList() {
+        document.getElementById("toDoList").textContent = "";
+        toDoArr.forEach((toDoName) => {
+          const toDoList = document.getElementById("toDoList");
+          //new toDo
+          const newToDo = document.createElement("li");
+          newToDo.classList.add("d-flex", "justify-content-between");
+          //-new name is child of toDo
+          const nameDiv = document.createElement("div");
+          nameDiv.classList.add("name");
+          nameDiv.textContent = toDoName;
+          //-new actions is child of toDo
+          const actionsDiv = document.createElement("div");
+          actionsDiv.classList.add("actions");
+          //--new edit btn is child of actions
+          const editBtn = document.createElement("div");
+          editBtn.classList.add("text-info");
+          //---new edit icon
+          const editIcon = document.createElement("i");
+          editIcon.classList.add("fa", "fa-pencil-square-o");
+          editIcon.setAttribute("aria-hidden", "true");
+          editBtn.appendChild(editIcon);
+          editBtn.addEventListener("click", function (event) {
+            document.getElementById("toDoName").value = toDoName;
+            let index = toDoArr.indexOf(toDoName);
+            toDoArr.splice(index, 1);
+            newToDo.remove();
+          });
+          //---new delete btn is child of actions
+          const deleteBtn = document.createElement("div");
+          deleteBtn.classList.add("text-danger");
+          const deleteIcon = document.createElement("i");
+          deleteIcon.classList.add("fa", "fa-window-close-o");
+          deleteIcon.setAttribute("aria-hidden", "true");
+          deleteBtn.appendChild(deleteIcon);
+          deleteBtn.addEventListener("click", function () {
+            let index = toDoArr.indexOf(toDoName);
+            delete toDoArr[index];
+            newToDo.remove();
+          });
+
+          actionsDiv.appendChild(editBtn);
+          actionsDiv.appendChild(deleteBtn);
+          newToDo.appendChild(nameDiv);
+          newToDo.appendChild(actionsDiv);
+          toDoList.appendChild(newToDo);
+        });
+      }
+    </script>
+  </body>
+</html>

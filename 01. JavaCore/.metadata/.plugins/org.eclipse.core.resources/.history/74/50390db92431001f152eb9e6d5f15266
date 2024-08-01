@@ -1,0 +1,5 @@
+package fa.training.util;
+
+public class SQLCommand {
+    public static String GET_ALL_CUSTOMER = "SELECT * FROM Customer";
+}

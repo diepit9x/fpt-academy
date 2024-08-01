@@ -1,0 +1,9 @@
+package baitap1.cach3;
+
+public class PolymorphismExample {
+
+    public PolymorphismExample() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

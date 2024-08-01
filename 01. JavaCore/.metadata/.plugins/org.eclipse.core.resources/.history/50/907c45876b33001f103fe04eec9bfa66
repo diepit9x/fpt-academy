@@ -1,0 +1,5 @@
+package fa.training.dao;
+
+public class CertificateDAOImpl implements CertificateDAO {
+
+}

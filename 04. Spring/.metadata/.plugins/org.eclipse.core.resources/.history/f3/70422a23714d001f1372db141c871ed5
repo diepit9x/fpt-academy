@@ -1,0 +1,141 @@
+package entities;
+
+import java.sql.Date;
+
+import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.Subselect;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+@Immutable
+@Subselect("SELECT kh.maKH, kh.tenKH, m.maMay, m.viTri, m.trangThai, sdm.ngaybatDauSuDung, sdm.gioBatDauSuDung, sdm.thoiGianSuDung, sddv.maDV, sddv.ngaySuDung, sddv.gioSuDung, sddv.soLuong, sddv.donGia FROM SuDungDichVu_May")
+public class SuDungDichVuMay {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
+	private String tenKH;
+	private String viTri;
+	private String trangThai;
+	private Date ngaybatDauSuDung;
+	private String gioBatDauSuDung;
+	private Integer thoiGianSuDung;
+	private Date ngaySuDung;
+	private String gioSuDung;
+	private Integer soLuong;
+	private Integer donGia;
+
+	public SuDungDichVuMay() {
+		super();
+	}
+
+	public SuDungDichVuMay(Integer id, String tenKH, String viTri, String trangThai, Date ngaybatDauSuDung,
+			String gioBatDauSuDung, Integer thoiGianSuDung, Date ngaySuDung, String gioSuDung, Integer soLuong,
+			Integer donGia) {
+		super();
+		this.id = id;
+		this.tenKH = tenKH;
+		this.viTri = viTri;
+		this.trangThai = trangThai;
+		this.ngaybatDauSuDung = ngaybatDauSuDung;
+		this.gioBatDauSuDung = gioBatDauSuDung;
+		this.thoiGianSuDung = thoiGianSuDung;
+		this.ngaySuDung = ngaySuDung;
+		this.gioSuDung = gioSuDung;
+		this.soLuong = soLuong;
+		this.donGia = donGia;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getTenKH() {
+		return tenKH;
+	}
+
+	public void setTenKH(String tenKH) {
+		this.tenKH = tenKH;
+	}
+
+	public String getViTri() {
+		return viTri;
+	}
+
+	public void setViTri(String viTri) {
+		this.viTri = viTri;
+	}
+
+	public String getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(String trangThai) {
+		this.trangThai = trangThai;
+	}
+
+	public Date getNgaybatDauSuDung() {
+		return ngaybatDauSuDung;
+	}
+
+	public void setNgaybatDauSuDung(Date ngaybatDauSuDung) {
+		this.ngaybatDauSuDung = ngaybatDauSuDung;
+	}
+
+	public String getGioBatDauSuDung() {
+		return gioBatDauSuDung;
+	}
+
+	public void setGioBatDauSuDung(String gioBatDauSuDung) {
+		this.gioBatDauSuDung = gioBatDauSuDung;
+	}
+
+	public Integer getThoiGianSuDung() {
+		return thoiGianSuDung;
+	}
+
+	public void setThoiGianSuDung(Integer thoiGianSuDung) {
+		this.thoiGianSuDung = thoiGianSuDung;
+	}
+
+	public Date getNgaySuDung() {
+		return ngaySuDung;
+	}
+
+	public void setNgaySuDung(Date ngaySuDung) {
+		this.ngaySuDung = ngaySuDung;
+	}
+
+	public String getGioSuDung() {
+		return gioSuDung;
+	}
+
+	public void setGioSuDung(String gioSuDung) {
+		this.gioSuDung = gioSuDung;
+	}
+
+	public Integer getSoLuong() {
+		return soLuong;
+	}
+
+	public void setSoLuong(Integer soLuong) {
+		this.soLuong = soLuong;
+	}
+
+	public Integer getDonGia() {
+		return donGia;
+	}
+
+	public void setDonGia(Integer donGia) {
+		this.donGia = donGia;
+	}
+
+}

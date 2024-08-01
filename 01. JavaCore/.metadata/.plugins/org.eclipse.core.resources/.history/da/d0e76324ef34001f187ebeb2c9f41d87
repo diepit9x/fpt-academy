@@ -1,0 +1,17 @@
+package fa.training.entities;
+
+public class GraphicsMonitor extends Monitor {
+    private String sRGB;
+    private String adobeRGB;
+    
+    public GraphicsMonitor() {
+	// TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public void showInfo() {
+	// TODO Auto-generated method stub
+	
+    }
+
+}

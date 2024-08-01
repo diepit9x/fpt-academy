@@ -1,0 +1,164 @@
+package fa.training.controller;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import fa.training.daos.KhachHangDAO;
+import fa.training.daos.MayDAO;
+import fa.training.entities.KhachHang;
+import fa.training.entities.May;
+import fa.training.entities.SuDungMay;
+import fa.training.models.PagedResult;
+import fa.training.models.ResponseData;
+import jakarta.validation.Valid;
+
+@Controller
+@RequestMapping(value = "/may")
+public class MayController {
+
+    @Autowired
+    private MayDAO mayDAO;
+
+    @Autowired
+    private KhachHangDAO khachHangDAO;
+
+    @GetMapping("/dang-ky-su-dung")
+    public String registerToUse(Model model) {
+	model.addAttribute("suDungMay", new SuDungMay());
+	return "pages/may/dang-ky-su-dung";
+    }
+
+    @PostMapping("/dang-ky-su-dung")
+    public String registerToUse(@RequestParam(name = "maKhachHang", defaultValue = "") String maKhachHang,
+	    @RequestParam(name = "maMay", defaultValue = "") Integer maMay, Model model) {
+	List<String> errors = new ArrayList<>();
+	May may = mayDAO.findById(maMay);
+	KhachHang khachHang = khachHangDAO.findById(maKhachHang);
+	if (may == null) {
+	    errors.add("Mã máy không hợp lệ");
+	}
+	if (khachHang == null) {
+	    errors.add("Mã khách hàng không hợp lệ");
+	}
+	if (!may.getTrangThai().equals("1")) {
+	    errors.add("Máy đang có người sử dụng");
+	}
+	if (may.getTrangThai().equals("1") && khachHang != null) {
+	    SuDungMay suDungMay = mayDAO.findSDMByKH(khachHang);
+	    if (suDungMay != null) {
+		errors.add("Khách hàng đang sử dụng máy khác. Không thể đăng kí tiếp");
+	    } else {
+		may.setTrangThai("2");
+
+		suDungMay = new SuDungMay();
+		suDungMay.setKhachHang(khachHang);
+		suDungMay.setMay(may);
+		suDungMay.setNgaybatDauSuDung(LocalDate.now());
+		suDungMay.setGioBatDauSuDung(LocalTime.now());
+		suDungMay.setThoiGianSuDung(null);
+
+		boolean status = mayDAO.registerToUse(suDungMay);
+		if (!status) {
+		    errors.add("Không thể đăng ký sử dụng máy");
+		} else {
+		    model.addAttribute("success", "Thành công");
+		}
+	    }
+	}
+	model.addAttribute("errors", errors);
+	return "pages/may/dang-ky-su-dung";
+    }
+
+    @GetMapping("/tao-moi")
+    public String create(Model model) {
+	ResponseData responseData = new ResponseData(400, null);
+	model.addAttribute("responseData", responseData);
+	model.addAttribute("may", new May());
+	return "pages/may/tao-moi";
+    }
+
+    @PostMapping("/tao-moi")
+    public String create(Model model, @Valid @ModelAttribute("may") May may, BindingResult bindingResult) {
+	boolean status = false;
+	List<String> errors = new ArrayList<>();
+	if (bindingResult.hasErrors()) {
+	    errors = bindingResult.getFieldErrors().stream().map(FieldError::getDefaultMessage).toList();
+	} else {
+	    status = mayDAO.insert(may);
+	    if (!status) {
+		errors.add("Tạo máy thất bại");
+	    }
+	}
+	model.addAttribute("errors", errors);
+	model.addAttribute("success", status);
+	model.addAttribute("may", status ? new May() : may);
+	return "pages/may/tao-moi";
+    }
+
+    @GetMapping("/cap-nhat")
+    public String update(Model model, @RequestParam Integer maMay) {
+	May may = mayDAO.findById(maMay);
+	if (may == null) {
+	    return "redirect:/may/danh-sach";
+	}
+	model.addAttribute("may", may);
+	return "pages/may/cap-nhat";
+    }
+
+    @PostMapping("/cap-nhat")
+    public String update(Model model, @Valid @ModelAttribute("may") May may, BindingResult bindingResult) {
+	boolean status = false;
+	List<String> errors = new ArrayList<>();
+	if (bindingResult.hasErrors()) {
+	    errors = bindingResult.getFieldErrors().stream().map(FieldError::getDefaultMessage).toList();
+	} else {
+	    May existingMay = mayDAO.findById(may.getMaMay());
+	    if (existingMay != null) {
+		if (existingMay.getTrangThai().equals("2") && !may.getTrangThai().equals("2")) {
+		    status = mayDAO.updateThoiGianSuDung(may);
+		} else {
+		    status = mayDAO.update(may);
+		}
+		if (!status) {
+		    errors.add("Cập nhật máy thất bại");
+		}
+	    }
+	}
+	model.addAttribute("errors", errors);
+	model.addAttribute("success", status);
+	model.addAttribute("may", may);
+	return "pages/may/cap-nhat";
+    }
+
+    @GetMapping("/danh-sach")
+    public String getAll(@RequestParam(required = false, defaultValue = "1") int page,
+	    @RequestParam(required = false) String keyword, Model model) {
+	page = page < 1 ? 1 : page;
+	int pageSize = 10;
+	PagedResult<May> pagedResult = mayDAO.findAllMay(keyword, page, pageSize);
+	ResponseData responseData = new ResponseData(200, pagedResult);
+	model.addAttribute("responseData", responseData);
+	model.addAttribute("keyword", keyword);
+	return "pages/may/danh-sach";
+    }
+
+    @GetMapping("/xoa-may")
+    public String update(@RequestParam Integer maMay) {
+	mayDAO.delete(maMay);
+	return "redirect:/may/danh-sach";
+    }
+
+}

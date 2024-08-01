@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Layout</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <style>
+      body {
+        margin: auto 50px;
+      }
+      .news-item,
+      .agent-item {
+        display: flex;
+        margin-bottom: 15px;
+      }
+      .news-image,
+      .agent-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-right: 15px;
+        border: 7px solid #eeeeeed3;
+      }
+      .news-content,
+      .agent-content {
+        flex: 1;
+      }
+      .welcome-content img {
+        width: 100%;
+        height: 200px;
+        border: 7px solid #eeeeeed3;
+      }
+      .news-item,
+      .agent-item {
+        border-bottom: 1px dotted #dee2e6 !important;
+        padding-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row mt-5">
+        <div class="col-md-4">
+          <div class="d-flex justify-content-between mb-4">
+            <h3 class="mt-auto mb-auto">News</h3>
+            <a class="mt-auto mb-auto" href="#">All News</a>
+          </div>
+          <div class="news-item">
+            <img src="assets/img/land.jfif" alt="News 1" class="news-image" />
+            <div class="news-content">
+              <h6>Donec convallis accumsan elit, ac interdum.</h6>
+              <small>Feb 14, 2013</small>
+              <p>Curabitur ut dui lacus. Pellentesque habitant morbi tristique senectus et malesuada. <a href="#">Read More</a></p>
+            </div>
+          </div>
+          <div class="news-item">
+            <img src="assets/img/land.jfif" alt="News 2" class="news-image" />
+            <div class="news-content">
+              <h6>Donec convallis accumsan elit, ac interdum.</h6>
+              <small>Feb 14, 2013</small>
+              <p>Curabitur ut dui lacus. Pellentesque habitant morbi tristique senectus et malesuada. <a href="#">Read More</a></p>
+            </div>
+          </div>
+          <div class="news-item">
+            <img src="assets/img/land.jfif" alt="News 3" class="news-image" />
+            <div class="news-content">
+              <h6>Donec convallis accumsan elit, ac interdum.</h6>
+              <small>Feb 14, 2013</small>
+              <p>Curabitur ut dui lacus. Pellentesque habitant morbi tristique senectus et malesuada. <a href="#">Read More</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <h3 class="mb-4">Welcome</h3>
+          <div class="welcome-content">
+            <img src="assets/img/land2.jpg" class="mb-3" alt="Welcome" />
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate aliquam labore doloremque laboriosam fugiat aliquid similique molestias vero nesciunt minus, magnam, quidem facere ratione cum.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellat et possimus pariatur. Labore rerum voluptas sequi nisi asperiores possimus totam minus optio culpa id nostrum iste, amet mollitia ipsam.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="d-flex justify-content-between mb-4">
+            <h3 class="mt-auto mb-auto">Agents</h3>
+            <a class="mt-auto mb-auto" href="#">All Agents</a>
+          </div>
+          <div class="agent-item">
+            <img src="assets/img/agent.avif" alt="Agent 1" class="agent-image" />
+            <div class="agent-content">
+              <h6>Jason Clint</h6>
+              <p>Curabitur ut dui lacus. Pellentesque habitant morbi tristique senectus et malesuada.</p>
+              <a href="#">Contact agent</a>
+            </div>
+          </div>
+          <div class="agent-item">
+            <img src="assets/img/agent.avif" alt="Agent 2" class="agent-image" />
+            <div class="agent-content">
+              <h6>Jessica Alman</h6>
+              <p>Curabitur ut dui lacus. Pellentesque habitant morbi tristique senectus et malesuada.</p>
+              <a href="#">Contact agent</a>
+            </div>
+          </div>
+          <div class="agent-item">
+            <img src="assets/img/agent.avif" alt="Agent 3" class="agent-image" />
+            <div class="agent-content">
+              <h6>Dexter Lobster</h6>
+              <p>Curabitur ut dui lacus. Pellentesque habitant morbi tristique senectus et malesuada.</p>
+              <a href="#">Contact agent</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

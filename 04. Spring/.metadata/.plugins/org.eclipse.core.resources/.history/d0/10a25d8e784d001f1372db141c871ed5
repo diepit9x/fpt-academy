@@ -1,0 +1,179 @@
+<%@page import="entities.SuDungDichVuMay"%>
+<%@page import="models.PagedResult"%>
+<%@page import="entities.KhachHang"%>
+<%@page import="java.util.List"%>
+<%@page import="models.ResponseData"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	//set title
+	request.setAttribute("pageTitle", "Tạo máy mới");
+	String keyword = (String) request.getAttribute("keyword");
+
+    ResponseData responseData = request.getAttribute("responseData") != null ? ((ResponseData) request.getAttribute("responseData")) : new ResponseData(204, null);
+    //PagedResult<> pagedResult = (PagedResult<KhachHang>) responseData.getObject();
+    
+    List<SuDungDichVuMay> sudungdichvumayList = (List<SuDungDichVuMay>)responseData.getObject();
+    //int currentPage =pagedResult.getCurrentPage();
+    //int totalPages = pagedResult.getTotalPages();
+%>
+<jsp:include page="../../header.jsp" />
+<style>
+    .container {
+        margin: 10px 15px 10px 15px;
+        max-width: 97%;
+    }
+    </style>
+<h1 class="pb-2 border-bottom">Danh sách sử dụng dịch vụ</h1>
+<div class="flex-row">
+  <form action="/may/tim-kiem" method="POST">
+    <div class="input-group mb-2 mt-4">
+      <input type="text" class="form-control" name="keyword" placeholder="Tìm kiếm..." />
+      <div class="input-group-append">
+        <button class="btn btn-outline-info" id="searchBtn" type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="flex-row">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Mã KH</th>
+          <th>Tên KH</th>
+          <th>Mã máy</th>
+          <th>Vị trí</th>
+          <th>Trạng thái</th>
+          <th>Ngày BĐSD</th>
+          <th>Giờ BĐSD</th>
+          <th>Thời gian SD</th>
+          <th>Mã DV</th>
+          <th>Ngày SDDV</th>
+          <th>Giờ SDDV</th>
+          <th>Số lượng</th>
+          <th>Tổng tiền</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+      
+      <% 
+    if (sudungdichvumayList != null) {
+        for (SuDungDichVuMay sudungdichvumay : sudungdichvumayList) { 
+%>
+    <tr>
+        <td><%= sudungdichvumay.getMaKH() %></td>
+        <td><%= sudungdichvumay.getTenKH() %></td>
+        <td><%= sudungdichvumay.getMaMay() %></td>
+        <td><%= sudungdichvumay.getViTri() %></td>
+        <td><%= sudungdichvumay.getTrangThai() %></td>
+        <td><%= sudungdichvumay.getNgaybatDauSuDung() %></td>
+        <td><%= sudungdichvumay.getGioBatDauSuDung() %></td>
+        <td><%= sudungdichvumay.getThoiGianSuDung() %></td>
+        <td><%= sudungdichvumay.getMaDV() %></td>
+        <td><%= sudungdichvumay.getNgaySuDung() %></td>
+        <td><%= sudungdichvumay.getGioSuDung() %></td>
+        <td><%= sudungdichvumay.getSoLuong() %></td>
+        <td><%= sudungdichvumay.getDonGia() %></td>
+        <td>
+        </td>
+    </tr>
+<% 
+        }
+    }
+%>
+      
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link">Previous</a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<script>
+  var data = [
+    {
+      maKH: "KH001",
+      tenKH: "Nguyen Van A",
+      maMay: "M01",
+      viTri: "T1",
+      trangThai: "Rảnh",
+      ngayBDSD: "2024-07-20",
+      gioBDSD: "08:00",
+      thoiGianSD: "2h",
+      maDV: "DV001",
+      ngaySDDV: "2024-07-20",
+      gioSDDV: "08:00",
+      soLuong: 2,
+      tongTien: "200000",
+    },
+    {
+      maKH: "KH002",
+      tenKH: "Tran Thi B",
+      maMay: "M02",
+      viTri: "T2",
+      trangThai: "Rảnh",
+      ngayBDSD: "2024-07-21",
+      gioBDSD: "09:00",
+      thoiGianSD: "3h",
+      maDV: "DV002",
+      ngaySDDV: "2024-07-21",
+      gioSDDV: "09:00",
+      soLuong: 3,
+      tongTien: "300000",
+    },
+  ];
+
+  function populateTable(data) {
+    var $tableBody = $("#table-body");
+    $tableBody.empty();
+
+    data.forEach(function (item, index) {
+      var row = `
+        <tr>
+          <td>${item.maKH}</td>
+          <td>${item.tenKH}</td>
+          <td>${item.maMay}</td>
+          <td>${item.viTri}</td>
+          <td>${item.trangThai}</td>
+          <td>${item.ngayBDSD}</td>
+          <td>${item.gioBDSD}</td>
+          <td>${item.thoiGianSD}</td>
+          <td>${item.maDV}</td>
+          <td>${item.ngaySDDV}</td>
+          <td>${item.gioSDDV}</td>
+          <td>${item.soLuong}</td>
+          <td>${item.tongTien}</td>
+          <td>
+            <button class="btn btn-warning edit-may"><i class="fa fa-pencil-square-o"></i></button>
+            <button class="btn btn-danger delete-may" data-index="${index}"><i class="fa fa-trash-o"></i></button>
+          </td>
+        </tr>
+      `;
+      $tableBody.append(row);
+    });
+
+    // Add event
+    $tableBody.on("click", ".delete-may", function () {
+      var index = $(this).data("index");
+      var confirmDelete = confirm("Bạn có chắc chắn muốn xóa mục này không?");
+      if (confirmDelete) {
+        data.splice(index, 1);
+        populateTable(data);
+      }
+    });
+  }
+
+  //populateTable(data);
+</script>
+<jsp:include page="../../footer.jsp" />

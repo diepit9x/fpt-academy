@@ -1,0 +1,15 @@
+package fa.training.entities;
+
+public class GamingMonitor extends Monitor {
+
+    public GamingMonitor() {
+	super();
+    }
+
+    @Override
+    public void showInfo() {
+	// TODO Auto-generated method stub
+	
+    }
+
+}

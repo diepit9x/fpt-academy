@@ -1,0 +1,12 @@
+package fa.training.dto;
+
+import fa.training.entities.Candidate;
+
+public interface CandidateDAO {
+    
+    boolean addCandidate(Candidate candidate) throws Exception;
+    
+    
+    
+
+}

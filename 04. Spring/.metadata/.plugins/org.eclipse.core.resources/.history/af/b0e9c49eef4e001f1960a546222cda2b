@@ -1,0 +1,9 @@
+package fa.training.daos;
+
+import fa.training.entities.DichVu;
+import fa.training.models.PagedResult;
+
+public interface DichVuDAO {
+	PagedResult<DichVu> findAll(String search, int page, int pageSize);
+	
+}

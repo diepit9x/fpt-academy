@@ -1,0 +1,24 @@
+package fa.training.service;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReadFileService {
+
+    public List<String> readFile() {
+	    List<String> strings = new ArrayList<>();
+	    try (BufferedReader br = new BufferedReader(new FileReader())) {
+		String str;
+		while ((str = br.readLine()) != null) {
+		    strings.add(str);
+		}
+	    } catch (IOException e) {
+		System.err.println(e.getMessage());
+	    }
+	    return strings;
+}
+
+}

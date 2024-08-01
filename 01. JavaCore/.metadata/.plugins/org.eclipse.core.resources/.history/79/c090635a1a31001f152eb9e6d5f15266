@@ -1,0 +1,14 @@
+package fa.training.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import fa.training.entities.Customer;
+
+public interface CustomerDAO {
+    List<Customer> getAllCustomer() throws SQLException;
+    Customer findCustomerById(int customerId) throws SQLException;
+    boolean addCustomer(Customer customer) throws SQLException;
+    boolean deleteCustomer(int customerId) throws SQLException;
+    boolean updateCustomer(Customer customer) throws SQLException;
+}

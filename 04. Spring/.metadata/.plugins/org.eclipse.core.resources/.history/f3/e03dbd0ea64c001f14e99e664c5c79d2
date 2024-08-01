@@ -1,0 +1,18 @@
+package models;
+
+public class SelectData {
+	public static String trangThai(String status) {
+		switch (status) {
+		case "1":
+			return "Rảnh";
+		case "2":
+			return "Bận";
+		case "3":
+			return "Dùng bình thường";
+		case "4":
+			return "Đang sửa chữa";
+		default:
+			return "undefined";
+		}
+	}
+}

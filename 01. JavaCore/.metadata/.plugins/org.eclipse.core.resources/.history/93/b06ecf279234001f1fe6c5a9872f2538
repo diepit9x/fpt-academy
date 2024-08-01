@@ -1,0 +1,38 @@
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import fa.training.util.DBUtils;
+
+public class ExampleDTO {
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private CallableStatement callableStatement = null;
+    private ResultSet results = null;
+    
+    public void getAll() throws SQLException {
+	try {
+	    connection = DBUtils.getInstance().getConnection();
+	    String sql = "SELECT * FROM Customer";
+	    preparedStatement = connection.prepareStatement(sql);
+	    results = preparedStatement.executeQuery();
+	    while (results.next()) {
+		//set to object attributies
+	    }
+	} finally {
+	    try {
+		if (connection != null) {
+		    connection.close();
+		}
+		if (preparedStatement != null) {
+		    preparedStatement.close();
+		}
+	    } catch (SQLException e) {
+		e.printStackTrace();
+	    }
+	}
+    }
+
+}

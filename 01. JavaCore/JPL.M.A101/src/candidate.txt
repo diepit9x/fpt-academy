@@ -1,0 +1,5 @@
+ExperienceCandidate [firstName=name, lastName=123, birthDate=12/12/1212, address=123, phone=123, email=123, yearsExperience=123, professionalSkill=123]
+ExperienceCandidate [firstName=name, lastName=123, birthDate=12/12/0111, address=123, phone=123, email=13, yearsExperience=13, professionalSkill=123]
+FresherCandidate [firstName=adas, lastName=ádasd, birthDate=10/01/0001, address=123, phone=123, email=123, graduationDate=10/12/2222, graduationRank=123, education=123]
+FresherCandidate [firstName=name\, lastName=123, birthDate=10/10/0010, address=12312, phone=123, email=123, graduationDate=10/10/0020, graduationRank=123, education=123]
+ExperienceCandidate [firstName=a, lastName=ád, birthDate=12/12/0012, address=12, phone=3123, email=123, yearsExperience=123, professionalSkill=123]

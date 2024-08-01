@@ -1,0 +1,94 @@
+package fa.training.readfile;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import fa.training.exception.EmailException;
+import fa.training.util.PhoneException;
+
+public class ReadFile {
+    private static final String FILE_NAME_IN = "src/fa/training/readfile/SDT.csv";
+    private static final String FILE_NAME_OUT = "src/fa/training/readfile/error.txt";
+    
+    
+    public List<String> readFile() {
+	    List<String> students = new ArrayList<>();
+	    try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_IN))) {
+		String student;
+		while ((student = br.readLine()) != null) {
+		   students.add(student);
+		}
+	    } catch (IOException e) {
+		System.err.println(e.getMessage());
+	    }
+	    return students;
+    }
+    
+    public List<Student> convertStudent(List<String> studentString) {
+	List<Student>students = new ArrayList<>();
+	List<String> errors = new ArrayList<>();
+	String[] stdArr;
+	Student student = new Student();
+	
+	for (int i = 0; i < studentString.size(); i++) {
+	    stdArr = studentString.get(i).split(",");
+	    String error = "";
+	    student.setStdNo(stdArr[0]);
+	    student.setStdName(stdArr[1]);
+	    try {
+		student.setPhone(stdArr[2]);
+	    } catch (PhoneException e) {
+		error.concat("StdPhone");
+	    }
+	    try {
+		student.setEmail(stdArr[3]);
+	    } catch (EmailException e) {
+		if (error != "") {
+		    error.concat(", StdEmail");
+		} else {
+		    error.concat("StdEmail");
+		}
+		
+	    }
+	    try {
+		student.setGradePoint(stdArr[4]);
+	    } catch (NumberFormatException e) {
+		if (error != "") {
+		    error.concat(", GradePoint");
+		} else {
+		    error.concat("GradePoint");
+		}
+	    }
+	    //check
+	    if (error != "") {
+		error = "Line " + (i +1) + ": co loi sai dinh dang " + error;
+		errors.add(error);
+	    } else {
+		students.add(student);
+	    }
+	}
+	if (!errors.isEmpty()) {
+	    writeFile(errors);
+	}
+	return students;
+    }
+    
+    public void writeFile(List<String> candidates) {
+	    try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(FILE_NAME_OUT))) {
+		for (String candidate : candidates) {
+		    bos.write(candidate.getBytes(StandardCharsets.UTF_8));
+		    bos.write(System.lineSeparator().getBytes(StandardCharsets.UTF_8));
+		}
+	    } catch (IOException e) {
+		System.err.println(e.getMessage());
+	    }
+    }
+
+}

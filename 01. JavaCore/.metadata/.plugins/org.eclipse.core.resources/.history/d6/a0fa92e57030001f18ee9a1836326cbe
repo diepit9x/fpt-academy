@@ -1,0 +1,17 @@
+package baitap2.yeucau2;
+
+public class ArrayTask implements Runnable {
+    Sum sum;
+    int[] arr;
+    public  ArrayTask(Sum sum, int[] arr) {
+	this.sum = sum;
+	this.arr = arr;
+    }
+
+    @Override
+    public void run() {
+	int[] arr = new int[] {1,2,3,4,6,7,8,9,10};
+	sum.caculator(arr);
+    }
+
+}

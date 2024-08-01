@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.2</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <script src="assets/jquery/jquery-3.7.1.min.js"></script>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+      .total-row {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Thông Tin Sản Phẩm</h2>
+    <table>
+      <tr>
+        <th>Ảnh</th>
+        <th>Tên Sản Phẩm</th>
+        <th>Mã Sản Phẩm</th>
+        <th>Đơn Giá</th>
+        <th>Số Lượng</th>
+        <th>Thành Tiền</th>
+      </tr>
+      <tr>
+        <td><img src="assets/img/product.png" alt="Sản phẩm" width="50" /></td>
+        <td>Product Name</td>
+        <td>123456</td>
+        <td class="price">100000</td>
+        <td>
+          <button class="minus">-</button>
+          <input type="text" class="quantity" value="1" readonly />
+          <button class="plus">+</button>
+        </td>
+        <td class="total">100000</td>
+      </tr>
+      <tr>
+        <td><img src="assets/img/product.png" alt="Sản phẩm" width="50" /></td>
+        <td>Product Name</td>
+        <td>123456</td>
+        <td class="price">100000</td>
+        <td>
+          <button class="minus">-</button>
+          <input type="text" class="quantity" value="1" readonly />
+          <button class="plus">+</button>
+        </td>
+        <td class="total">100000</td>
+      </tr>
+      <tr class="total-row">
+        <td colspan="5">Tổng Cộng</td>
+        <td class="grand-total">200000</td>
+      </tr>
+    </table>
+
+    <script>
+      $(document).ready(function () {
+        function updateTotal(row) {
+          let price = parseInt(row.find(".price").text());
+          let quantity = parseInt(row.find(".quantity").val());
+          let total = price * quantity;
+          row.find(".total").text(total);
+          updateGrandTotal();
+        }
+
+        function updateGrandTotal() {
+          let grandTotal = 0;
+          $(".total").each(function () {
+            grandTotal += parseInt($(this).text());
+          });
+          $(".grand-total").text(grandTotal);
+        }
+
+        $(".plus").click(function () {
+          let row = $(this).closest("tr");
+          let quantity = parseInt(row.find(".quantity").val());
+          quantity += 1;
+          row.find(".quantity").val(quantity);
+          updateTotal(row);
+        });
+
+        $(".minus").click(function () {
+          let row = $(this).closest("tr");
+          let quantity = parseInt(row.find(".quantity").val());
+          if (quantity > 1) {
+            quantity -= 1;
+            row.find(".quantity").val(quantity);
+            updateTotal(row);
+          } else {
+            alert("Số lượng sản phẩm tối thiểu là 1");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

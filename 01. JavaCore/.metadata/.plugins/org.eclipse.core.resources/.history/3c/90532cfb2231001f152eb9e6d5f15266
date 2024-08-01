@@ -1,0 +1,9 @@
+package fa.training.exception;
+
+public class DataNotFoundException {
+
+    public DataNotFoundException() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

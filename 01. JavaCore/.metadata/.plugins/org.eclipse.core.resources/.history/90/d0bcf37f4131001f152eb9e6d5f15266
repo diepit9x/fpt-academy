@@ -1,0 +1,9 @@
+package fa.training.service;
+
+import fa.training.dao.OrderDAO;
+import fa.training.dao.OrderDAOImpl;
+
+public class OrderService {
+    OrderDAO orderDAO = new OrderDAOImpl();
+
+}

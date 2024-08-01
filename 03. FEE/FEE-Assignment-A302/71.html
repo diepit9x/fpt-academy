@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <script src="assets/jquery/jquery-3.7.1.min.js"></script>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form id="equation-form">
+        <label>
+          <input type="radio" name="equation-type" value="ptb1" checked />
+          ax + b = 0
+        </label>
+        <br />
+        <label>
+          <input type="radio" name="equation-type" value="ptb2" />
+          ax2 + bx + c = 0
+        </label>
+        <br /><br />
+        <label for="a">a:</label>
+        <input type="text" id="a" name="a" /><br /><br />
+        <label for="b">b:</label>
+        <input type="text" id="b" name="b" /><br /><br />
+        <label for="c" id="label-c" class="hidden">c:</label>
+        <input type="text" id="c" name="c" class="hidden" /><br /><br />
+        <button type="submit">Tính toán</button>
+      </form>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        //an input c
+        $('input[name="equation-type"]').change(function () {
+          if ($(this).val() === "ptb1") {
+            $("#label-c, #c").addClass("hidden");
+          } else {
+            $("#label-c, #c").removeClass("hidden");
+          }
+        });
+
+        $("#equation-form").submit(function (event) {
+          event.preventDefault();
+
+          const a = $("#a").val();
+          const b = $("#b").val();
+          const c = $("#c").val();
+          const equationType = $('input[name="equation-type"]:checked').val();
+
+          if (!isNumeric(a) || !isNumeric(b) || (equationType === "ptb2" && !isNumeric(c))) {
+            alert("a, b, c phai la so.");
+            return;
+          }
+
+          let result;
+          if (equationType === "ptb1") {
+            result = giaiPtb1(parseFloat(a), parseFloat(b));
+          } else {
+            result = giaiPtb2(parseFloat(a), parseFloat(b), parseFloat(c));
+          }
+
+          $("#result").html(result);
+        });
+
+        function isNumeric(value) {
+          return !isNaN(value) && value.trim() !== "";
+        }
+
+        function giaiPtb1(a, b) {
+          if (a === 0) {
+            if (b === 0) {
+              return "Phuong trinh vo so nghiem.";
+            } else {
+              return "Phuong trinh vo nghiem.";
+            }
+          } else {
+            const x = -b / a;
+            return `x = ${x}.`;
+          }
+        }
+
+        function giaiPtb2(a, b, c) {
+          if (a === 0) {
+            return giaiPtb1(b, c);
+          }
+          const delta = b * b - 4 * a * c;
+          if (delta < 0) {
+            return "Phuong trinh vo nghiem";
+          } else if (delta === 0) {
+            const x = -b / (2 * a);
+            return `x = ${x}.`;
+          } else {
+            const x1 = (-b + Math.sqrt(delta)) / (2 * a);
+            const x2 = (-b - Math.sqrt(delta)) / (2 * a);
+            return `x1 = ${x1}, x2 = ${x2}.`;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

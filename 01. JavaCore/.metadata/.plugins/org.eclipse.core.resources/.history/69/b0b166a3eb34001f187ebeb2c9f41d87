@@ -1,0 +1,9 @@
+package fa.training.util;
+
+public class SQLCommand {
+
+    public SQLCommand() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

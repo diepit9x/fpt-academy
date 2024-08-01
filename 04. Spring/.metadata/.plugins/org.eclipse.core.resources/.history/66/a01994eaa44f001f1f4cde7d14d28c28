@@ -1,0 +1,34 @@
+package fa.training.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import fa.training.daos.KhachHangDAO;
+import fa.training.entities.KhachHang;
+
+@Controller
+@RequestMapping(value = "/khach-hang")
+public class KhachHangController {
+	@Autowired
+	private KhachHangDAO khachHangDAO;
+
+	@GetMapping("/tao-moi")
+	public String create(Model model) {
+		model.addAttribute("khachHang", new KhachHang());
+		return "pages/khach-hang/tao-moi";
+	}
+
+	public String create(Model model, @ModelAttribute KhachHang khachHang) {
+		boolean status = khachHangDAO.insert(khachHang);
+		if (status) {
+			model.addAttribute("success", true);
+			return "redirect:/khach-hang/tao-moi";
+		}
+		model.addAttribute("khachHang", khachHang);
+		return "pages/khach-hang/tao-moi";
+	}
+}

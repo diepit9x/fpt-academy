@@ -1,0 +1,20 @@
+package fa.training.service;
+
+import java.util.Date;
+
+import fa.training.dto.CandidateDAO;
+import fa.training.dto.CandidateDAOImpl;
+import fa.training.entities.Candidate;
+import fa.training.entities.Experience;
+
+public class CandidateService {
+
+public static void main(String[] args) {
+    CandidateDAO candidateDAO = new CandidateDAOImpl();
+    
+   Candidate c1 = new Experience(1, "fresh1", new Date(2020, 1, 1), "0987654321", "email@123", 1, 2, "skill");
+   candidateDAO.addCandidate(c1)
+    
+}
+
+}

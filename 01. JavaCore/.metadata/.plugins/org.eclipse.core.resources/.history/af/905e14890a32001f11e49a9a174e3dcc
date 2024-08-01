@@ -1,0 +1,9 @@
+package fa.training.exception;
+
+public class BirthDayException {
+
+    public BirthDayException() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

@@ -1,0 +1,23 @@
+package fa.training.util;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Validator {
+    private static Matcher matcher;
+    private static Pattern pattern;
+    
+    public static boolean isMonitorId(String monitorId) {
+	pattern = Pattern.compile(Constant.MONITORID_REGEX);
+	matcher = pattern.matcher(monitorId);
+	return matcher.matches();
+    }
+    
+    public static boolean isBrand(String brand) {
+	return brand.equalsIgnoreCase("Dell") || brand.equals("HP") || brand.equals("Asus") || brand.equals("viewSonic") || brand.equals("Lenovo") || brand.equals("Gigabyte");
+    }
+
+    public static void main(String[] args) {
+	System.err.println(isBrand("ss"));
+    }
+}

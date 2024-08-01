@@ -1,0 +1,32 @@
+package fa.training.entities;
+
+import java.sql.Date;
+
+public class NormalMonitor extends Monitor {
+    private String touchScreen;
+    
+    public NormalMonitor() {
+	super();
+    }
+
+    public NormalMonitor(int type, String monitorId, String name, String brand, String size, String resolution,
+	    String panel, Date importDate, int warrantYear, int price, String touchScreen) {
+	super(type, monitorId, name, brand, size, resolution, panel, importDate, warrantYear, price);
+	this.touchScreen = touchScreen;
+    }
+
+    public String getTouchScreen() {
+        return touchScreen;
+    }
+
+    public void setTouchScreen(String touchScreen) {
+        this.touchScreen = touchScreen;
+    }
+
+    @Override
+    public void showInfo() {
+	super.showInfo();
+	System.out.println("TouchScreen: " + touchScreen);
+    }
+
+}

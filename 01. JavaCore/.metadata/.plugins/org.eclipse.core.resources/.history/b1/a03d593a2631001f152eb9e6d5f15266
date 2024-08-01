@@ -1,0 +1,48 @@
+package fa.training.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import fa.training.dao.CustomerDAO;
+import fa.training.dao.CustomerDAOImpl;
+import fa.training.entities.Customer;
+import fa.training.exception.DataNotFoundException;
+import fa.training.util.Constant;
+
+public class CustomerService {
+    private CustomerDAO customerDAO = new CustomerDAOImpl();
+    
+    public void getAllCustomer() throws SQLException, DataNotFoundException {
+	List<Customer> customers = customerDAO.getAllCustomer();
+	if (customers.isEmpty()) {
+	    throw new DataNotFoundException(Constant.CUSTOMER_DATA_IS_EMPTY);
+	}
+	System.out.println(String.format("%-20s %s","Customer ID", "Customer Name"));
+	System.out.println("----------------------------------------------");
+	for (Customer customer : customers) {
+	    String stringFormat = String.format("%-30d %s", customer.getCustomerId(), customer.getCustomerName());
+	    System.out.println(stringFormat);
+	}
+    }
+    
+    public void getCustomerById(int customerId) throws SQLException, DataNotFoundException {
+	Customer customer = customerDAO.findCustomerById(customerId);
+	if (customer == null) {
+	    
+	}
+    }
+    
+    
+    public static void main(String[] args) {
+	CustomerService customerService = new CustomerService();
+	try {
+	    customerService.getAllCustomer();
+	} catch (SQLException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	} catch (DataNotFoundException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
+    }
+}

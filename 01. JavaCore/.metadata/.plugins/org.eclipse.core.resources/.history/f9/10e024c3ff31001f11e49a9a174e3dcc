@@ -1,0 +1,15 @@
+package fa.training.entities;
+
+public class Experience extends Candidate {
+
+    public Experience() {
+	super();
+    }
+
+    @Override
+    public void showMe() {
+	// TODO Auto-generated method stub
+	
+    }
+
+}

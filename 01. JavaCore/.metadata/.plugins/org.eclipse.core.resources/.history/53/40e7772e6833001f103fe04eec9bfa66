@@ -1,0 +1,60 @@
+package fa.training.service;
+
+import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.sql.Date;
+
+import fa.training.dao.CandidateDAO;
+import fa.training.dao.CandidateDAOImpl;
+import fa.training.entities.Candidate;
+import fa.training.entities.Experience;
+import fa.training.entities.Fresher;
+import fa.training.entities.Intern;
+
+public class CandidateService {
+
+public static void main(String[] args) {
+    CandidateDAO candidateDAO = new CandidateDAOImpl();
+    
+   Candidate c1 = new Experience(1, "ex1", Date.valueOf("2003-10-14"), "0987654321", "email@123", 2, "skill");
+   Candidate c2 = new Fresher(2, "f2", Date.valueOf("2003-10-14"), "0987654321", "email@123", Date.valueOf("2003-10-14"), 2, "skill");
+   Candidate c3 = new Experience(1, "exxxxxxxxx", Date.valueOf("2003-10-20"), "0987654321111", "email@123222", 2, "skill22222");
+   Candidate c4= new Experience(1, "ex1", Date.valueOf("2003-10-14"), "0987654321", "email@123", 2, "skill");
+   Candidate c5 = new Intern(15, "internupdate2", Date.valueOf("2000-1-1"), "099999up2", "email@123up2", "itup2", 1, "bkdnup2");
+   
+   
+   
+   
+//   Set<Candidate> candidates = new HashSet<>();
+//   candidates.add(c1);
+//   candidates.add(c2);
+//   candidates.add(c3);
+//   candidates.add(c4);
+//   
+//   
+//   candidates.forEach(System.out::println);
+   
+   
+  // System.out.println("candidate: " + c1.getCandidateCount());
+   
+   
+      try {
+//    candidateDAO.updateCandidate(c5);
+	  List<Candidate> candidates = candidateDAO.getAllCandidate();
+	  for (Candidate candidate : candidates) {
+	    System.out.println(candidate.showMe());
+	}
+
+} catch (SQLException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+} catch (Exception e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+}
+    
+}
+
+}

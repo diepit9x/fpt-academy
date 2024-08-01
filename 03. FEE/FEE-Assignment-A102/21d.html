@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.1d</title>
+    <style>
+      .container {
+        margin: auto 10%;
+      }
+      ol {
+        counter-reset: li;
+        list-style: none;
+        padding: 0;
+      }
+
+      ol ol {
+        margin: 0 0 0 2em;
+      }
+      .rectangle-list a {
+        position: relative;
+        display: block;
+        padding: 0.4em 0.4em 0.4em 0.8em;
+        margin: 0.5em 0 0.5em 2.5em;
+        background: #ddd;
+        color: #444;
+        text-decoration: none;
+        transition: all 0.3s ease-out;
+      }
+
+      .rectangle-list a:hover {
+        background: #eee;
+      }
+
+      .rectangle-list a:before {
+        content: counter(li);
+        counter-increment: li;
+        position: absolute;
+        left: -2.5em;
+        top: 50%;
+        margin-top: -1em;
+        background: #fa8072;
+        height: 2em;
+        width: 2em;
+        line-height: 2em;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .rectangle-list a:after {
+        position: absolute;
+        content: "";
+        border: 0.5em solid transparent;
+        left: -1em;
+        top: 50%;
+        margin-top: -0.5em;
+        transition: all 0.3s ease-out;
+      }
+
+      .rectangle-list a:hover:after {
+        left: -0.5em;
+        border-left-color: #fa8072;
+      }
+      .circle-list li {
+        padding: 2.5em;
+        border-bottom: 1px dashed #ccc;
+      }
+
+      .circle-list h2 {
+        position: relative;
+        margin: 0;
+      }
+
+      .circle-list p {
+        margin: 0;
+      }
+
+      .circle-list h2:before {
+        content: counter(li);
+        counter-increment: li;
+        position: absolute;
+        z-index: -1;
+        left: -1.3em;
+        top: -0.8em;
+        background: #f5f5f5;
+        height: 1.5em;
+        width: 1.5em;
+        border: 0.1em solid rgba(0, 0, 0, 0.05);
+        text-align: center;
+        font: italic bold 1em/1.5em Georgia, Serif;
+        color: #ccc;
+        border-radius: 1.5em;
+        transition: all 0.2s ease-out;
+      }
+
+      .circle-list li:hover h2:before {
+        background-color: #ffd797;
+        border-color: rgba(0, 0, 0, 0.08);
+        border-width: 0.2em;
+        color: #444;
+        transform: scale(1.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ol class="rectangle-list">
+        <li><a href="">List item</a></li>
+        <li><a href="">List item</a></li>
+        <li>
+          <a href="">List item</a>
+          <ol>
+            <li><a href="">List sub item</a></li>
+            <li><a href="">List sub item</a></li>
+            <li><a href="">List sub item</a></li>
+          </ol>
+        </li>
+        <li><a href="">List item</a></li>
+        <li><a href="">List item</a></li>
+      </ol>
+    </div>
+  </body>
+</html>

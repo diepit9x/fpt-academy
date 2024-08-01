@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!-- Khai báo cấu hình Hibernate -->
+<hibernate-configuration>
+    <session-factory>
+        <!-- Cấu hình kết nối cơ sở dữ liệu -->
+        
+        <!-- Định nghĩa driver class của SQL Server -->
+        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        
+        <!-- Tên người dùng kết nối cơ sở dữ liệu -->
+        <property name="hibernate.connection.username">sa</property>
+        
+        <!-- Mật khẩu kết nối cơ sở dữ liệu -->
+        <property name="hibernate.connection.password">123456789</property>
+        
+        <!-- Định nghĩa dialect của SQL Server, cho biết Hibernate cách tạo các câu lệnh SQL cho cơ sở dữ liệu này -->
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        
+        <!-- URL kết nối cơ sở dữ liệu -->
+        <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=orm_sa102;encrypt=true;trustServerCertificate=true</property>
+        
+        <!-- Schema mặc định sử dụng trong cơ sở dữ liệu -->
+        <property name="hibernate.default_schema">dbo</property>
+        
+        <!-- Hiển thị câu lệnh SQL trên console -->
+        <property name="show_sql">true</property>
+        
+        <!-- Tự động cập nhật schema của cơ sở dữ liệu -->
+        <!-- Các giá trị có thể: validate | update | create | create-drop -->
+        <property name="hbm2ddl.auto">update</property>
+        
+        <!-- Cấu hình lazy loading để tải dữ liệu chỉ khi cần thiết -->
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
+        
+        <!-- Khai báo các class entity để Hibernate quản lý -->
+        <mapping class="fa.training.entities.NhanVien" />
+        <mapping class="fa.training.entities.PhongBan" />
+        <mapping class="fa.training.entities.VacXin" />
+        <mapping class="fa.training.entities.ThongTinTiemChung" />
+        
+    </session-factory>
+</hibernate-configuration>
+

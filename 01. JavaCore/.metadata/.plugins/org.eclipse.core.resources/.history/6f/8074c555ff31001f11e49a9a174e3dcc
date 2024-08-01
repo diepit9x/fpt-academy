@@ -1,0 +1,9 @@
+package fa.training.entities;
+
+public class Experience {
+
+    public Experience() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

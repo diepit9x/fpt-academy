@@ -1,0 +1,43 @@
+package fa.training.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import fa.training.entities.LineItem;
+
+public class LineItemDAOImpl implements LineItemDAO {
+
+    public LineItemDAOImpl() {
+    }
+
+    @Override
+    public List<LineItem> getAllItemsByOrderId(int orderId) throws SQLException {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    @Override
+    public Double computeOrderTotal(int orderId) throws SQLException {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
+    @Override
+    public boolean addLineItem(LineItem lineItem) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+    @Override
+    public boolean updateLineItem(int orderId, int productId, LineItem lineItem) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+    @Override
+    public boolean deleteLineItem(int orderId, int productId) throws SQLException {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+}

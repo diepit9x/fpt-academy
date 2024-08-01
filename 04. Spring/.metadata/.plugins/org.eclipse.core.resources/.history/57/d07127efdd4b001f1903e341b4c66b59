@@ -1,0 +1,52 @@
+package utils;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.boot.registry.ServiceRegistry;
+
+public class HibernateUtil {
+    private static SessionFactory sessionFactory;
+
+    static {
+        try {
+            // Tạo Configuration từ mã Java
+            Configuration configuration = new Configuration();
+            configuration.setProperty("hibernate.connection.driver_class", "com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            configuration.setProperty("hibernate.connection.url", "jdbc:sqlserver://localhost:1433;databaseName=ATJB_otp1;encrypt=true;trustServerCertificate=true");
+            configuration.setProperty("hibernate.connection.username", "sa");
+            configuration.setProperty("hibernate.connection.password", "123456789");
+            configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServerDialect");
+            configuration.setProperty("hibernate.default_schema", "dbo");
+            configuration.setProperty("show_sql", "true");
+            configuration.setProperty("hbm2ddl.auto", "update");
+
+            // Thêm các lớp entity
+            configuration.addAnnotatedClass(entities.DichVu.class);
+            configuration.addAnnotatedClass(entities.KhachHang.class);
+            configuration.addAnnotatedClass(entities.May.class);
+            configuration.addAnnotatedClass(entities.SuDungDichVu.class);
+            configuration.addAnnotatedClass(entities.SuDungMay.class);
+
+            // Tạo ServiceRegistry
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                    .applySettings(configuration.getProperties())
+                    .build();
+
+            // Xây dựng SessionFactory
+            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ExceptionInInitializerError(e);
+        }
+    }
+
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public static void shutdown() {
+        // Đóng caches và connection pools
+        getSessionFactory().close();
+    }
+}

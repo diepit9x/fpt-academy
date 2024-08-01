@@ -1,0 +1,75 @@
+<h1 class="pb-2 border-bottom">Tạo mới khách hàng</h1>
+<form action="khach-hang/tao-moi" method="POST" id="tao-khach-hang-moi">
+  <div class="form-group row pt-md-3">
+    <label for="maKhachHang" class="col-md-2 col-form-label">Mã khách hàng</label>
+    <div class="col-md-10">
+      <input type="text" class="form-control" id="maKhachHang" name="maKhachHang" placeholder="Mã khách hàng" />
+    </div>
+  </div>
+  <div class="form-group row pt-md-3">
+    <label for="tenKhachHang" class="col-md-2 col-form-label">Tên khách hàng</label>
+    <div class="col-md-10">
+      <input type="text" class="form-control" id="tenKhachHang" name="tenKhachHang" placeholder="Tên khách hàng" />
+    </div>
+  </div>
+  <div class="form-group row pt-md-3">
+    <label for="diaChi" class="col-md-2 col-form-label">Địa chỉ</label>
+    <div class="col-md-10">
+      <input type="text" class="form-control" id="diaChi" name="diaChi" placeholder="Địa chỉ" />
+    </div>
+  </div>
+  <div class="form-group row pt-md-3">
+    <label for="soDienThoai" class="col-md-2 col-form-label">Số điện thoại</label>
+    <div class="col-md-10">
+      <input type="text" class="form-control" id="soDienThoai" name="soDienThoai" placeholder="Số điện thoại" />
+    </div>
+  </div>
+  <div class="form-group row pt-md-3">
+    <label for="email" class="col-md-2 col-form-label">Email</label>
+    <div class="col-md-10">
+      <input type="email" class="form-control" id="email" name="email" placeholder="Email" />
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <button type="submit" class="btn btn-outline-dark">Tạo</button>
+    </div>
+  </div>
+</form>
+<script>
+  document.getElementById("tao-khach-hang-moi").addEventListener("submit", function (e) {
+    var isValid = true;
+    const maKhachHang = document.getElementById("maKhachHang").value;
+    const tenKhachHang = document.getElementById("tenKhachHang").value;
+    const diaChi = document.getElementById("diaChi").value;
+    const soDienThoai = document.getElementById("soDienThoai").value;
+    const email = document.getElementById("email").value;
+
+    if (!isMaKH(maKhachHang)) {
+      alert("Mã KH: Có format là KHxxxxx (x: ký tự số)");
+      isValid = false;
+    }
+
+    if (!isName(tenKhachHang)) {
+      alert("Tên khách hàng không hợp lệ");
+      isValid = false;
+    }
+    if (!isNotEmpty(diaChi)) {
+      alert("Địa chỉ không hợp lệ");
+      isValid = false;
+    }
+    if (!isPhone(soDienThoai)) {
+      alert("Số điện thoại không hợp lệ");
+      isValid = false;
+    }
+    if (!isEmail(email)) {
+      alert("Email không hợp lệ");
+      isValid = false;
+    }
+    if (!isValid) {
+      e.preventDefault();
+      return;
+    }
+  });
+</script>

@@ -1,0 +1,26 @@
+package fa.training.entities;
+
+import java.sql.Date;
+
+public class GraphicsMonitor extends Monitor {
+    private String sRGB;
+    private String adobeRGB;
+    
+    public GraphicsMonitor() {
+	super();
+    }
+
+    public GraphicsMonitor(int type, String monitorId, String name, String brand, String size, String resolution,
+	    String panel, Date importDate, int warrantYear, int price, String sRGB, String adobeRGB) {
+	super(type, monitorId, name, brand, size, resolution, panel, importDate, warrantYear, price);
+	this.sRGB = sRGB;
+	this.adobeRGB = adobeRGB;
+    }
+
+    @Override
+    public void showInfo() {
+	// TODO Auto-generated method stub
+	
+    }
+
+}

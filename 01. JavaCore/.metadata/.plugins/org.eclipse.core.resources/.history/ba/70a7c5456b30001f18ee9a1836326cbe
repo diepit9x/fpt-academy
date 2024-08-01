@@ -1,0 +1,14 @@
+package baitap2.yeucau2;
+
+public class ArratTask implements Runnable {
+    CreateArray createArray;
+    public ArratTask(CreateArray createArray) {
+	this.createArray = createArray;
+    }
+
+    @Override
+    public void run() {
+	createArray.sumCaculator();
+    }
+
+}

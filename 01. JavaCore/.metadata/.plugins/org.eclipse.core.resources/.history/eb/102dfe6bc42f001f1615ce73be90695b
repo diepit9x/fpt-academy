@@ -1,0 +1,360 @@
+package fa.training.main;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+import fa.training.entities.Airplane;
+import fa.training.entities.Airport;
+import fa.training.entities.Fixedwing;
+import fa.training.entities.Helicopter;
+import fa.training.exceptions.IncorrectFormatException;
+import fa.training.services.AirplaneService;
+import fa.training.services.AirportService;
+import fa.training.utils.Constant;
+import fa.training.utils.Validator;
+
+public class AirplaneManagement {
+    public static void main(String[] args) {
+	// du lieu mau
+	Airport ap1 = new Airport("AP12345", "airport 1", 6000, 5, new HashSet<>(), 5, new HashSet<>());
+	Airport ap2 = new Airport("AP12346", "airport 2", 3000, 1, new HashSet<>(), 1, new HashSet<>());
+
+	List<Airport> aps = new ArrayList<>();
+	aps.add(ap1);
+	aps.add(ap2);
+
+	Airplane a1 = new Fixedwing("FW11111", "model1", 300, 1000, 2000, "CAG", 5000);
+	Airplane a2 = new Fixedwing("FW11112", "model2", 500, 1000, 1500, "PRV", 4000);
+	Airplane a3 = new Helicopter("RW12345", "model3", 200, 1000, 1200, 10);
+	List<Airplane> apls = new ArrayList<>();
+	apls.add(a1);
+	apls.add(a2);
+	apls.add(a3);
+
+	Scanner scanner = null;
+	AirplaneManagement manage = new AirplaneManagement();
+	AirplaneService airplaneService = new AirplaneService(apls);
+	AirportService airportService = new AirportService(aps);
+
+	try {
+	    scanner = new Scanner(System.in);
+	    String choice;
+	    boolean exit = false;
+	    do {
+		manage.mainMenu();
+		choice = scanner.nextLine();
+		switch (choice) {
+		case Constant.INPUT:
+		    manage.inputData(scanner, airplaneService, airportService);
+		    break;
+		case Constant.AIRPORT_MANAGEMENT:
+		    manage.airportManagement(scanner, airplaneService, airportService);
+		    break;
+		case Constant.AIRPLANE_MANAGEMENT:
+		    manage.airplaneManagement(scanner, airplaneService, airportService);
+		    break;
+		case Constant.EXIT_MAIN:
+		    exit = true;
+		    break;
+		default:
+		    System.err.println("your choose is invalid. Try again");
+		    break;
+		}
+
+		if (exit) {
+		    System.out.println("Exited!!!");
+		    break;
+		}
+	    } while (true);
+
+	} catch (Exception e) {
+	    e.printStackTrace();
+	} finally {
+	    if (scanner != null) {
+		scanner.close();
+	    }
+	}
+    }
+
+    public void mainMenu() {
+	System.out.println("====Airplane Management ====");
+	System.out.println("1. Input data");
+	System.out.println("2. Airport management");
+	System.out.println("3. Airplane management");
+	System.out.println("4. Exit");
+	System.out.print("Choice: ");
+    }
+
+    public void inputData(Scanner scanner, AirplaneService airplaneService, AirportService airportService) {
+	boolean exit = false;
+	String choice;
+	do {
+	    System.out.println("----Input data----");
+	    System.out.println("1. New airport");
+	    System.out.println("2. New airplane");
+	    System.out.println("5. Exit");
+	    System.out.print("Choice: ");
+	    choice = scanner.nextLine();
+	    switch (choice) {
+	    case Constant.NEW_AIRPORT: {
+		try {
+		    airportService.create(scanner);
+		} catch (Exception e) {
+		    System.err.println(e.getMessage());
+		}
+		break;
+	    }
+	    case Constant.NEW_AIRPLANE: {
+		try {
+		    airplaneService.create(scanner);
+		} catch (Exception e) {
+		    System.err.println(e.getMessage());
+		}
+		break;
+	    }
+	    case Constant.EXIT: {
+		exit = true;
+		break;
+	    }
+	    default:
+		System.err.println("your choose is invalid. Try again");
+	    }
+	    if (exit) {
+		break;
+	    }
+	} while (true);
+
+    }
+
+    public void airportManagement(Scanner scanner, AirplaneService airplaneService, AirportService airportService) {
+	boolean exit = false;
+	String choice, airportId, airplaneId;
+	do {
+	    System.out.println("----Airport managemernt----");
+	    System.out.println("1. Display list of all airport information, sorted by airport ID");
+	    System.out.println("2. Display the status of one airport, selected by airport ID");
+	    System.out.println("3. Add fixed wing airplane to an airport");
+	    System.out.println("4. Add helicopter airplane to an airport");
+	    System.out.println("5. Exit");
+	    System.out.print("Choice: ");
+
+	    choice = scanner.nextLine();
+	    switch (choice) {
+	    case Constant.DISPLAY_ALL: {
+		try {
+		    List<Airport> airports = airportService.displayAirportSortedByID();
+		    System.out.println("**** List all of airports ****");
+		    for (Airport airport : airports) {
+			System.out.println(airport.toString());
+		    }
+		} catch (Exception e) {
+		    System.err.println(e.getMessage());
+		}
+		break;
+	    }
+	    case Constant.DISPLAY_AIRPORTID: {
+		try {
+		    System.out.println("AirportId: ");
+		    airportId = scanner.nextLine();
+		    List<Airport> airports = airportService.findByAirportID(airportId);
+		    System.out.println("**** Show airport by id = " + airportId + " ****");
+		    for (Airport airport : airports) {
+			System.out.println(airport.toString());
+		    }
+		} catch (Exception e) {
+		    System.err.println(e.getMessage());
+		}
+		break;
+	    }
+	    case Constant.FIXEDWING_TO_AIRPORT: {
+		try {
+		    System.out.println("****Add fixed wing airplane to an airport****");
+		    System.out.print("AirportId: ");
+		    airportId = scanner.nextLine();
+		    List<Airport> airports = airportService.findByAirportID(airportId);
+		    if (airports.isEmpty()) {
+			System.err.println("AirportId does not exist");
+			break;
+		    }
+		    Airplane airplane;
+		    boolean status;
+		    do {
+			System.out.print("FixedwingID: ");
+			airplaneId = scanner.nextLine();
+			if (!Validator.isId(Fixedwing.class, airplaneId)) {
+			    System.err.println("FixedwingID is invalid. Try again: ");
+			    continue;
+			} else {
+			    try {
+				 airplane = airplaneService.findByAirplaneId(airplaneId).get(0);
+				 status = airportService.addAirplaneToAirport(airplane, airportId);
+				 if (status) {
+					System.out.println("add suceessfully");
+				    }
+			    } catch (Exception e) {
+				System.err.println("This fixedwing does not exist");
+			    }
+			   
+			    if (airplane != null) {
+				
+				    
+			    } else {
+				
+			    }
+			}
+			System.out.println("Do you want to add more (Y/N) ?");
+			if (scanner.nextLine().toUpperCase().equals("N")) {
+			    break;
+			}
+		    } while (true);
+		} catch (Exception e) {
+		    System.out.println(e.getMessage());
+		}
+		break;
+	    }
+	    case Constant.HELICOPTER_TO_AIRPORT: {
+		try {
+		    System.out.println("****Add helicopter airplane to an airport****");
+		    System.out.print("AirplaneId: ");
+		    airportId = scanner.nextLine();
+		    List<Airport> airports = airportService.findByAirportID(airportId);
+		    if (airports.isEmpty()) {
+			System.err.println("AirportId does not exist");
+			break;
+		    }
+		    Airplane airplane;
+		    boolean status;
+		    do {
+			System.out.print("HelicopterId: ");
+			airplaneId = scanner.nextLine();
+			if (!Validator.isId(Helicopter.class, airplaneId)) {
+			    System.err.print("HelicopterId is invalid. Try again: ");
+			} else {
+			    airplane = airplaneService.findByAirplaneId(airplaneId).get(0);
+			    status = airportService.addAirplaneToAirport(airplane, airportId);
+			    if (status) {
+				System.out.println("Add successfully");
+			    }
+			}
+			System.out.println("Do you want to add more (Y/N) ?");
+			if (scanner.nextLine().toUpperCase().equals("N")) {
+			    break;
+			}
+		    } while (true);
+		} catch (Exception e) {
+		    System.out.println(e.getMessage());
+		}
+		break;
+	    }
+	    case Constant.EXIT: {
+		exit = true;
+		break;
+	    }
+	    default:
+		System.out.println("Your choice is invalid. Try again");
+	    }
+	    if (exit) {
+		break;
+	    }
+
+	} while (true);
+    }
+
+    public void airplaneManagement(Scanner scanner, AirplaneService airplaneService, AirportService airportService) {
+	String choice;
+	boolean exit = false;
+	do {
+	    System.out.println("----Airplane management----");
+	    System.out.println("1. Display all airplane");
+	    System.out.println("2. Display list of all fixed wing airplanes with its parking airport ID and name");
+	    System.out.println("3. Display list of all helicopters with its parking airport ID and name");
+	    System.out.println("4. Change plane type and min needed runway size of fixed wing airplane ");
+	    System.out.println("5. Exit");
+	    System.out.print("Choice: ");
+	    choice = scanner.nextLine();
+	    switch (choice) {
+	    case Constant.DISPLAY_ALL: {
+		System.out.println("**** Display all airplane *****");
+		List<Airplane> airplanes = airplaneService.getAirplanes();
+		for (Airplane airplane : airplanes) {
+		    System.out.println(airplane.toString());
+		}
+		break;
+	    }
+	    case Constant.DISPLAY_FIXEDWING: {
+		try {
+
+		    System.out.println("**** Display list of all fixed wing airplanes with its parking airport ID and name ****");
+		    List<Airplane> airplanes = airplaneService.displayAirplaneHasAirport(airportService, "Fixedwing");
+		    Airport airport;
+		    for (Airplane airplane : airplanes) {
+			airport = airportService.findByAirplaneId(airplane.getId()).get(0);
+			System.out.print(airplane.toString() + "Airport [id=" + airport.getId() + ", name="
+				+ airport.getName() + "]");
+		    }
+		} catch (IncorrectFormatException e) {
+		    System.err.println(e.getMessage());
+		}
+		break;
+	    }
+	    case Constant.DISPLAY_HELICOPTER: {
+		System.out.println("**** Display list of all helicopters airplanes with its parking airport ID and name ****");
+		try {
+		    List<Airplane> airplanes = airplaneService.displayAirplaneHasAirport(airportService, "Fixedwing");
+		    Airport airport;
+		    for (Airplane airplane : airplanes) {
+			airport = airportService.findByAirplaneId(airplane.getId()).get(0);
+			System.out.print(airplane.toString() + "Airport [id=" + airport.getId() + ", name="
+				+ airport.getName() + "]");
+		    }
+		} catch (IncorrectFormatException e) {
+		    System.err.println(e.getMessage());
+		}
+
+		break;
+	    }
+	    case Constant.CHANGE_FIXEDWING: {
+		System.out.println("****Change Fixedwing****");
+		System.out.print("FixedwingId: ");
+		String airplaneId = scanner.nextLine();
+		try {
+		    Fixedwing fixedwing = airplaneService.findByAirplaneId(airplaneId).stream()
+			    .map(Fixedwing.class::cast).collect(Collectors.toList())
+			    .get(0);
+		    System.out.print("Change plane type: ");
+		    String planeType = scanner.nextLine();
+		    fixedwing.setPlaneType(planeType);
+
+		    System.out.print("Change runway size: ");
+		    String runwaySize = scanner.nextLine();
+		    fixedwing.setMinNeededRunwaySize(runwaySize);
+		    
+		    boolean status = airplaneService.changeAirplane(airportService, fixedwing);
+		    if (status) {
+			System.out.println("change fixedwing successfully");
+		    }
+		} catch (Exception e) {
+		    System.err.println(e.getMessage());
+		}
+		break;
+	    }
+	    case Constant.EXIT: {
+		exit = true;
+		break;
+	    }
+	    default:
+		System.err.println("Your choice is invalid");
+		continue;
+	    }
+	    if (exit) {
+		System.out.println("Exited");
+		break;
+	    }
+	} while (true);
+
+    }
+
+}

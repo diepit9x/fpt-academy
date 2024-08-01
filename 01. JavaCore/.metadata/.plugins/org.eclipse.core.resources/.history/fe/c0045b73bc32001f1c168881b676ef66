@@ -1,0 +1,14 @@
+package fa.training.util;
+
+public class SQLCommand {
+    //Candidate
+    public static final String CANDIDATE_QUERY = "SELECT candidateId, fullName, birthDay, phone, email, candidateType FROM Candidate";
+    
+    //Experience
+    
+    //Fresher
+    
+    //Intern
+
+}
+//

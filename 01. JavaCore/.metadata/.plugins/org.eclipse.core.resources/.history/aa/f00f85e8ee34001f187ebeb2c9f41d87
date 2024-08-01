@@ -1,0 +1,16 @@
+package fa.training.entities;
+
+public class NormalMonitor extends Monitor {
+    private String touchScreen;
+    
+    public NormalMonitor() {
+	// TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public void showInfo() {
+	// TODO Auto-generated method stub
+	
+    }
+
+}

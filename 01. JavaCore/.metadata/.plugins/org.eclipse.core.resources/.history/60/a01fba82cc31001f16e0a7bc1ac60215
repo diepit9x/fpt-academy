@@ -1,0 +1,37 @@
+package fa.training.main;
+
+import java.util.Scanner;
+
+import fa.training.service.CustomerService;
+import fa.training.service.LineItemService;
+import fa.training.service.OrderService;
+
+public class SaleManagement {
+    
+    public static void main(String[] args) {
+	CustomerService customerService = new CustomerService();
+	OrderService orderService = new OrderService();
+	LineItemService lineItemService = new LineItemService();
+	Scanner scanner = new Scanner(System.in);
+	
+	try {
+//	    List all customers consist of customer id, customer name in the database
+	    customerService.getAllCustomer();
+	    scanner.nextLine();
+	    
+//	    List all orders consist of order id, order date, customer id, employee id, total for a customer
+	    int customerId = 3;
+	    orderService.getAllOrdersByCustomerId(customerId);
+	    scanner.nextLine();
+	    
+//	    List all lineitems for an order
+	    int orderId = 5;
+	    lineItemService.getAllItemsByOrderId(orderId);
+	    
+	} catch (Exception e) {
+	    System.err.println(e.getMessage());
+	}
+
+    }
+
+}

@@ -1,0 +1,9 @@
+package fa.training.dao;
+
+public class CertificateDAOImpl {
+
+    public CertificateDAOImpl() {
+	// TODO Auto-generated constructor stub
+    }
+
+}

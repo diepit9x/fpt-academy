@@ -1,0 +1,9 @@
+package baitap2.cach2;
+
+public class Reactangle extends Shape {
+
+    public Reactangle(String color) {
+	super(color);
+    }
+
+}

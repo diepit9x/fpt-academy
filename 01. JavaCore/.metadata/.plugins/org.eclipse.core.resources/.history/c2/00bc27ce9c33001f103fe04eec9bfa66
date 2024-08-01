@@ -1,0 +1,9 @@
+package fa.training.util;
+
+public class EmailException extends Exception {
+
+    public EmailException() {
+	super("Email format is invalid");
+    }
+
+}

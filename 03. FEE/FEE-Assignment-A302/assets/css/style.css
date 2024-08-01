@@ -1,0 +1,18 @@
+.table-container {
+  margin-top: 20px;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+.accepted-cards img {
+  width: 50px;
+  margin-left: 10px;
+}
+label {
+  font-weight: 600;
+}
+.text-danger {
+  font-size: small;
+}
+.table-bordered td {
+  white-space: nowrap;
+}

@@ -1,0 +1,46 @@
+<%@page import="entities.May"%>
+<%@page import="models.ResponseData"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	//set title
+	request.setAttribute("pageTitle", "Cập nhật máy"); %>
+<%
+	ResponseData responseData = request.getAttribute("responseData") != null ? ((ResponseData) request.getAttribute("responseData")) : new ResponseData(204, null);
+%>
+
+<jsp:include page="../../header.jsp" />
+  <%
+  if(responseData.getStatus() == 201 ){
+	  May may = (May) responseData.getObject();
+%>
+        <h1 class="pb-2 border-bottom">Cập nhật mã máy </h1>
+        <form action="<%=request.getContextPath()%>/may/cap-nhat" method="POST" id="tao-may-moi">
+          <input type="hidden" name="naMay" value="<%=may.getMaMay()%>" />
+          <div class="form-group row pt-md-3">
+            <label for="viTri" class="col-md-2 col-form-label">Vị trí</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="viTri" name="viTri" placeholder="Vị trí" value="<%=may.getViTri()()%>" />
+            </div>
+          </div>
+          <div class="form-group row pt-md-3">
+            <label for="trangThai" class="col-md-2 col-form-label">Trạng thái</label>
+            <div class="col-md-10">
+              <select class="form-control" name="trangThai" id="trangThai">
+                <option value="1">Rảnh</option>
+                <option value="2">Bận</option>
+                <option value="3">Dùng bình thường</option>
+                <option value="4">Đang sửa chữa</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+              <button type="submit" class="btn btn-outline-dark">Tạo</button>
+            </div>
+          </div>
+        </form>
+<% } else { %>
+<h1 class="pb-2 border-bottom">Mã máy không hợp lệ</h1>
+<% } %>
+<jsp:include page="../../footer.jsp" />

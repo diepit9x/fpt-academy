@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/fontawesome5/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/jquery/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="input-data">
+        <h6 class="mt-2 mb-3">Home / Da Nang Hotels / The Nalod Da Nang</h6>
+        <div class="row">
+          <div class="col-6">
+            <div class="d-flex justify-content-between">
+              <div class="hotel-name"><h4>The Nalod Da Nang</h4></div>
+              <div class="hotel-vote">
+                <i class="fas fa-star star-color"></i>
+                <i class="fas fa-star star-color"></i>
+                <i class="fas fa-star star-color"></i>
+                <i class="fas fa-star star-color"></i>
+                <i class="fas fa-star star-color"></i>
+              </div>
+            </div>
+            <div class="localtion">
+              <p><i class="fas fa-map-marker-alt"></i> 192 Vo Nguyen Giap, Phuoc My Ward, Son Tra, Da Nang City, Viet Nam, Phuoc My, Da Nang, Viet Nam</p>
+            </div>
+            <div class="body">
+              <div class="big-imgs">
+                <div class="big-image"></div>
+              </div>
+              <div class="detail-imgs">
+                <div class="detail-image"></div>
+                <div class="detail-image"></div>
+                <div class="detail-image"></div>
+                <div class="detail-image"></div>
+                <div class="detail-image"></div>
+              </div>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus, fugiat.</p>
+          </div>
+          <div class="col-6">
+            <div class="book-info"><h4>Thông tin booking</h4></div>
+            <div class="row">
+              <div class="col-4">
+                <div class="check-in-title"><i class="fas fa-calendar-alt"></i> Ngày check-in</div>
+                <div class="check-in-date">Sat, Dec 26, 2020</div>
+                <!-- <div class="check-in-date"><input type="date" class=""  /></div> -->
+                <div class="check-in-time">Từ 2:00 PM</div>
+              </div>
+              <div class="col-4">
+                <div class="check-in-title"><i class="fas fa-calendar-alt"></i> Ngày check-out</div>
+                <div class="check-in-date">Sat, Dec 2, 2020</div>
+                <div class="check-in-time">Đến 12:00 PM</div>
+              </div>
+              <div class="col-4">
+                <div class="check-in-title">Số ngày trú</div>
+                <div class="check-in-day"><b>02</b> Ngày</div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-4">
+                <div class="check-in-title">Chọn loại phòng</div>
+                <div class="check-in-input form-group">
+                  <select id="loaiPhong" class="form-control">
+                    <option value="">-Chọn loại phòng-</option>
+                    <option value="1">Superior Ocean Twin</option>
+                    <option value="2">Superior Ocean Double</option>
+                    <option value="3">Deluxe Ocean Twin</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="check-in-title">Người lớn</div>
+                <div class="check-in-input form-group d-flex"><button class="btn btn-info minutes-nguoilon">-</button><input type="text" class="form-control" id="nguoiLon" value="0" /><button class="btn btn-info plus-nguoilon">+</button></div>
+              </div>
+              <div class="col-4">
+                <div class="check-in-title">Trẻ em</div>
+                <div class="check-in-input form-group d-flex"><button class="btn btn-info minutes-treem">-</button><input type="text" class="form-control" id="treEm" value="0" /><button class="btn btn-info plus-treem">+</button></div>
+              </div>
+            </div>
+            <div class="row d-flex doTuoiTreEm"></div>
+            <div class="text-danger"></div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Loại phòng</th>
+                  <th scope="col">Người lớn</th>
+                  <th scope="col">Trẻ em</th>
+                  <th scope="col">Tiền phòng</th>
+                </tr>
+              </thead>
+              <tbody id="hocSinhList">
+                <tr>
+                  <td class="loaiPhong"></td>
+                  <td class="nguoiLon"></td>
+                  <td class="treEm"></td>
+                  <td class="tienPhong"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button class="btn button-datcho">Đặt chỗ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/validator.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
