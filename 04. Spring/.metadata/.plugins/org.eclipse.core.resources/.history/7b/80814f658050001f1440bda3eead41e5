@@ -1,0 +1,15 @@
+package fa.training.service;
+
+import javax.servlet.http.HttpSession;
+
+import fa.training.dto.LoginDTO;
+import fa.training.dto.RegisterDTO;
+import fa.training.entity.Member;
+
+public interface MemberService {
+    boolean login(LoginDTO loginDTO, HttpSession session);
+
+    boolean register(RegisterDTO registerDTO);
+
+    boolean update(Integer memberId, Member member);
+}

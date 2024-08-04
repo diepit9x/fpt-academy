@@ -1,0 +1,47 @@
+package fa.training.service;
+
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
+
+import fa.training.dto.LoginDTO;
+import fa.training.dto.RegisterDTO;
+import fa.training.entity.Member;
+import fa.training.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class MemberServiceImp implements MemberService {
+    private final MemberRepository memberRepository;
+
+    @Override
+    public boolean login(LoginDTO loginDTO) {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+    @Override
+    public boolean register(RegisterDTO registerDTO) {
+	String username = registerDTO.getUsername();
+	if (memberRepository.existsByUsername(username)) {
+	    throw new DataIntegrityViolationException("Username already exist");
+	}
+	String email = registerDTO.getEmail();
+	if (memberRepository.existsByEmail(email)) {
+	    throw new DataIntegrityViolationException("Email already exist");
+	}
+	
+	if (!registerDTO.getPassword().equals(registerDTO.getRePassword())) {
+	    throw new DataIntegrityViolationException("Password doesn't match");
+	}
+
+	return false;
+    }
+
+    @Override
+    public boolean update(Integer memberId, Member member) {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+}

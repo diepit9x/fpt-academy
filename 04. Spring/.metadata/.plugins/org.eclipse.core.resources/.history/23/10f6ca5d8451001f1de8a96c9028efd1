@@ -1,0 +1,104 @@
+$(document).ready(function () {
+	$(".main-body").load("pages/edit-profile.html");
+  $(".load-page").click(function (e) {
+    e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+    $(".main-body").html("<h2>Loading...<h2>");
+    var url = jQuery(this).attr("ref"); // Lấy giá trị của thuộc tính ref
+    $.ajax({
+      type: "GET",
+      url: url,
+      success: function (html) {
+        setTimeout(function () {
+          $(".main-body").html(html);
+        }, 1000);
+      },
+      error: function () {
+        $(".main-body").html("404 NOT FOUND");
+      },
+    });
+  });
+});
+
+
+$(document).on("submit", ".login-form", function(event){
+	      event.preventDefault();
+	      const loginBtn = $(".loginBtn");
+	      
+	      loginBtn.prop("disabled", true);
+	      $(".msg-response").empty();
+	      $.ajax({
+	        url: "${pageContext.request.contextPath}/member/login",
+	        type: "POST",
+	        data: $(this).serialize(),
+	        contentType: "application/x-www-form-urlencoded",
+	        dataType: "json",
+	        success: function (response) {
+	          $(".header-success").text("Login successfully");
+	          setTimeout(function () {
+	            window.location.href = "${pageContext.request.contextPath}";
+	          }, 1000);
+	        },
+	        error: function (xhr) {
+	          loginBtn.prop("disabled", false);
+	          let response = xhr.responseJSON;
+	          if (response.object) {
+	            debugger;
+	            // Kiểm tra xem response.object có phải là đối tượng không
+	            if (typeof response.object === "object" && !Array.isArray(response.object)) {
+	              // Xử lý khi response.object là đối tượng chứa lỗi của trường
+	              let fieldErrors = response.object;
+	              for (let field in fieldErrors) {
+	                let errorMessage = fieldErrors[field];
+	                $("." + field + "-error").text(errorMessage);
+	              }
+	            } else {
+	              $(".header-error").text(response.object);
+	            }
+	          } else {
+	            alert("Đã xảy ra lỗi. Vui lòng thử lại sau.");
+	          }
+	        },
+	      });
+	  });
+	  
+	  $(document).on("submit", ".register-form", function(event){
+	      event.preventDefault();
+	      const registerBtn = $(".registerBtn");
+
+	      registerBtn.prop("disabled", true);
+	      $(".msg-response").empty();
+
+	      $.ajax({
+	        url: "${pageContext.request.contextPath}/member/register",
+	        type: "POST",
+	        data: $(this).serialize(),
+	        contentType: "application/x-www-form-urlencoded",
+	        dataType: "json",
+	        success: function (response) {
+	          $(".header-success").text("Register successfully");
+	          setTimeout(function () {
+	            window.location.href = "${pageContext.request.contextPath}/login";
+	          }, 1000);
+	        },
+	        error: function (xhr) {
+	          registerBtn.prop("disabled", false);
+	          let response = xhr.responseJSON;
+	          if (response.object) {
+	            debugger;
+	            // Kiểm tra xem response.object có phải là đối tượng không
+	            if (typeof response.object === "object" && !Array.isArray(response.object)) {
+	              // Xử lý khi response.object là đối tượng chứa lỗi của trường
+	              let fieldErrors = response.object;
+	              for (let field in fieldErrors) {
+	                let errorMessage = fieldErrors[field];
+	                $("." + field + "-error").text(errorMessage);
+	              }
+	            } else {
+	              $(".header-error").text(response.object);
+	            }
+	          } else {
+	            alert("Đã xảy ra lỗi. Vui lòng thử lại sau.");
+	          }
+	        },
+	      });
+	    });

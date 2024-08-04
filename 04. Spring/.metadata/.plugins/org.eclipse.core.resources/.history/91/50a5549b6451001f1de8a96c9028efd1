@@ -1,0 +1,21 @@
+package fa.training.response;
+
+import java.time.LocalDateTime;
+
+public class ContentResponse {
+    private Integer id;
+
+    private String title;
+
+    private String brief;
+
+    private String content;
+
+    private Integer sort;
+
+    private Integer memberId;
+
+    private LocalDateTime createDate;
+
+    private LocalDateTime updateTime;
+}

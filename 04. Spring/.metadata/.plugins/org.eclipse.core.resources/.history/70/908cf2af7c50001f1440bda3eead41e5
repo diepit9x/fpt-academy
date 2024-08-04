@@ -1,0 +1,59 @@
+package fa.training.service;
+
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
+
+import fa.training.dto.LoginDTO;
+import fa.training.dto.RegisterDTO;
+import fa.training.entity.Member;
+import fa.training.exception.DataNotFoundException;
+import fa.training.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class MemberServiceImp implements MemberService {
+    private final MemberRepository memberRepository;
+
+    @Override
+    public boolean login(LoginDTO loginDTO) {
+	Member member = memberRepository
+		.findByEmailAndPassword(loginDTO.getEmail(),
+			loginDTO.getPassword())
+		.orElseThrow(() -> new DataNotFoundException(
+			"error-header:Email or Password doesn.t match"));
+	
+	
+	
+	return true;
+    }
+
+    @Override
+    public boolean register(RegisterDTO registerDTO) {
+	String username = registerDTO.getUsername();
+	if (memberRepository.existsByUsername(username)) {
+	    throw new DataIntegrityViolationException(
+		    "username:Username already exist");
+	}
+	String email = registerDTO.getEmail();
+	if (memberRepository.existsByEmail(email)) {
+	    throw new DataIntegrityViolationException(
+		    "email:Email already exist");
+	}
+	if (!registerDTO.getPassword().equals(registerDTO.getRePassword())) {
+	    throw new DataIntegrityViolationException(
+		    "rePassword:Repassword doesn't match");
+	}
+	Member newMember = Member.builder().username(username).email(email)
+		.password(registerDTO.getPassword()).build();
+	memberRepository.save(newMember);
+	return true;
+    }
+
+    @Override
+    public boolean update(Integer memberId, Member member) {
+	// TODO Auto-generated method stub
+	return false;
+    }
+
+}

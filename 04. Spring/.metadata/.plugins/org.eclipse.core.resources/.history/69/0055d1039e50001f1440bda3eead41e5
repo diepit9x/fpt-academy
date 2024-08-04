@@ -1,0 +1,16 @@
+package fa.training.service;
+
+import java.util.List;
+
+import fa.training.dto.ContentDTO;
+import fa.training.entity.Content;
+
+public interface ContentService {
+    Content create(ContentDTO contentDTO);
+
+    Content update(ContentDTO contentDTO);
+
+    Content findById(Integer contentId);
+
+    List<Content> findAll();
+}

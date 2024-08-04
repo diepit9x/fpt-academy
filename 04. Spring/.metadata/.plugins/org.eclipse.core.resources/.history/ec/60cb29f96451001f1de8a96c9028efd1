@@ -1,0 +1,20 @@
+package fa.training.service;
+
+import java.util.List;
+
+import fa.training.dto.ContentDTO;
+import fa.training.entity.Content;
+import fa.training.entity.Member;
+import fa.training.response.ContentResponse;
+
+public interface ContentService {
+    Content create(ContentDTO contentDTO);
+
+    Content update(ContentDTO contentDTO);
+
+    ContentResponse findById(Member member, Integer contentId);
+
+    List<ContentResponse> findAll(Member member);
+
+    void delete(Member member, Integer contentId);
+}

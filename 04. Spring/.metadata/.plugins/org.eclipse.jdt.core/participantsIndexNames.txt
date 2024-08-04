@@ -53,6 +53,8 @@ E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsea
 \ATJB_otp1_Spring\src\main\java
 E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2057395468.index
 \ATJB_opt1_Servlet\src\main\java
+E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2522276111.index
+\JSFW_L_A103\src\main\java
 E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2325375520.index
 \ATJB_opt1_Servlet\src\main\java
 E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1517300173.index
@@ -69,5 +71,7 @@ E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsea
 \ATJB_otp1_Spring\src\main\java
 E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1603526752.index
 \Spring_Javax\src\main\java
+E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3754079169.index
+\JSFW_L_A103\src\main\java
 E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2591142231.index
 \ATJB_otp1_Spring\src\main\java

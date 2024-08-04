@@ -1,0 +1,47 @@
+package fa.training.service;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Service;
+
+import fa.training.dto.ContentDTO;
+import fa.training.entity.Content;
+import fa.training.exception.DataNotFoundException;
+import fa.training.repository.ContentRepository;
+import fa.training.util.SessionUtil;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ContentServiceImp implements ContentService {
+    private final ContentRepository contentRepository;
+
+    @Override
+    public Content create(HttpSession httpSession, ContentDTO contentDTO) {
+	Content newContent = Content.builder().title(contentDTO.getTitle())
+		.brief(contentDTO.getBrief()).content(contentDTO.getContent())
+		.member(SessionUtil.getLoggedInUser(httpSession)).build();
+	return contentRepository.save(newContent);
+    }
+
+    @Override
+    public Content update(HttpSession httpSession, ContentDTO contentDTO) {
+	Content existingContent = findById(contentDTO.getContentId());
+	return null;
+    }
+
+    @Override
+    public Content findById(Integer contentId) {
+	Content content = contentRepository.findById(contentId).orElseThrow(
+		() -> new DataNotFoundException("Conent not found"));
+	return content;
+    }
+
+    @Override
+    public List<Content> findAll() {
+	return contentRepository.findAll();
+    }
+
+}

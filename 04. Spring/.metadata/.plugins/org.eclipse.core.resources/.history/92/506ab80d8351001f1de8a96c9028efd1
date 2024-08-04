@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/style.css" />
+<title>Sign In</title>
+</head>
+<body>
+
+</body>
+<script
+	src="${pageContext.request.contextPath}/assets/bootstrap/js/jquery-3.7.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<script>
+	$(document).on("submit",
+					".login-form",
+					function(event) {
+						event.preventDefault();
+						const loginBtn = $(".loginBtn");
+						loginBtn.prop("disabled", true);
+						$(".msg-response").empty();
+
+						$
+								.ajax({
+									url : "${pageContext.request.contextPath}/member/login",
+									type : "POST",
+									data : $(this).serialize(),
+									contentType : "application/x-www-form-urlencoded",
+									dataType : "json",
+									success : function(response) {
+										$(".header-success").text(
+												"Login successfully");
+										setTimeout(
+												function() {
+													window.location.href = "${pageContext.request.contextPath}";
+												}, 1000);
+									},
+									error : function(xhr) {
+										loginBtn.prop("disabled", false);
+										let response = xhr.responseJSON;
+										if (response.object) {
+											debugger;
+											// Kiểm tra xem response.object có phải là đối tượng không
+											if (typeof response.object === "object"
+													&& !Array
+															.isArray(response.object)) {
+												// Xử lý khi response.object là đối tượng chứa lỗi của trường
+												let fieldErrors = response.object;
+												for ( let field in fieldErrors) {
+													let errorMessage = fieldErrors[field];
+													$("." + field + "-error")
+															.text(errorMessage);
+												}
+											} else {
+												$(".header-error").text(
+														response.object);
+											}
+										} else {
+											alert("Đã xảy ra lỗi. Vui lòng thử lại sau.");
+										}
+									},
+								});
+					});
+</script>
+</html>

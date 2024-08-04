@@ -1,0 +1,23 @@
+$(document).ready(function () {
+  $(".main-body").load("pages/edit-profile.html");
+});
+
+$(document).ready(function () {
+  $(".load-page").click(function (e) {
+    e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+    $(".main-body").html("<h2>Loading...<h2>");
+    var url = jQuery(this).attr("ref"); // Lấy giá trị của thuộc tính ref
+    $.ajax({
+      type: "GET",
+      url: url,
+      success: function (html) {
+        setTimeout(function () {
+          $(".main-body").html(html);
+        }, 1000);
+      },
+      error: function () {
+        $(".main-body").html("404 NOT FOUND");
+      },
+    });
+  });
+});

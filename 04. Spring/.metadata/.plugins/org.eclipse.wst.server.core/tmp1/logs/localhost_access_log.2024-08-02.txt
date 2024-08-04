@@ -1,0 +1,13 @@
+127.0.0.1 - - [02/Aug/2024:10:10:12 +0700] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:12 +0700] "GET /ATJB_otp1_Spring/ HTTP/1.1" 200 3811
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:13 +0700] "GET /ATJB_otp1_Spring/assets/css/style.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:13 +0700] "GET /ATJB_otp1_Spring/assets/font-awesome/css/font-awesome.min.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:13 +0700] "GET /ATJB_otp1_Spring/assets/js/script.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:13 +0700] "GET /ATJB_otp1_Spring/assets/js/common.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:13 +0700] "GET /ATJB_otp1_Spring/assets/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:13 +0700] "GET /ATJB_otp1_Spring/assets/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:13 +0700] "GET /ATJB_otp1_Spring/assets/jquery/jquery-3.7.1.min.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:13 +0700] "GET /favicon.ico HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:17 +0700] "GET /ATJB_otp1_Spring/khach-hang/danh-sach HTTP/1.1" 200 8919
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:17 +0700] "GET /ATJB_otp1_Spring/assets/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Aug/2024:10:10:19 +0700] "GET /ATJB_otp1_Spring/khach-hang/danh-sach-su-dung-dich-vu HTTP/1.1" 200 9087

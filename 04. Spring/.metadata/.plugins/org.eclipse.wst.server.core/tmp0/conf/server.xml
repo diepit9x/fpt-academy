@@ -160,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ATJB_otp1_Spring" path="/ATJB_otp1_Spring" reloadable="true" source="org.eclipse.jst.jee.server:ATJB_otp1_Spring"/><Context docBase="E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ATJB_opt1_Servlet" path="/ATJB_opt1_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:ATJB_opt1_Servlet"/><Context docBase="E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Spring_Javax" path="/Spring_Javax" reloadable="true" source="org.eclipse.jst.jee.server:Spring_Javax"/></Host>
+      <Context docBase="E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="E:\01. FPT Academy\04. Spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JSFW_L_A103" path="/JSFW_L_A103" reloadable="true" source="org.eclipse.jst.jee.server:JSFW_L_A103"/></Host>
     </Engine>
   </Service>
 </Server>

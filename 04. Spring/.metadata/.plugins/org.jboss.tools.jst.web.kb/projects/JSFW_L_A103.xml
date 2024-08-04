@@ -10,26 +10,29 @@
   <path value="C:/Users/DiepNT12/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
   <path value="F:/01. DEV Tools/apache-tomcat-9.0.82/lib/jsp-api.jar"/>
   <path value="C:/Users/DiepNT12/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar"/>
+  <path value="C:/Users/DiepNT12/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.0/jackson-annotations-2.15.0.jar"/>
   <path value="C:/Users/DiepNT12/.m2/repository/org/springframework/spring-tx/5.1.5.RELEASE/spring-tx-5.1.5.RELEASE.jar"/>
   <path value="F:/01. DEV Tools/apache-tomcat-9.0.82/lib/ecj-4.20.jar"/>
   <path value="F:/01. DEV Tools/apache-tomcat-9.0.82/lib/tomcat-i18n-cs.jar"/>
   <path value="F:/01. DEV Tools/apache-tomcat-9.0.82/lib/tomcat-i18n-pt-BR.jar"/>
   <path value="C:/Users/DiepNT12/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.1/jaxb-runtime-2.3.1.jar"/>
   <path value="F:/01. DEV Tools/apache-tomcat-9.0.82/lib/jasper.jar"/>
+  <path value="C:/Users/DiepNT12/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.0/jackson-databind-2.15.0.jar"/>
   <path value="C:/Users/DiepNT12/.m2/repository/org/springframework/spring-webmvc/5.1.5.RELEASE/spring-webmvc-5.1.5.RELEASE.jar">
    <libraries>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-spring-webmvc-5.1.5.RELEASE.jar/meta-inf/spring-form.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-spring-webmvc-5.1.5.RELEASE.jar/meta-inf/spring-form.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-spring-webmvc-5.1.5.RELEASE.jar/meta-inf/spring.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-spring-webmvc-5.1.5.RELEASE.jar/meta-inf/spring.tld" project="JSFW_L_A103"/>
     </library>
    </libraries>
   </path>
   <path value="C:/Users/DiepNT12/.m2/repository/com/sun/xml/fastinfoset/FastInfoset/1.2.15/FastInfoset-1.2.15.jar"/>
   <path value="F:/01. DEV Tools/apache-tomcat-9.0.82/lib/tomcat-i18n-es.jar"/>
+  <path value="C:/Users/DiepNT12/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.15.0/jackson-datatype-jsr310-2.15.0.jar"/>
   <path value="C:/Users/DiepNT12/.m2/repository/org/springframework/spring-aop/5.1.5.RELEASE/spring-aop-5.1.5.RELEASE.jar"/>
   <path value="C:/Users/DiepNT12/.m2/repository/org/jvnet/staxex/stax-ex/1.8/stax-ex-1.8.jar"/>
   <path value="C:/Users/DiepNT12/.m2/repository/org/springframework/spring-beans/5.1.5.RELEASE/spring-beans-5.1.5.RELEASE.jar"/>
@@ -73,6 +76,7 @@
   <path value="F:/01. DEV Tools/apache-tomcat-9.0.82/lib/el-api.jar"/>
   <path value="F:/01. DEV Tools/apache-tomcat-9.0.82/lib/websocket-api.jar"/>
   <path value="F:/01. DEV Tools/apache-tomcat-9.0.82/lib/tomcat-i18n-fr.jar"/>
+  <path value="C:/Users/DiepNT12/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.0/jackson-core-2.15.0.jar"/>
   <path value="F:/01. DEV Tools/apache-tomcat-9.0.82/lib/tomcat-dbcp.jar"/>
   <path value="C:/Users/DiepNT12/.m2/repository/org/dom4j/dom4j/2.1.1/dom4j-2.1.1.jar"/>
   <path value="C:/Users/DiepNT12/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
@@ -87,63 +91,63 @@
    <libraries>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0-rt.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0-rt.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0-rt.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0-rt.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fn.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fn.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/permittedtaglibs.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/permittedtaglibs.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/scriptfree.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/scriptfree.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0-rt.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0-rt.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0-rt.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0-rt.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x.tld" project="JSFW_L_A103"/>
     </library>
    </libraries>
   </path>
@@ -154,31 +158,122 @@
  <validation>
   <core validator-id="jboss.cdi.core"/>
   <el>
-   <linked-el length="20" name="%0" offset="1240" path="%1"/>
-   <linked-el length="26" name="%2" offset="1758" path="%1"/>
-   <linked-el length="26" name="%3" offset="885" path="%1"/>
-   <linked-el length="26" name="%3" offset="1399" path="%1"/>
-   <linked-el length="26" name="%3" offset="1054" path="%1"/>
-   <linked-el length="26" name="%3" offset="1565" path="%1"/>
-   <linked-el length="26" name="%4" offset="885" path="%1"/>
-   <linked-el length="26" name="%4" offset="1399" path="%1"/>
-   <linked-el length="26" name="%4" offset="1054" path="%1"/>
-   <linked-el length="26" name="%4" offset="1565" path="%1"/>
-   <linked-el length="20" name="%5" offset="1240" path="%1"/>
-   <linked-el length="26" name="%6" offset="1758" path="%1"/>
-   <linked-el length="26" name="%7" offset="1758" path="%1"/>
+   <linked-el length="20" name="%0" offset="1617" path="%1"/>
+   <linked-el length="58" name="%2" offset="390" path="%3"/>
+   <linked-el length="78" name="%2" offset="437" path="%4"/>
+   <linked-el length="56" name="%2" offset="1397" path="%4"/>
+   <linked-el length="53" name="%2" offset="858" path="%5"/>
+   <linked-el length="56" name="%2" offset="2770" path="%4"/>
+   <linked-el length="58" name="%2" offset="663" path="%4"/>
+   <linked-el length="70" name="%2" offset="573" path="%5"/>
+   <linked-el length="73" name="%2" offset="669" path="%5"/>
+   <linked-el length="45" name="%2" offset="1391" path="%6"/>
+   <linked-el length="50" name="%2" offset="1585" path="%4"/>
+   <linked-el length="58" name="%2" offset="390" path="%5"/>
+   <linked-el length="76" name="%2" offset="278" path="%3"/>
+   <linked-el length="70" name="%2" offset="741" path="%4"/>
+   <linked-el length="53" name="%2" offset="852" path="%3"/>
+   <linked-el length="70" name="%2" offset="569" path="%3"/>
+   <linked-el length="73" name="%2" offset="665" path="%3"/>
+   <linked-el length="76" name="%2" offset="551" path="%4"/>
+   <linked-el length="56" name="%2" offset="3005" path="%4"/>
+   <linked-el length="53" name="%2" offset="3547" path="%4"/>
+   <linked-el length="42" name="%2" offset="1651" path="%7"/>
+   <linked-el length="73" name="%2" offset="3360" path="%4"/>
+   <linked-el length="76" name="%2" offset="278" path="%5"/>
+   <linked-el length="26" name="%8" offset="2135" path="%1"/>
+   <linked-el length="26" name="%9" offset="1942" path="%1"/>
+   <linked-el length="26" name="%9" offset="1431" path="%1"/>
+   <linked-el length="26" name="%9" offset="1262" path="%1"/>
+   <linked-el length="26" name="%9" offset="1776" path="%1"/>
+   <linked-el length="24" name="%10" offset="180" path="%11"/>
+   <linked-el length="24" name="%10" offset="484" path="%11"/>
+   <linked-el length="15" name="%10" offset="559" path="%11"/>
+   <linked-el length="12" name="%10" offset="222" path="%11"/>
+   <linked-el length="20" name="%10" offset="254" path="%11"/>
+   <linked-el length="24" name="%10" offset="1827" path="%11"/>
+   <linked-el length="20" name="%10" offset="2787" path="%11"/>
+   <linked-el length="58" name="%12" offset="390" path="%3"/>
+   <linked-el length="78" name="%12" offset="437" path="%4"/>
+   <linked-el length="56" name="%12" offset="1397" path="%4"/>
+   <linked-el length="53" name="%12" offset="858" path="%5"/>
+   <linked-el length="56" name="%12" offset="2770" path="%4"/>
+   <linked-el length="58" name="%12" offset="663" path="%4"/>
+   <linked-el length="70" name="%12" offset="573" path="%5"/>
+   <linked-el length="73" name="%12" offset="669" path="%5"/>
+   <linked-el length="45" name="%12" offset="1391" path="%6"/>
+   <linked-el length="50" name="%12" offset="1585" path="%4"/>
+   <linked-el length="58" name="%12" offset="390" path="%5"/>
+   <linked-el length="76" name="%12" offset="278" path="%3"/>
+   <linked-el length="70" name="%12" offset="741" path="%4"/>
+   <linked-el length="53" name="%12" offset="852" path="%3"/>
+   <linked-el length="70" name="%12" offset="569" path="%3"/>
+   <linked-el length="73" name="%12" offset="665" path="%3"/>
+   <linked-el length="76" name="%12" offset="551" path="%4"/>
+   <linked-el length="56" name="%12" offset="3005" path="%4"/>
+   <linked-el length="53" name="%12" offset="3547" path="%4"/>
+   <linked-el length="42" name="%12" offset="1651" path="%7"/>
+   <linked-el length="73" name="%12" offset="3360" path="%4"/>
+   <linked-el length="76" name="%12" offset="278" path="%5"/>
+   <linked-el length="26" name="%13" offset="1942" path="%1"/>
+   <linked-el length="26" name="%13" offset="1431" path="%1"/>
+   <linked-el length="26" name="%13" offset="1262" path="%1"/>
+   <linked-el length="26" name="%13" offset="1776" path="%1"/>
+   <linked-el length="20" name="%14" offset="1617" path="%1"/>
+   <linked-el length="26" name="%15" offset="2135" path="%1"/>
+   <linked-el length="58" name="%16" offset="390" path="%3"/>
+   <linked-el length="78" name="%16" offset="437" path="%4"/>
+   <linked-el length="56" name="%16" offset="1397" path="%4"/>
+   <linked-el length="53" name="%16" offset="858" path="%5"/>
+   <linked-el length="56" name="%16" offset="2770" path="%4"/>
+   <linked-el length="58" name="%16" offset="663" path="%4"/>
+   <linked-el length="70" name="%16" offset="573" path="%5"/>
+   <linked-el length="73" name="%16" offset="669" path="%5"/>
+   <linked-el length="45" name="%16" offset="1391" path="%6"/>
+   <linked-el length="50" name="%16" offset="1585" path="%4"/>
+   <linked-el length="58" name="%16" offset="390" path="%5"/>
+   <linked-el length="76" name="%16" offset="278" path="%3"/>
+   <linked-el length="70" name="%16" offset="741" path="%4"/>
+   <linked-el length="53" name="%16" offset="852" path="%3"/>
+   <linked-el length="70" name="%16" offset="569" path="%3"/>
+   <linked-el length="73" name="%16" offset="665" path="%3"/>
+   <linked-el length="76" name="%16" offset="551" path="%4"/>
+   <linked-el length="56" name="%16" offset="3005" path="%4"/>
+   <linked-el length="53" name="%16" offset="3547" path="%4"/>
+   <linked-el length="42" name="%16" offset="1651" path="%7"/>
+   <linked-el length="73" name="%16" offset="3360" path="%4"/>
+   <linked-el length="76" name="%16" offset="278" path="%5"/>
+   <linked-el length="26" name="%17" offset="2135" path="%1"/>
   </el>
  </validation>
  <aliases>
   <alias path="hibernate.version" value="%0"/>
   <alias path="/JSFW_L_A103/pom.xml" value="%1"/>
-  <alias path="mssql.connector.version" value="%2"/>
-  <alias path="springframework.version" value="%3"/>
-  <alias path="springframework" value="%4"/>
-  <alias path="hibernate" value="%5"/>
-  <alias path="mssql.connector" value="%6"/>
-  <alias path="mssql" value="%7"/>
+  <alias
+   path="/JSFW_L_A103/src/main/webapp/WEB-INF/templates/register.jsp" value="%5"/>
+  <alias path="mssql.connector.version" value="%8"/>
+  <alias path="contentId" value="%10"/>
+  <alias
+   path="/JSFW_L_A103/src/main/webapp/WEB-INF/templates/pages/form-content.jsp" value="%11"/>
+  <alias path="pageContext.request" value="%12"/>
+  <alias path="hibernate" value="%14"/>
+  <alias path="pageContext" value="%2"/>
+  <alias
+   path="/JSFW_L_A103/src/main/webapp/WEB-INF/templates/pages/register.jsp" value="%7"/>
+  <alias path="springframework.version" value="%9"/>
+  <alias
+   path="/JSFW_L_A103/src/main/webapp/WEB-INF/templates/pages/login.jsp" value="%6"/>
+  <alias path="/JSFW_L_A103/src/main/webapp/WEB-INF/templates/index.jsp" value="%4"/>
+  <alias path="springframework" value="%13"/>
+  <alias path="mssql.connector" value="%15"/>
+  <alias path="pageContext.request.contextPath" value="%16"/>
+  <alias path="/JSFW_L_A103/src/main/webapp/WEB-INF/templates/login.jsp" value="%3"/>
+  <alias path="mssql" value="%17"/>
  </aliases>
  <includes/>
- <uris/>
+ <uris>
+  <uri value="http://java.sun.com/jsp/jstl/core">
+   <prefix>c</prefix>
+  </uri>
+ </uris>
 </kb-project>

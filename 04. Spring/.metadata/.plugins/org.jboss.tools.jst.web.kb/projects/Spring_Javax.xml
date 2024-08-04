@@ -20,11 +20,11 @@
    <libraries>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-spring-webmvc-5.1.5.RELEASE.jar/meta-inf/spring-form.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-spring-webmvc-5.1.5.RELEASE.jar/meta-inf/spring-form.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-spring-webmvc-5.1.5.RELEASE.jar/meta-inf/spring.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-spring-webmvc-5.1.5.RELEASE.jar/meta-inf/spring.tld" project="JSFW_L_A103"/>
     </library>
    </libraries>
   </path>
@@ -87,63 +87,63 @@
    <libraries>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0-rt.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0-rt.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0-rt.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0-rt.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fn.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fn.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/permittedtaglibs.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/permittedtaglibs.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/scriptfree.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/scriptfree.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0-rt.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0-rt.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0-rt.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0-rt.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0.tld" project="JSFW_L_A103"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x.tld" project="Spring_Javax"/>
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x.tld" project="JSFW_L_A103"/>
     </library>
    </libraries>
   </path>

@@ -1,0 +1,23 @@
+package fa.training.dto;
+
+import javax.validation.constraints.NotBlank;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UpdateProFileDTO {
+    @NotBlank(message = "Firstname is reqiuired")
+    private String firstName;
+
+    @NotBlank(message = "Lastname is reqiuired")
+    private String lastName;
+
+    @NotBlank(message = "Phone is reqiuired")
+    private String phone;
+
+    private String description;
+}

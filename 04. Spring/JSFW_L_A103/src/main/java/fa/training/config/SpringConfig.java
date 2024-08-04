@@ -20,6 +20,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -27,7 +28,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "fpt.fa")
+@ComponentScan(basePackages = "fa.training")
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "fa.training.repository")
 public class SpringConfig implements WebMvcConfigurer, ApplicationContextAware {
@@ -35,7 +36,8 @@ public class SpringConfig implements WebMvcConfigurer, ApplicationContextAware {
     private ApplicationContext applicationContext;
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(ApplicationContext applicationContext)
+	    throws BeansException {
 	this.applicationContext = applicationContext;
     }
 
@@ -50,7 +52,8 @@ public class SpringConfig implements WebMvcConfigurer, ApplicationContextAware {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	registry.addResourceHandler("/assets/**").addResourceLocations("/WEB-INF/templates/assets/");
+	registry.addResourceHandler("/assets/**")
+		.addResourceLocations("/WEB-INF/templates/assets/");
     }
 
     // Config hibernate
@@ -58,8 +61,10 @@ public class SpringConfig implements WebMvcConfigurer, ApplicationContextAware {
     @Bean
     public DriverManagerDataSource getDataSource() {
 	DriverManagerDataSource datasource = new DriverManagerDataSource();
-	datasource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	datasource.setUrl("jdbc:sqlserver://localhost:1433;databaseName=Spring_Javax");
+	datasource.setDriverClassName(
+		"com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	datasource.setUrl(
+		"jdbc:sqlserver://localhost:1433;databaseName=JSFW_L_A103");
 	datasource.setUsername("sa");
 	datasource.setPassword("123456789");
 	return datasource;
@@ -69,7 +74,8 @@ public class SpringConfig implements WebMvcConfigurer, ApplicationContextAware {
     private final Properties hibernateProperties() {
 	Properties hibernateProperties = new Properties();
 	hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
-	hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServer2012Dialect");
+	hibernateProperties.setProperty("hibernate.dialect",
+		"org.hibernate.dialect.SQLServer2012Dialect");
 	hibernateProperties.setProperty("hibernate.show_sql", "true");
 	return hibernateProperties;
     }
@@ -79,7 +85,8 @@ public class SpringConfig implements WebMvcConfigurer, ApplicationContextAware {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 	LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
 	entityManagerFactory.setDataSource(getDataSource());
-	entityManagerFactory.setPackagesToScan(new String[] { "fa.training.entity" });
+	entityManagerFactory
+		.setPackagesToScan(new String[] { "fa.training.entity" });
 
 	JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 	entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
@@ -90,15 +97,25 @@ public class SpringConfig implements WebMvcConfigurer, ApplicationContextAware {
     // Step 3: Config entity manager
     @Bean
     @Qualifier(value = "entityManager")
-    public EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
+    public EntityManager entityManager(
+	    EntityManagerFactory entityManagerFactory) {
 	return entityManagerFactory.createEntityManager();
     }
 
     // Step 4: Transaction support
     @Bean
-    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+    public PlatformTransactionManager transactionManager(
+	    EntityManagerFactory entityManagerFactory) {
 	JpaTransactionManager transactionManager = new JpaTransactionManager();
 	transactionManager.setEntityManagerFactory(entityManagerFactory);
 	return transactionManager;
+    }
+
+    // CORS
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+	registry.addMapping("/**").allowedOrigins("*")
+		.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+		.allowedHeaders("*").allowCredentials(true);
     }
 }

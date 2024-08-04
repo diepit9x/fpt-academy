@@ -1,0 +1,24 @@
+package fa.training.response;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class ContentResponse {
+    private Integer id;
+
+    private String title;
+
+    private String brief;
+
+    private String content;
+
+    private Integer sort;
+    
+    private Integer memberId;
+    private LocalDateTime createDate;
+    private LocalDateTime updateTime;
+}

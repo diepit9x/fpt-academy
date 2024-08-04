@@ -1,0 +1,12 @@
+package fa.training.service;
+
+import fa.training.dto.LoginDTO;
+import fa.training.entity.Member;
+
+public interface MemberService {
+    boolean login(LoginDTO loginDTO);
+
+    boolean register();
+
+    boolean update(Integer memberId, Member member);
+}

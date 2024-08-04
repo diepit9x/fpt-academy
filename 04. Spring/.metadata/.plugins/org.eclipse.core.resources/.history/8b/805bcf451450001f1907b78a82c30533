@@ -1,0 +1,30 @@
+package fa.training.dto;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class RegisterDTO {
+    @NotBlank(message = "Username can't be empty")
+    @Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Username is invalid")
+    private String username;
+
+    @NotBlank(message = "Email can't be empty")
+    @Email(message = "Email is invalid")
+    private String email;
+
+    @NotBlank(message = "Password can't be empty")
+    private String password;
+
+    @NotBlank(message = "Repassword can't be empty")
+    private String rePassword;
+}

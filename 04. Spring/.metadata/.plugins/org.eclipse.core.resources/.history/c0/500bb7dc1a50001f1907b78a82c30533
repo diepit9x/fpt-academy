@@ -1,0 +1,12 @@
+package fa.training.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import fa.training.entity.Member;
+
+public interface MemberRepository extends JpaRepository<Member, Integer> {
+
+    boolean existsByUsername(String username);
+    boolean existsByEmail(String email);
+
+}

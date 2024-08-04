@@ -2,16 +2,16 @@
 <div class="profile-box">
   <div class="login-header">Profile from elements</div>
   <div class="profile-body">
-    <form class="form-submit">
+    <form class="profile-form">
       <div class="form-group">
         <label for="firstName">First Name</label>
-        <input type="text" class="form-control" id="firstName" placeholder="Enter the first name" />
-        <span class="text-danger" id="firstNameError"></span>
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter the first name" />
+        <span class="text-danger firstName-error"></span>
       </div>
       <div class="form-group">
         <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" id="lastName" placeholder="Enter the last name" />
-        <span class="text-danger" id="lastNameError"></span>
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter the last name" />
+        <span class="text-danger lastName-error"></span>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
@@ -19,16 +19,44 @@
       </div>
       <div class="form-group">
         <label for="phone">Phone</label>
-        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" />
-        <span class="text-danger" id="phoneError"></span>
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" />
+        <span class="text-danger" id="phone-error"></span>
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" id="description" rows="3" placeholder=""></textarea>
-        <span class="text-danger" id="descriptionError"></span>
+        <textarea class="form-control" id="description" name="description" rows="3" placeholder=""></textarea>
+        <span class="text-danger description-error"></span>
       </div>
-      <button type="submit" onclick="validateEditProfile()" class="btn btn-outline-dark">Submit Button</button>
+      <button type="submit" class="btn btn-outline-dark">Submit Button</button>
       <button type="reset" class="btn btn-outline-dark">Reset Button</button>
     </form>
   </div>
 </div>
+<script>
+  function loadProfile() {
+    $.ajax({
+      url: "http://localhost:8088/JSFW_L_A103/member/profile",
+      type: "GET",
+      dataType: "json",
+      success: function (response) {
+        const profileData = response.object;
+
+        // Populate form fields with profile data with jquery
+        $("#firstName").val(profileData.firstName);
+        $("#lastName").val(profileData.lastName);
+        $(".email-form").text(profileData.email);
+        $("#phone").val(profileData.phone);
+        $("#description").val(profileData.description);
+      },
+      error: function (xhr) {
+        debugger;
+        const response = xhr.responseJSON;
+        let msg = response.object ? response.object : "co loi xay ra";
+        $(".profile-form").html('<div class="alert alert-danger">' + msg + "</div>");
+      },
+    });
+
+    // Fetch profile data from API or database
+  }
+  loadProfile();
+</script>

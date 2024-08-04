@@ -1,0 +1,8 @@
+package fa.training.dto;
+
+public class UpdateProFileDTO {
+    private String firstName;
+    private String lastName;
+    private String phone;
+    private String description;
+}

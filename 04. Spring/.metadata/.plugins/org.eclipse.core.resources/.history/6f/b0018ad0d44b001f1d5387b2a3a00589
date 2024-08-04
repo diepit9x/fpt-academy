@@ -1,9 +1,0 @@
-package controllers;
-
-import utils.HibernateUtil;
-
-public class test {
-public static void main(String[] args) {
-	HibernateUtil.getSessionFactory().openSession();
-}
-}

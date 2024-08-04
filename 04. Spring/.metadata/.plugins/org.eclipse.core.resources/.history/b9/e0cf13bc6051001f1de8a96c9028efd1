@@ -1,0 +1,20 @@
+package fa.training.service;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import fa.training.dto.ContentDTO;
+import fa.training.entity.Content;
+
+public interface ContentService {
+    Content create(HttpSession httpSession, ContentDTO contentDTO);
+
+    Content update(HttpSession httpSession, ContentDTO contentDTO);
+
+    Content findById(HttpSession session, Integer contentId);
+
+    List<Content> findAll(HttpSession session);
+
+    void delete(HttpSession httpSession, Integer contentId);
+}

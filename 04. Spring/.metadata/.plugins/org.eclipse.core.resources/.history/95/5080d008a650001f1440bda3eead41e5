@@ -1,0 +1,14 @@
+package fa.training.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import fa.training.entity.Content;
+import fa.training.entity.Member;
+
+public interface ContentRepository extends JpaRepository<Content, Integer> {
+
+    List<Content> findAllByMember(Member loggedInUser);
+
+}

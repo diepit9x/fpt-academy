@@ -1,0 +1,17 @@
+package fa.training.util;
+
+public class MsgUtil {
+    private 
+    
+    public MsgUtil(String msg) {
+	
+    }
+    
+    public static void name() {
+	
+    }
+
+    public static void main(String[] args) {
+	errorArr
+    }
+}
