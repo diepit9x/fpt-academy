@@ -37,17 +37,11 @@ public class PageController {
 
     @GetMapping("/pages/{name}")
     public String loadPages(HttpSession httpSession, @PathVariable String name) {
-	if (SessionUtil.getLoggedInUser(httpSession) == null) {
-	    return "pages/login";
-	}
 	return "pages/" + name;
     }
 
     @GetMapping("/pages/form-content/{id}")
     public String loadPages(HttpSession httpSession, Model model, @PathVariable Integer id) {
-	if (SessionUtil.getLoggedInUser(httpSession) == null) {
-	    return "pages/login";
-	}
 	model.addAttribute("contentId", id);
 	return "pages/form-content";
     }

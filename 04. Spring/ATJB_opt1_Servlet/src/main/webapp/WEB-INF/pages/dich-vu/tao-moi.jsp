@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="models.ResponseData"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
@@ -9,27 +10,51 @@
 <jsp:include page="../../header.jsp" />
 
 <h1 class="pb-2 border-bottom">Tạo mới dịch vụ</h1>
-<form action="<%=request.getContextPath()%>/dich-vu/tao-moi" method="POST" id="tao-moi-dich-vu">
-   <%
-          	if(responseData.getStatus() == 400){
-          %>
-          <div class="row">
+<form action="<%=request.getContextPath()%>/dich-vu/tao-moi" method="POST" id="tao-moi-dich-vu2">
+<%
+if(responseData.getStatus() == 400){
+    Object responseObject = responseData.getObject();
+    if(responseObject instanceof List){
+        List<String> errors = (List<String>) responseObject;
+%>
+        <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-10">
-              <span class="text-danger"><%=responseData.getObject()%></span>
+                <ul class="text-danger">
+                    <%
+                    for(String error : errors){
+                    %>
+                        <li><%= error %></li>
+                    <%
+                    }
+                    %>
+                </ul>
             </div>
-          </div>
-          <% } %>
-          <%
-          	if(responseData.getStatus() == 200){
-          %>
-          <div class="row">
+        </div>
+<%
+    } else {
+%>
+        <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-10">
-              <span class="text-success"> Tạo mới thành công</span>
+                <span class="text-danger"><%= responseObject %></span>
             </div>
-          </div>
-          <% } %>
+        </div>
+	<%
+    }
+}
+if(responseData.getStatus() == 200){
+%>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<span class="text-success">Tạo mới thành công</span>
+		</div>
+	</div>
+	<%
+	}
+	%>
+
   <div class="form-group row pt-md-3">
     <label for="maDichVu" class="col-md-2 col-form-label">Mã dịch vụ</label>
     <div class="col-md-10">

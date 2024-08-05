@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="entities.May"%>
 <%@page import="models.ResponseData"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -11,27 +12,51 @@
 <jsp:include page="../../header.jsp" />
 
 <h1 class="pb-2 border-bottom">Tạo mới khách hàng</h1>
-<form action="" method="POST" id="tao-moi-khach-hang">
+<form action="" method="POST" id="tao-moi-khach-hang2">
+<%
+if(responseData.getStatus() == 400){
+    Object responseObject = responseData.getObject();
+    if(responseObject instanceof List){
+        List<String> errors = (List<String>) responseObject;
+%>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <ul class="text-danger">
+                    <%
+                    for(String error : errors){
+                    %>
+                        <li><%= error %></li>
+                    <%
+                    }
+                    %>
+                </ul>
+            </div>
+        </div>
+<%
+    } else {
+%>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <span class="text-danger"><%= responseObject %></span>
+            </div>
+        </div>
+	<%
+    }
+}
+if(responseData.getStatus() == 200){
+%>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<span class="text-success">Tạo mới thành công</span>
+		</div>
+	</div>
+	<%
+	}
+	%>
 
-          <%
-          	if(responseData.getStatus() == 200){
-          %>
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-10">
-              <span class="text-success"> Tạo mới thành công</span>
-            </div>
-          </div>
-          <% }
-          if(responseData.getStatus() == 400){
-          %>
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-10">
-              <span class="text-danger"><%=responseData.getObject() != null ? responseData.getObject():"Tạo khách hàng thất bại"%></span>
-            </div>
-          </div>
-          <% } %>
   <div class="form-group row pt-md-3">
     <label for="maKhachHang" class="col-md-2 col-form-label">Mã khách hàng</label>
     <div class="col-md-10">

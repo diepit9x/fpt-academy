@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="Spring_Security"/>
 			<item value="JSFW_L_A103"/>
 			<item value="Spring_Javax"/>
 			<item value="ATJB_opt1_Servlet"/>
@@ -15,6 +16,7 @@
 			<item value="SpringExample"/>
 		</list>
 		<list key="artifactId">
+			<item value="Spring_Security"/>
 			<item value="JSFW_L_A103"/>
 			<item value="Spring_Javax"/>
 			<item value="ATJB_opt1_Servlet"/>

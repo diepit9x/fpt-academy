@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,10 +42,6 @@ public class ContentController {
     public ResponseEntity<ResponseObject> create(HttpSession session, @Valid @ModelAttribute ContentDTO contentDTO,
 	    BindingResult bindingResult) {
 	Member memberSession = SessionUtil.getLoggedInUser(session);
-	if (memberSession == null) {
-	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-		    .body(ResponseObject.builder().status(401).object("Please sign in").build());
-	}
 	Map<String, String> errors = new HashMap<>();
 	if (bindingResult.hasErrors()) {
 	    bindingResult.getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));
@@ -70,10 +65,6 @@ public class ContentController {
 	    @RequestParam(defaultValue = "2") int limit
 	    ) {
 	Member memberSession = SessionUtil.getLoggedInUser(httpSession);
-	if (memberSession == null) {
-	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-		    .body(ResponseObject.builder().status(401).object("Please sign in").build());
-	}
 	try {
 	    PageRequest pageRequest = PageRequest.of(
 		    Math.max(page - 1, 0),
@@ -103,30 +94,10 @@ public class ContentController {
 	}
     }
 
-//    @GetMapping("/all-contents")
-//    public ResponseEntity<ResponseObject> findAll(HttpSession httpSession) {
-//	Member memberSession = SessionUtil.getLoggedInUser(httpSession);
-//	if (memberSession == null) {
-//	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-//		    .body(ResponseObject.builder().status(401).object("Please sign in").build());
-//	}
-//	try {
-//	    List<ContentResponse> contentResponses = contentService.findAll(memberSession).stream()
-//		    .map(ContentResponse::new).collect(Collectors.toList());
-//	    return ResponseEntity.ok(ResponseObject.builder().status(200).object(contentResponses).build());
-//	} catch (Exception e) {
-//	    return ResponseEntity.badRequest()
-//		    .body(ResponseObject.builder().status(400).object(e.getMessage()).build());
-//	}
-//    }
 
     @GetMapping("/get-content/{id}")
     public ResponseEntity<ResponseObject> findById(HttpSession httpSession, @PathVariable Integer id) {
 	Member memberSession = SessionUtil.getLoggedInUser(httpSession);
-	if (memberSession == null) {
-	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-		    .body(ResponseObject.builder().status(401).object("Please sign in").build());
-	}
 	try {
 	    Content content = contentService.findById(memberSession, id);
 	    return ResponseEntity.ok(ResponseObject.builder().status(200).object(new ContentResponse(content)).build());
@@ -140,10 +111,6 @@ public class ContentController {
     public ResponseEntity<ResponseObject> update(HttpSession httpSession, @Valid @ModelAttribute ContentDTO contentDTO,
 	    BindingResult bindingResult) {
 	Member memberSession = SessionUtil.getLoggedInUser(httpSession);
-	if (memberSession == null) {
-	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-		    .body(ResponseObject.builder().status(401).object("Please sign in").build());
-	}
 	Map<String, String> errors = new HashMap<>();
 	if (bindingResult.hasErrors()) {
 	    bindingResult.getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));
@@ -162,10 +129,6 @@ public class ContentController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<ResponseObject> delete(HttpSession httpSession, @PathVariable Integer id) {
 	Member memberSession = SessionUtil.getLoggedInUser(httpSession);
-	if (memberSession == null) {
-	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-		    .body(ResponseObject.builder().status(401).object("Please sign in").build());
-	}
 	try {
 	    contentService.delete(memberSession, id);
 	    return ResponseEntity.ok(ResponseObject.builder().status(200).object("Delete successfully").build());

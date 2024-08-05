@@ -3,9 +3,8 @@ package controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +21,7 @@ import entities.SuDungMay;
 import models.PagedResult;
 import models.ResponseData;
 import models.SelectData;
+import utils.HibernateValidator;
 
 /**
  * Servlet implementation class MayController
@@ -78,13 +78,13 @@ public class MayController extends HttpServlet {
 		if (maKhachHang != null && maMay != null) {
 
 			try {
-			
+
 				May may = mayDAO.findById(Integer.parseInt(maMay));
-				
+
 				if (may == null || may.getTrangThai().equals("1")) {
 					KhachHangDAO khachHangDAO = new KhachHangDAO();
 					KhachHang khachHang = khachHangDAO.findById(maKhachHang);
-					
+
 					SuDungMay suDungMay = mayDAO.findSDMByKH(khachHang);
 					if (suDungMay == null) {
 						LocalDate ngayBDSD = LocalDate.now();
@@ -98,7 +98,6 @@ public class MayController extends HttpServlet {
 						suDungMay.setNgaybatDauSuDung(ngayBDSD);
 						suDungMay.setGioBatDauSuDung(gioBDSD);
 						suDungMay.setThoiGianSuDung(thoigianSD);
-						
 
 						boolean status = mayDAO.registerToUse(suDungMay);
 						if (status) {
@@ -109,12 +108,13 @@ public class MayController extends HttpServlet {
 					} else {
 						responseData.setObject("Khách hàng đang sử dụng máy khác rồi");
 					}
-					
-				}else {
-					String msg = may == null ? "Mã máy không hợp lệ":"Mã máy " + may.getMaMay()+ " " + SelectData.trangThai((may.getTrangThai()));
+
+				} else {
+					String msg = may == null ? "Mã máy không hợp lệ"
+							: "Mã máy " + may.getMaMay() + " " + SelectData.trangThai((may.getTrangThai()));
 					responseData.setObject(msg);
 				}
-				
+
 			} catch (Exception e) {
 				responseData.setObject(e.getMessage());
 			}
@@ -165,12 +165,10 @@ public class MayController extends HttpServlet {
 					if (viTri != null && trangThai != null) {
 						May updateMay = new May(maMayInt, viTri, trangThai);
 						try {
-							boolean status = false;
-							
+							boolean status = mayDAO.update(updateMay);
+
 							if (may.getTrangThai().equals("2") && !updateMay.getTrangThai().equals("2")) {
-								status = mayDAO.updateThoiGianSuDung(updateMay);
-							} else {
-								status = mayDAO.update(updateMay);
+								mayDAO.updateThoiGianSuDung(updateMay);
 							}
 							if (status) {
 								responseData.setStatus(200);
@@ -208,7 +206,7 @@ public class MayController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void getAll(HttpServletRequest request, HttpServletResponse response) {
 		// Status
 		ResponseData responseData = new ResponseData(200, null);
@@ -248,17 +246,23 @@ public class MayController extends HttpServlet {
 			May may = new May();
 			may.setViTri(viTri);
 			may.setTrangThai(trangThai);
+			List<String> errors = HibernateValidator.getViolations(may);
 
-			try {
-				boolean status = mayDAO.insert(may);
-				if (status) {
-					responseData.setStatus(200);
-				} else {
-					responseData.setObject("Không tạo được dữ liệu mới");
+			if (errors.size() > 0) {
+				responseData.setObject(errors);
+			} else {
+				try {
+					boolean status = mayDAO.insert(may);
+					if (status) {
+						responseData.setStatus(200);
+					} else {
+						responseData.setObject("Không tạo được dữ liệu mới");
+					}
+				} catch (Exception e) {
+					responseData.setObject(e.getMessage());
 				}
-			} catch (Exception e) {
-				responseData.setObject(e.getMessage());
 			}
+
 			request.setAttribute("responseData", responseData);
 		}
 

@@ -7,15 +7,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(schema = "dbo", name = "KhachHang")
 public class KhachHang {
 	@Id
+	@Pattern(regexp = "^KH\\d{5}$", message = "Mã khách hàng không hợp lệ")
 	private String maKH;
+	
+	@Pattern(regexp = "^[a-zA-Z0-9\s]*$", message = "Tên khách hàng không hợp lệ")
 	private String tenKH;
+	
+	@NotBlank(message = "Địa chỉ không được để trống")
 	private String diaChi;
+	
+	@Pattern(regexp = "^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)\\d{7}$", message = "Số điện thoại không hợp lệ")
 	private String soDienThoai;
+	
+	@NotBlank(message = "Email không được để trống")
+	@Email(message = "Email không hợp lệ")
 	private String email;
 	
 	@OneToMany(mappedBy = "khachHang", cascade = CascadeType.ALL)

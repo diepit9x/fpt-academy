@@ -83,10 +83,6 @@ public class MemberController {
     public ResponseEntity<ResponseObject> updateProfile(HttpSession session,
 	    @Valid @ModelAttribute UpdateProFileDTO updateProFileDTO, BindingResult bindingResult) {
 	Member memberSession = SessionUtil.getLoggedInUser(session);
-	if (memberSession == null) {
-	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-		    .body(ResponseObject.builder().status(401).object("Please sign in").build());
-	}
 	Map<String, String> errors = new HashMap<>();
 	if (bindingResult.hasErrors()) {
 	    bindingResult.getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));

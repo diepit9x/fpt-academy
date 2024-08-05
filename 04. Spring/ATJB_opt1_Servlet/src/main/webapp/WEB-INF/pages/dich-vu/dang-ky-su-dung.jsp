@@ -8,7 +8,7 @@
 %>
 <jsp:include page="../../header.jsp" />
 <h1 class="pb-2 border-bottom">Đăng kí sử dụng dịch vụ</h1>
-<form action="" method="POST" id="dang-ki-su-dung-dich-vu">
+<form action="" method="POST" id="dang-ki-su-dung-dich-vu2">
 <%
           	if(responseData.getStatus() == 400){
           %>

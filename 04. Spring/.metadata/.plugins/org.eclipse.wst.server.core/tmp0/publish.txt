@@ -1,2 +1,5 @@
 #Tomcat publish data
-#Sun Aug 04 14:55:42 ICT 2024
+#Mon Aug 05 09:36:13 ICT 2024
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\DiepNT12\\.m2\\repository\\org\\apache\\tomcat\\tomcat-jasper-el\\9.0.82\\tomcat-jasper-el-9.0.82.jar=WEB-INF/lib/tomcat-jasper-el-9.0.82.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\DiepNT12\\.m2\\repository\\org\\apache\\tomcat\\tomcat-jasper\\9.0.82\\tomcat-jasper-9.0.82.jar=WEB-INF/lib/tomcat-jasper-9.0.82.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\DiepNT12\\.m2\\repository\\org\\apache\\tomcat\\tomcat-websocket\\9.0.82\\tomcat-websocket-9.0.82.jar=WEB-INF/lib/tomcat-websocket-9.0.82.jar

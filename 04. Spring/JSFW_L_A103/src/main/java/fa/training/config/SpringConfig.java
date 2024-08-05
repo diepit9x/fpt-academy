@@ -20,11 +20,13 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import fa.training.filter.WebAppInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -41,6 +43,20 @@ public class SpringConfig implements WebMvcConfigurer, ApplicationContextAware {
 	this.applicationContext = applicationContext;
     }
 
+    //Interceptor
+    @Bean
+	public WebAppInterceptor webAppInterceptor() {
+		return new WebAppInterceptor();
+	}
+	
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(webAppInterceptor())
+		.addPathPatterns("/**")
+		.excludePathPatterns("/login", "/register", "/member/login", "/member/register", "/assets/**");
+	}
+    
     // Khai báo view
     @Bean
     public InternalResourceViewResolver viewResolver() {
@@ -111,11 +127,11 @@ public class SpringConfig implements WebMvcConfigurer, ApplicationContextAware {
 	return transactionManager;
     }
 
-    // CORS
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-	registry.addMapping("/**").allowedOrigins("*")
-		.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-		.allowedHeaders("*").allowCredentials(true);
-    }
+//    // CORS
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//	registry.addMapping("/**").allowedOrigins("*")
+//		.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+//		.allowedHeaders("*").allowCredentials(true);
+//    }
 }

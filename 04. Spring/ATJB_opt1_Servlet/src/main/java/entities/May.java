@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(schema = "dbo" ,name = "May")
@@ -12,7 +13,10 @@ public class May {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer maMay;
+	@NotBlank(message = "Vị trí không được để trống")
 	private String viTri;
+	
+	@NotBlank(message = "Trạng thái không được để trống")
 	private String trangThai;
 	public May() {
 		super();

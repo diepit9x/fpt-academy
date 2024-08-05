@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,6 +22,7 @@ import entities.SuDungDichVu;
 import entities.SuDungMay;
 import models.PagedResult;
 import models.ResponseData;
+import utils.HibernateValidator;
 
 @WebServlet("/dich-vu/*")
 public class DichVuController extends HttpServlet {
@@ -80,29 +82,37 @@ public class DichVuController extends HttpServlet {
 
 				KhachHang khachHang = khachHangDAO.findById(maKhachHang);
 				DichVu dichVu = dichVuDAO.findById(maDichVu);
-				
+
 				SuDungMay suDungMay = mayDAO.findSDMByKH(khachHang);
 				if (suDungMay != null) {
-					
-					LocalDate ngaySD = LocalDate.now();
-					LocalTime gioSD = LocalTime.now();
-					Integer soLuongSD = Integer.parseInt(soLuong);
+					if (dichVu != null) {
+						LocalDate ngaySD = LocalDate.now();
+						LocalTime gioSD = LocalTime.now();
+						Integer soLuongSD = Integer.parseInt(soLuong);
 
-					SuDungDichVu suDungDichVu = new SuDungDichVu();
-					suDungDichVu.setKhachHang(khachHang);
-					suDungDichVu.setDichVu(dichVu);
-					suDungDichVu.setNgaySuDung(ngaySD);
-					suDungDichVu.setGioSuDung(gioSD);
-					suDungDichVu.setSoLuong(soLuongSD);
-					suDungDichVu.setSuDungMay(suDungMay);
-					suDungDichVu.setDonGia(dichVu.getDonGia());
+						if (soLuongSD <= 0) {
+							responseData.setObject("Số lượng sử dụng phải > 0");
+						} else {
+							SuDungDichVu suDungDichVu = new SuDungDichVu();
+							suDungDichVu.setKhachHang(khachHang);
+							suDungDichVu.setDichVu(dichVu);
+							suDungDichVu.setNgaySuDung(ngaySD);
+							suDungDichVu.setGioSuDung(gioSD);
+							suDungDichVu.setSoLuong(soLuongSD);
+							suDungDichVu.setSuDungMay(suDungMay);
+							suDungDichVu.setDonGia(dichVu.getDonGia());
 
-					boolean status = dichVuDAO.registerToUse(suDungDichVu);
-					if (status) {
-						responseData.setStatus(200);
+							boolean status = dichVuDAO.registerToUse(suDungDichVu);
+							if (status) {
+								responseData.setStatus(200);
+							} else {
+								responseData.setObject("Đăng ký sử dụng thất bại");
+							}
+						}
 					} else {
-						responseData.setObject("Đăng ký sử dụng thất bại");
+						responseData.setObject("Mã dịch vụ không hợp lệ");
 					}
+
 				} else {
 					responseData.setObject("Khách hàng chưa đăng ký sử dụng máy tại thời điểm này");
 				}
@@ -232,17 +242,22 @@ public class DichVuController extends HttpServlet {
 			dichVu.setMaDV(maDichVu);
 			dichVu.setTenDV(tenDichVu);
 			dichVu.setDonViTinh(donViTinh);
-			dichVu.setDonGia(Integer.parseInt(donGia));
+			dichVu.setDonGia(Integer.parseInt(donGia != "" ? donGia : "0"));
 
-			try {
-				boolean status = dichVuDAO.insert(dichVu);
-				if (status) {
-					responseData.setStatus(200);
-				} else {
-					responseData.setObject("Tạo mới dịch vụ thất bại");
+			List<String> errors = HibernateValidator.getViolations(dichVu);
+			if (errors.size() > 0) {
+				responseData.setObject(errors);
+			} else {
+				try {
+					boolean status = dichVuDAO.insert(dichVu);
+					if (status) {
+						responseData.setStatus(200);
+					} else {
+						responseData.setObject("Tạo mới dịch vụ thất bại");
+					}
+				} catch (Exception e) {
+					responseData.setObject(e.getMessage());
 				}
-			} catch (Exception e) {
-				responseData.setObject(e.getMessage());
 			}
 			request.setAttribute("responseData", responseData);
 		}

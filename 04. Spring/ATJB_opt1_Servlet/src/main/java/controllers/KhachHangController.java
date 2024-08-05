@@ -16,6 +16,7 @@ import entities.KhachHang;
 import entities.SuDungDichVuMay;
 import models.PagedResult;
 import models.ResponseData;
+import utils.HibernateValidator;
 
 @WebServlet("/khach-hang/*")
 public class KhachHangController extends HttpServlet {
@@ -196,18 +197,22 @@ public class KhachHangController extends HttpServlet {
 			khachHang.setSoDienThoai(soDienThoai);
 			khachHang.setEmail(email);
 
-			try {
-				boolean status = khachHangDAO.insert(khachHang);
-				if (status) {
-					responseData.setStatus(200);
-					responseData.setObject("Tạo khách hàng thành công");
-				} else {
-					responseData.setObject("Tạo khách hàng thất bại");
+			List<String> errors = HibernateValidator.getViolations(khachHang);
+			if (errors.size() > 0) {
+				responseData.setObject(errors);
+			} else {
+				try {
+					boolean status = khachHangDAO.insert(khachHang);
+					if (status) {
+						responseData.setStatus(200);
+						responseData.setObject("Tạo khách hàng thành công");
+					} else {
+						responseData.setObject("Tạo khách hàng thất bại");
+					}
+				} catch (Exception e) {
+					responseData.setObject(e.getMessage());
 				}
-			} catch (Exception e) {
-				responseData.setObject(e.getMessage());
 			}
-
 			request.setAttribute("responseData", responseData);
 		}
 		try {

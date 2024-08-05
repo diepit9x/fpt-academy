@@ -158,7 +158,6 @@ public class MayDAO {
 				int thoiGianSuDung = calculateThoiGianSuDung(suDungMay.getNgaybatDauSuDung(), suDungMay.getGioBatDauSuDung());
 				suDungMay.setThoiGianSuDung(thoiGianSuDung);
 				Transaction t = session.beginTransaction();
-				session.merge(may);
 				session.merge(suDungMay);
 				t.commit();
 				return true;
