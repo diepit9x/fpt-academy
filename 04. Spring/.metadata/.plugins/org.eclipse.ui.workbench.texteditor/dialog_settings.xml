@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="loadPage"/>
+		<item key="selection" value="fa.trainging"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="fpt.fa"/>
 			<item value="loadPage"/>
 			<item value="HttpSession httpSession"/>
 			<item value="ttpSession httpSession"/>
@@ -22,9 +23,9 @@
 			<item value="KhachHang"/>
 			<item value="khachHangDAO"/>
 			<item value="mayDAOImpl"/>
-			<item value="models"/>
 		</list>
 		<list key="replacehistory">
+			<item value="fa.trainging"/>
 			<item value="Member member"/>
 			<item value="src=&quot;assets/bootstrap/js"/>
 			<item value="dichVu"/>
@@ -39,7 +40,6 @@
 			<item value="SuDungMay"/>
 			<item value="khachHang"/>
 			<item value="KhachHang"/>
-			<item value="dv"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
